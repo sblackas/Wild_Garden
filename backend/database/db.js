@@ -30,7 +30,7 @@ connection.connect(function(err){
     connection.query(`CREATE TABLE IF NOT EXISTS artworks
     (id_artwork INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
      art_title VARCHAR(250) NOT NULL, 
-     art_desc VARCHAR NOT NULL,
+     art_desc VARCHAR(250) NOT NULL,
      art_picture BLOB NOT NULL, 
      id_user INT,
      id_cate INT,
@@ -47,17 +47,17 @@ connection.connect(function(err){
      connection.query(`CREATE TABLE IF NOT EXISTS favorites
     (id_favorite INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
      id_user INT,
-     id_artwork,
+     id_artwork INT,
      FOREIGN KEY (id_user) REFERENCES users(id_user),
-     FOREIGN KEY (id_favorite) REFERENCES favorites(id_favorites)
+     FOREIGN KEY (id_artwork) REFERENCES artworks(id_artwork)
      )`);
 
      connection.query(`CREATE TABLE IF NOT EXISTS feedbacks
      (id_feedback INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
         id_user INT,
-        id_artwork,
+        id_artwork INT,
         FOREIGN KEY (id_user) REFERENCES users(id_user),
-        FOREIGN KEY (id_favorite) REFERENCES favorites(id_favorites)
+        FOREIGN KEY (id_artwork) REFERENCES artworks(id_artwork)
      )`);
 
 
