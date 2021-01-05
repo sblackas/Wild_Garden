@@ -53,4 +53,16 @@ router.post('/users/sign-in', function(req, res) {
   
     });
 
+
+    router.get('/users', function (req,res) {
+        let allUsers = `SELECT id_user,u_name FROM users`;
+        db.query(allUsers, function (err, todoUser) {
+     
+          if (err) res.send (err);
+              console.log(todoUser);
+              res.send(todoUser)
+        })
+        
+      })
+
 module.exports = router;
