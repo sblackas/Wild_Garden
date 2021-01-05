@@ -16,7 +16,7 @@ router.post('/users/sign-up', function (req, res) {
     console.log(hashpassword);
     console.log(req.body.lastname);
 
-    let newUser = `INSERT INTO users (u_name, u_lastname, u_email, u_password) VALUES ('${req.body.name}','${req.body.email}','${hashpassword}','${req.body.lastname}')`; 
+    let newUser = `INSERT INTO users (u_name, u_lastname, u_email, u_password, u_pp) VALUES ('${req.body.name}','${req.body.lastname}','${req.body.lastname}', '${hashpassword}', '${req.body.pp}')`; 
     db.query(newUser, function (err, result) { // envoyer mon newUser dans ma database
         if (err) throw err;
         console.log("one user inserted");
