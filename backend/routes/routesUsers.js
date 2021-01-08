@@ -65,4 +65,36 @@ router.post('/users/sign-in', function(req, res) {
         
       })
 
+      // router.get("/users/:id_user", function(req,res){
+      //   try {
+      //       let usersId = req.params.id_user
+      //       console.log(usersId)
+    
+        //         db.query(`SELECT * FROM users WHERE id_user = ${usersId}`, function(err, result){
+                    
+        //             if (err) throw err;
+        //         console.log(result);
+        //         res.status(200).send(result);    
+        //         })
+        
+        //     } catch (error) {
+        
+        //     res.status(400);
+        // }
+        // })
+
+      router.get('/users/:id_user', function (req, res) {
+        try {
+            db.query(`SELECT u_name, u_lastname, u_email, u_pp FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
+                if (err) throw err
+                console.log(result);
+                res.json(result)
+
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    })
+    
+
 module.exports = router;
