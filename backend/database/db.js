@@ -47,7 +47,7 @@ connection.connect(function(err){
      connection.query(`CREATE TABLE IF NOT EXISTS favorites
     (id_favorite INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
      id_user INT,
-     id_artwork,
+     id_artwork INT,
      FOREIGN KEY (id_user) REFERENCES users(id_user),
      FOREIGN KEY (id_favorite) REFERENCES favorites(id_favorites)
      )`);
@@ -55,7 +55,7 @@ connection.connect(function(err){
      connection.query(`CREATE TABLE IF NOT EXISTS feedbacks
      (id_feedback INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
         id_user INT,
-        id_artwork,
+        id_artwork INT,
         FOREIGN KEY (id_user) REFERENCES users(id_user),
         FOREIGN KEY (id_favorite) REFERENCES favorites(id_favorites)
      )`);
