@@ -65,23 +65,6 @@ router.post('/users/sign-in', function(req, res) {
         
       })
 
-      // router.get("/users/:id_user", function(req,res){
-      //   try {
-      //       let usersId = req.params.id_user
-      //       console.log(usersId)
-    
-        //         db.query(`SELECT * FROM users WHERE id_user = ${usersId}`, function(err, result){
-                    
-        //             if (err) throw err;
-        //         console.log(result);
-        //         res.status(200).send(result);    
-        //         })
-        
-        //     } catch (error) {
-        
-        //     res.status(400);
-        // }
-        // })
 
       router.get('/users/:id_user', function (req, res) {
         try {
