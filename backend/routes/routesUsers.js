@@ -78,6 +78,14 @@ router.post('/users/sign-in', function(req, res) {
             console.log(error);
         }
     })
+
+    router.delete('/users/:id_user', function (req, res) {
+      console.log(req.body);
+      db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results, fields) {
+         if (error) throw error;
+         res.send('User has been deleted!');
+       });
+   });
     
 
 module.exports = router;
