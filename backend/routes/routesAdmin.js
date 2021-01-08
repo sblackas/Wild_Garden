@@ -19,6 +19,27 @@ router.post('/admin/sign-up', function (req, res) {
 
 });
 
-
+router.post('/admin/sign-in', function(req, res) {
+    db.query(`SELECT * FROM admin WHERE a_email = '${req.body.email}'`, function (err, result) { // *=tout
+       if (err) throw err;
+       if (result.length) {
+           bcrypt.compare(req.body.password, result[0].a_password, function(err,theadmin){
+             console.log(theadmin);
+             if(theadmin) {
+               let token = jwt.sign({ id: result[0].id_admin, name: result[0].a_name }, config.secret, { expiresIn: 86400 });
+               console.log(token);
+               res.send({ auth: true, token: token, user: result[0] }); 
+             } else {
+               res.status(400).send("wrong password") 
+             }
+         })
+ 
+         } else {
+           res.status(400).send("sorry we don't know this user") 
+         }
+         
+       });
+ 
+   });
 
 module.exports = router;
