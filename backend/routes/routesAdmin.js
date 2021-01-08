@@ -42,4 +42,17 @@ router.post('/admin/sign-in', function(req, res) {
  
    });
 
+   router.get('/admin/:id_admin', function (req, res) {
+    try {
+        db.query(`SELECT a_name, a_lastname, a_email, a_password FROM admin WHERE id_admin = '${req.params.id_admin}'`, (err, result) => {
+            if (err) throw err
+            console.log(result);
+            res.json(result)
+
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 module.exports = router;
