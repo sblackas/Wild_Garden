@@ -3,6 +3,8 @@ const api = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connection = require("./database/db");
+const routes = require('./routes/routesUsers')
+
 
 // middleware
 api.use(cors());
@@ -15,6 +17,8 @@ const allowCrossDomain = function(req, res, next) {
 api.use(allowCrossDomain)
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({extended: true}));
+api.use("/", routes); // racine "/" pour que ce soit use sur tous les chemins
+
 
 
 api.listen(8000, function () {
