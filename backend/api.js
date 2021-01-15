@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connection = require("./database/db");
 const routes = require('./routes/routesUsers')
+const routesCategory = require('./routes/routesCategory')
 
 
 
