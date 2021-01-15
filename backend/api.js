@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const connection = require("./database/db");
 const routes = require('./routes/routesUsers')
+const routesCategory = require('./routes/routesCategory')
 
 
 // middleware
@@ -17,7 +18,7 @@ const allowCrossDomain = function(req, res, next) {
 api.use(allowCrossDomain)
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({extended: true}));
-api.use("/", routes); // racine "/" pour que ce soit use sur tous les chemins
+api.use("/", routes, routesCategory); // racine "/" pour que ce soit use sur tous les chemins
 
 
 
