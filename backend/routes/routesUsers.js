@@ -88,10 +88,9 @@ router.post('/users/sign-in', function(req, res) {
    });
 
    router.put('/users/:edit', function (req, res) {
-    // db.query(`UPDATE users SET (u_name,u_lastname,u_email,u_password,u_pp) VALUES ('${req.body.name}','${req.body.lastname}','${req.body.email}','${req.body.password}','${req.body.pp}') WHERE id_user = '${req.params.edit}'`, function (error, results) {
       db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_password = '${req.body.password}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'` , function (error, results) {
     if (error) throw error;
-     res.send(JSON.stringify(results));
+     res.send(JSON.stringify(results + "PROFILE HAS BEEN UPDATED"));
     //  res.status(200).send("PROFILE HAS BEEN UPDATED");
    });
  });
