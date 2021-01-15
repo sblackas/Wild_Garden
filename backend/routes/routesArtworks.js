@@ -19,4 +19,11 @@ router.delete('/artwork/:id_artwork', function (req, res) {
          });
    });
 
+router.put('/artwork/:edit', function (req, res) {
+    db.query(`UPDATE artworks SET art_title = '${req.body.name}', art_desc = '${req.body.description}', art_picture = '${req.body.picture}' WHERE id_artwork = '${req.params.edit}'` , function (error, results) {
+  if (error) throw error;
+   res.json('THE ARTWORK HAS BEEN UPDATED');
+     });
+  });
+
 module.exports = router;
