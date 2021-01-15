@@ -11,6 +11,19 @@ router.post('/artwork/add', function (req, res) {
     });
 })
 
+router.get('/artwork/:id_artwork', function (req, res) {
+    try {
+        db.query(`SELECT art_title, art_desc, art_picture FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, (err, result) => {
+            if (err) throw err
+            console.log(result);
+            res.json(result)
+
+        })
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 router.delete('/artwork/:id_artwork', function (req, res) {
     console.log(req.body);
     db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
