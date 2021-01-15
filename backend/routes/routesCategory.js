@@ -23,4 +23,19 @@ router.get('/category/:id_cate', function (req, res) {
     }
 })
 
+router.delete('/category/:id_cate', function (req, res) {
+    console.log(req.body);
+    db.query(`DELETE FROM categories WHERE id_cate = '${req.params.id_cate}'`, function (error, results) {
+       if (error) throw error;
+           res.send('Category has been deleted!');
+         });
+   });
+
+   router.put('/category/:edit', function (req, res) {
+    db.query(`UPDATE categories SET cate_name = '${req.body.name}', cate_picture = '${req.body.picture}' WHERE id_cate = '${req.params.edit}'` , function (error, results) {
+  if (error) throw error;
+   res.json('THE CATEGORY HAS BEEN UPDATED');
+     });
+  });
+
 module.exports = router;
