@@ -79,5 +79,21 @@ router.post('/users/sign-in', function(req, res) {
         }
     })
     
+    router.delete('/users/:id_user', function (req, res) {
+      console.log(req.body);
+      db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {
+         if (error) throw error;
+         res.send('User has been deleted!');
+       });
+   });
+
+   router.put('/users/:edit', function (req, res) {
+      db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_password = '${req.body.password}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'` , function (error, results) {
+    if (error) throw error;
+     res.send(JSON.stringify(results + "PROFILE HAS BEEN UPDATED"));
+    //  res.status(200).send("PROFILE HAS BEEN UPDATED");
+   });
+ });
+
 
 module.exports = router;

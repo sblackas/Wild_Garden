@@ -31,7 +31,7 @@ connection.connect(function(err){
     (id_artwork INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
      art_title VARCHAR(250) NOT NULL, 
      art_desc VARCHAR(250) NOT NULL,
-     art_picture BLOB NOT NULL, 
+     art_picture TEXT(500) NOT NULL, 
      id_user INT,
      id_cate INT,
      FOREIGN KEY (id_user) REFERENCES users(id_user),

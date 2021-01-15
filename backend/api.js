@@ -7,6 +7,7 @@ const routes = require('./routes/routesUsers')
 const routesCategory = require('./routes/routesCategory')
 
 
+
 // middleware
 api.use(cors());
 const allowCrossDomain = function(req, res, next) {
@@ -18,7 +19,7 @@ const allowCrossDomain = function(req, res, next) {
 api.use(allowCrossDomain)
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({extended: true}));
-api.use("/", routes, routesCategory); // racine "/" pour que ce soit use sur tous les chemins
+
 
 
 
