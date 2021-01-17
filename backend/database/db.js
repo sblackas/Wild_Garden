@@ -24,7 +24,8 @@ connection.connect(function(err){
     u_name VARCHAR(150) NOT NULL, 
     u_email VARCHAR(250) NOT NULL UNIQUE, 
     u_password VARCHAR(250) NOT NULL,
-    u_pp VARCHAR(150) NOT NULL
+    u_pp VARCHAR(150) NOT NULL,
+    u_isArtist BOOLEAN NOT NULL
     )`); 
 
     connection.query(`CREATE TABLE IF NOT EXISTS artworks
@@ -54,6 +55,7 @@ connection.connect(function(err){
 
      connection.query(`CREATE TABLE IF NOT EXISTS feedbacks
      (id_feedback INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+        commentary VARCHAR(250) NOT NULL,
         id_user INT,
         id_artwork INT,
         FOREIGN KEY (id_user) REFERENCES users(id_user),
