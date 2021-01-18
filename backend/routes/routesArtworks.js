@@ -11,6 +11,7 @@ router.post('/artwork/add', function (req, res) {
     });
 })
 
+//_____Infos d'une oeuvre
 router.get('/artwork/:id_artwork', function (req, res) {
     try {
         db.query(`SELECT art_title, art_desc, art_picture FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, (err, result) => {
@@ -24,6 +25,7 @@ router.get('/artwork/:id_artwork', function (req, res) {
     }
 })
 
+//_____Supprimer son oeuvre
 router.delete('/artwork/:id_artwork', function (req, res) {
     console.log(req.body);
     db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
@@ -32,11 +34,32 @@ router.delete('/artwork/:id_artwork', function (req, res) {
          });
    });
 
+//_____Modifier oeuvre
 router.put('/artwork/:edit', function (req, res) {
     db.query(`UPDATE artworks SET art_title = '${req.body.name}', art_desc = '${req.body.description}', art_picture = '${req.body.picture}' WHERE id_artwork = '${req.params.edit}'` , function (error, results) {
   if (error) throw error;
    res.json('THE ARTWORK HAS BEEN UPDATED');
      });
   });
+
+//_____Recuperer toutes les oeuvres posté par un user
+  router.get('/get-artwork/:id_user', function (req,res) {
+    let artId = req.params.id
+    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE id_user = '${artId}'`
+    db.query(getUserArt, function (err, results) {
+       if (err) throw err
+       res.send(results)
+    })
+ })
+
+//____Recuperer les oeuvres d'une categorie
+router.get('/get-cate-artworks/:id', function (req,res) {
+    let artCateId = req.params.id
+    let getCateArt = `SELECT  artworks.art_title, artworks.art_desc, artworks.art_picture, categories.cate_name FROM artworks INNER JOIN categories on artworks.id_artwork = categories.id_artwork WHERE id_artwork = '${artCateId}'`
+    db.query(getCateArt, function (err, results) {
+       if (err) throw err
+       res.send(results)
+    })
+ })
 
 module.exports = router;
