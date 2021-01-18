@@ -95,5 +95,14 @@ router.post('/users/sign-in', function(req, res) {
    });
  });
 
+ router.get('/get-artworks/:id', function (req,res) {
+  let userId = req.params.id
+  let getArtworks = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE id_user = '${userId}'`
+  db.query(getArtworks, function (err, results) {
+     if (err) throw err,
+     res.send(results)
+  })
+})
+
 
 module.exports = router;
