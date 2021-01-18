@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
 
 
-
+//____Inscription
 router.post('/users/sign-up', function (req, res) {
   const password = req.body.password;
   let hashpassword = bcrypt.hashSync(password, saltRounds)
@@ -27,10 +27,9 @@ router.post('/users/sign-up', function (req, res) {
 
 });
 
-router.post('/users/sign-in', function (req, res) {
-  // let email = req.body.email
-  // let password = req.body.password
 
+//_____Connexion
+router.post('/users/sign-in', function (req, res) {
   db.query(`SELECT * FROM users WHERE u_email = '${req.body.email}'`, function (err, result) { // *=tout
     if (err) throw err;
     if (result.length) {
@@ -53,7 +52,7 @@ router.post('/users/sign-in', function (req, res) {
 
 });
 
-
+//_____Liste des users
 router.get('/users', function (req, res) {
   let allUsers = `SELECT id_user,u_name FROM users`;
   db.query(allUsers, function (err, todoUser) {
@@ -65,7 +64,7 @@ router.get('/users', function (req, res) {
 
 })
 
-
+//_____Infos d'un user
 router.get('/users/:id_user', function (req, res) {
   try {
     db.query(`SELECT u_name, u_lastname, u_email, u_pp FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
@@ -79,6 +78,7 @@ router.get('/users/:id_user', function (req, res) {
   }
 })
 
+//_____Supprimer d'un user
 router.delete('/users/:id_user', function (req, res) {
   console.log(req.body);
   db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {
@@ -87,6 +87,7 @@ router.delete('/users/:id_user', function (req, res) {
   });
 });
 
+//_____Modifier infos user
 router.put('/users/:edit', function (req, res) {
   db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_password = '${req.body.password}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;
@@ -94,15 +95,6 @@ router.put('/users/:edit', function (req, res) {
     //  res.status(200).send("PROFILE HAS BEEN UPDATED");
   });
 });
-
-router.get('/get-artworks/:id', function (req, res) {
-  let userId = req.params.id
-  let getArtworks = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE id_user = '${userId}'`
-  db.query(getArtworks, function (err, results) {
-    if (err) throw err,
-      res.send(results)
-  })
-})
 
 
 module.exports = router;

@@ -43,7 +43,7 @@ router.put('/artwork/:edit', function (req, res) {
   });
 
 //_____Recuperer toutes les oeuvres posté par un user
-  router.get('/get-artwork/:id_user', function (req,res) {
+  router.get('/get-artwork/:id', function (req,res) {
     let artId = req.params.id
     let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE id_user = '${artId}'`
     db.query(getUserArt, function (err, results) {
