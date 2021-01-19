@@ -58,23 +58,23 @@ render() {
 <Form onSubmit={this.handleSubmit}> 
 
 <Form.Group controlId="formBasicName" >
-              <Form.Label>Name</Form.Label>
-              <Form.Control type="name" placeholder="Enter Name" onChange={this.inputName} />
+              <Form.Label>Prénom</Form.Label>
+              <Form.Control type="name" placeholder="Entrer votre prénom" onChange={this.inputName} />
             </Form.Group>
 
             <Form.Group controlId="formBasicName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control type="name" placeholder="Enter your last name" onChange={this.inputLastName} />
+              <Form.Label>Nom</Form.Label>
+              <Form.Control type="name" placeholder="Entrer votre nom" onChange={this.inputLastName} />
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" onChange={this.inputEmail} />
+              <Form.Label>Adresse Email </Form.Label>
+              <Form.Control type="email" placeholder="Entrer votre adresse email" onChange={this.inputEmail} />
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={this.inputPassword} />
+              <Form.Label>Mot de passe</Form.Label>
+              <Form.Control type="password" placeholder="Entrer votre mot de passe" onChange={this.inputPassword} />
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
             </Form.Group>

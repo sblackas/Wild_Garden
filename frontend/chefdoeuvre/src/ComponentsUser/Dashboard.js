@@ -57,26 +57,26 @@ render() {
 <p>This is the dashboard </p>
 
 <div className="profileBox1">
-  <h1>&bull; Edit Your Profile &bull;</h1>
+  <h1>&bull; Editer votre profil &bull;</h1>
   <div className="underline">
   </div>
   <form onSubmit={this.handleSubmit}>
     <div className="firsttname">
       <label for="Name"></label>
-      <input type="name" placeholder="First Name" onChange={this.editName}/>
+      <input type="name" placeholder="Prénom" onChange={this.editName}/>
     </div>
     <div className="lastname">
       <label for="Name"></label>
-      <input type="name" id="lastname_input" placeholder="Last Name" onChange={this.editLastName}/>
+      <input type="name" id="lastname_input" placeholder="Nom" onChange={this.editLastName}/>
     </div>
     <div className="email">
       <label for="email"></label>
-      <input type="text" id="email_input" placeholder="Email Address" onChange={this.editEmail}/>
+      <input type="text" id="email_input" placeholder="Adresse Email" onChange={this.editEmail}/>
     </div>
 
     <div className="password">
       <label for="password"></label>
-      <input type="text" placeholder="Password" onChange={this.editPassword}></input>
+      <input type="text" placeholder="Mot de passe" onChange={this.editPassword}></input>
     </div>
     
     {/* <div className="pp">
