@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SignUp from './ComponentsHome/SignUp';
+import SignIn from './ComponentsHome/SignIn';
 import Home from './ComponentsHome/Home'
+import Dashboard from './ComponentsUser/Dashboard'
 
 const myRouter = (
       <Router>
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/dashboard" component={Dashboard} />
+
           </Switch>
       </Router>
 );
