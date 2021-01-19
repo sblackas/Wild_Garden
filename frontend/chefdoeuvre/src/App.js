@@ -1,16 +1,16 @@
-import './App.css';
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import './App.css';
+// import React from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
-import SignUp from './ComponentsHome/SignUp';
+// import SignUp from './ComponentsHome/SignUp';
 
 
-function App() {
-  return (
-    <div className="App">
+// function App() {
+//   return (
+//     <div className="App">
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
-export default App;
+// export default App;
