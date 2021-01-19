@@ -48,7 +48,7 @@ class SignIn extends React.Component{
               };
               
               this.props.loginUser(loggedUser)
-              this.props.history.push('/dashboard');
+            //   this.props.history.push('/dashboard');
             } 
             localStorage.setItem("token", res.data.token) //Une fois que ca donne un token il faut le stocker, je le recupere dans addProduct
         })
@@ -68,30 +68,7 @@ render() {
       <div>
 
 <Header/>
-{/* <img src={ salon } alt="" />
-<video autoPlay loop muted id="bgvid">
-      <source src={ decosalon } type="video/mp4"/>
-    </video> */}
-{/* <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="formBasicEmail">
-{ this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null }
-             <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" onChange={this.inputEmail} />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" onChange={this.inputPassword}/>
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form> */}
 <div className="login-box" >
 <h2>Welcome Back !</h2>
 <p>To keep enjoy our content please login with your personal info</p>
