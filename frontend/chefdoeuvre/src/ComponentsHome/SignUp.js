@@ -12,6 +12,7 @@ state = {
     lastname: "",
     email: "",
     password: "",
+    message: ""
 
 };
 
@@ -43,9 +44,14 @@ handleSubmit = event => {
 
     axios.post('http://localhost:8000/users/sign-up', user)
     .then(res => {
+      if(res.status === 403) {
+        this.setState({message: res.data})
+      }
       console.log(res);
       console.log(res.data);
-    });
+    }).catch (function (error){
+        console.log(error);
+    }) ;
   
 }
 
@@ -57,7 +63,7 @@ render() {
 
 <Form onSubmit={this.handleSubmit}> 
 
-<Form.Group controlId="formBasicName" >
+<Form.Group controlId="formBasicFirstName" >
               <Form.Label>Prénom</Form.Label>
               <Form.Control type="name" placeholder="Entrer votre prénom" onChange={this.inputName} />
             </Form.Group>

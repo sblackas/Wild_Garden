@@ -24,8 +24,8 @@ connection.connect(function(err){
     u_name VARCHAR(150) NOT NULL, 
     u_email VARCHAR(250) NOT NULL UNIQUE, 
     u_password VARCHAR(250) NOT NULL,
-    u_pp VARCHAR(150) NOT NULL,
-    u_isArtist BOOLEAN NOT NULL
+    u_pp VARCHAR(150),
+    u_isArtist BOOLEAN
     )`); 
 
     connection.query(`CREATE TABLE IF NOT EXISTS artworks
