@@ -84,7 +84,6 @@ render() {
       <label>Password</label>
     </div>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
-    {/* <div id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></div> */}
     <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
 
   </form>

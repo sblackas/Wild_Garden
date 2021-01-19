@@ -1,5 +1,5 @@
 import React from 'react';
-// import HeaderUser from './HeaderUser';
+import HeaderUser from './HeaderUser';
 import './Dashboard.css';
 import axios from 'axios' 
 
@@ -49,7 +49,7 @@ handleSubmit = event => {
 render() {
   return (
     <div className="Dashboard">
-      {/* <HeaderUser/> */}
+      <HeaderUser/>
 
 
 {/* <p>{this.props.token}</p> */}
