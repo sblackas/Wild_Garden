@@ -5,6 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SignUp from './ComponentsHome/SignUp';
+import SignIn from './ComponentsHome/SignIn';
 import Home from './ComponentsHome/Home'
 
 const myRouter = (
@@ -12,6 +13,7 @@ const myRouter = (
           <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/signin" component={SignIn} />
           </Switch>
       </Router>
 );
