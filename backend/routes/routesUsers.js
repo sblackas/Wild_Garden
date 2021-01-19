@@ -9,23 +9,32 @@ const config = require('../modules/config');
 
 //____Inscription
 router.post('/users/sign-up', function (req, res) {
+    try {
+      if (!req.body.name) throw 'NO NAME'
+      if (!req.body.lastname) throw 'NO LASTNAME'
+      if (!req.body.email) throw 'NO EMAIL'
+      if (!req.body.password) throw 'NO PASSWORD'
   const password = req.body.password;
-  let hashpassword = bcrypt.hashSync(password, saltRounds)
-  console.log(req.body.password);
-  console.log(req.body.email);
-  console.log(req.body.name);
-  console.log(hashpassword);
-  console.log(req.body.lastname);
+    let hashpassword = bcrypt.hashSync(password, saltRounds)
+    console.log(req.body.password);
+    console.log(req.body.email);
+    console.log(req.body.name);
+    console.log(hashpassword);
+    console.log(req.body.lastname);
 
-  let newUser = `INSERT INTO users (u_name, u_lastname, u_email, u_password, u_pp) VALUES ('${req.body.name}','${req.body.lastname}','${req.body.email}', '${hashpassword}', '${req.body.pp}')`;
-  db.query(newUser, function (err, result) { // envoyer mon newUser dans ma database
-    if (err) throw err;
-    console.log("one user inserted");
-    res.send(result)
+    let newUser = `INSERT INTO users (u_name, u_lastname, u_email, u_password, u_pp) VALUES ('${req.body.name}','${req.body.lastname}','${req.body.email}', '${hashpassword}', '${req.body.pp}')`; 
+    db.query(newUser, function (err, result) { // envoyer mon newUser dans ma database
+        if (err) throw err;
+        console.log("one user inserted");
+        res.send(result)
 
-  });
+    });
 
-});
+} catch (err) {
+  res.status(403).send(err)
+}
+
+})
 
 
 //_____Connexion
