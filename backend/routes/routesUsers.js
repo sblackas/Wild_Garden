@@ -9,7 +9,12 @@ const config = require('../modules/config');
 
 
 router.post('/users/sign-up', function (req, res) {
-    const password = req.body.password;
+    try {
+      if (!req.body.name) throw 'NO NAME'
+      if (!req.body.lastname) throw 'NO LASTNAME'
+      if (!req.body.email) throw 'NO EMAIL'
+      if (!req.body.password) throw 'NO PASSWORD'
+  const password = req.body.password;
     let hashpassword = bcrypt.hashSync(password, saltRounds)
     console.log(req.body.password);
     console.log(req.body.email);
@@ -25,7 +30,11 @@ router.post('/users/sign-up', function (req, res) {
 
     });
 
-});
+} catch (err) {
+  res.status(403).send(err)
+}
+
+})
 
 router.post('/users/sign-in', function(req, res) {
     // let email = req.body.email
