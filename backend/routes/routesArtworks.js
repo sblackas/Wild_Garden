@@ -15,6 +15,18 @@ router.post('/artwork/add', function (req, res) {
     });
 })
 
+//____Toutes les oeuvres
+router.get('/artworks', function (req, res) {
+    let allArtwoks = `SELECT id_artwork,art_title,, art_desc,art_picture FROM artworks`;
+    db.query(allArtworks, function (err, results) {
+  
+      if (err) res.send(err);
+      console.log(results);
+      res.send(results)
+    })
+  
+  })
+
 //_____Infos d'une oeuvre
 router.get('/artwork/:id_artwork', function (req, res) {
     try {

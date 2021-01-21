@@ -72,7 +72,8 @@ handleSubmitAdmin = event => {
 axios.post('http://localhost:8000/admin/sign-up', admin)
   .then(res => {
     if(res.status === 403) {
-      this.setState({message: res.data})
+      this.setState({msgSuccess: "Vous avez bien été enregistré !"})
+
     }
     console.log(res);
     console.log(res.data);
@@ -91,7 +92,7 @@ render() {
   <Tab eventKey="" title="Admin">
   <Form onSubmit={this.handleSubmitAdmin}> 
 <p>{this.state.msgSuccess}</p>
-<Form.Group controlId="formBasicFirstName" >
+<Form.Group controlId="formBasicAdmin" >
               <Form.Label>Prénom</Form.Label>
               <Form.Control type="name" placeholder="Entrer votre prénom" onChange={this.inputName} />
             </Form.Group>
@@ -119,8 +120,9 @@ render() {
   </Tab>
   <Tab eventKey="signUpArtist" title="Artist">
   <Form onSubmit={this.handleSubmit}> 
+  <p>{this.state.msgSuccess}</p>
 
-<Form.Group controlId="formBasicFirstName" >
+<Form.Group controlId="formBasicArtist" >
               <Form.Label>Prénom</Form.Label>
               <Form.Control type="name" placeholder="Entrer votre prénom" onChange={this.inputName} />
             </Form.Group>
@@ -148,6 +150,7 @@ render() {
   </Tab>
   <Tab eventKey="signUpUser" title="Simple User">
   <Form onSubmit={this.handleSubmit}> 
+  <p>{this.state.msgSuccess}</p>
 
 <Form.Group controlId="formBasicFirstName" >
               <Form.Label>Prénom</Form.Label>

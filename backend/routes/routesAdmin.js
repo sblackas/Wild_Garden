@@ -6,6 +6,7 @@ const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
 
+//___ Inscription admin
 router.post('/admin/sign-up', function (req, res) {
   const password = req.body.password;
   let hashpassword = bcrypt.hashSync(password, saltRounds)
@@ -19,6 +20,7 @@ router.post('/admin/sign-up', function (req, res) {
 
 });
 
+//____Connexion admin
 router.post('/admin/sign-in', function (req, res) {
   db.query(`SELECT * FROM admin WHERE a_email = '${req.body.email}'`, function (err, result) { // *=tout
     if (err) throw err;
@@ -42,6 +44,8 @@ router.post('/admin/sign-in', function (req, res) {
 
 });
 
+
+//____Infos admin
 router.get('/admin/:id_admin', function (req, res) {
   try {
     db.query(`SELECT a_name, a_lastname, a_email, a_password FROM admin WHERE id_admin = '${req.params.id_admin}'`, (err, result) => {
@@ -55,6 +59,7 @@ router.get('/admin/:id_admin', function (req, res) {
   }
 })
 
+//____Suppression admin
 router.delete('/admin/:id_admin', function (req, res) {
   console.log(req.body);
   db.query(`DELETE FROM admin WHERE id_admin = '${req.params.id_admin}'`, function (error, results) {
@@ -63,6 +68,8 @@ router.delete('/admin/:id_admin', function (req, res) {
   });
 });
 
+
+//_____Modifier admin
 router.put('/admin/:edit', function (req, res) {
   db.query(`UPDATE admin SET a_name = '${req.body.name}', a_lastname = '${req.body.lastname}', a_email = '${req.body.email}', a_password = '${req.body.password}' WHERE id_admin = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;

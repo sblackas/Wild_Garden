@@ -48,6 +48,18 @@ router.use('/category/:edit', middlewares.isAdmin)
      });
   });
 
+  //_____Liste des categories
+router.get('/categories', function (req, res) {
+    let allCate = `SELECT id_cate,cate_name,cate_picture FROM categories`;
+    db.query(allCate, function (err, results) {
+  
+      if (err) res.send(err);
+      console.log(results);
+      res.send(results)
+    })
+  
+  })
+
 
 
 

@@ -31,6 +31,19 @@ router.put('/feedback/:edit', function (req, res) {
    });
 });
 
+//_____Liste des tous les commentaires
+router.use('/feedbacks/', middlewares.isAdmin)
+router.get('/feedbacks', function (req, res) {
+   let allFeedbacks = `SELECT id_feedback,commentary FROM feedbacks`;
+   db.query(allFeedbacks, function (err, result) {
+ 
+     if (err) res.send(err);
+     console.log(result);
+     res.send(result)
+   })
+ 
+ })
+
 //_____Recuperer tous les commentaires posté par un user
 router.use('/get-feedback/:id_feedback', middlewares.isAdmin)
 router.get('/get-feedback-user/:id', function (req, res) {
