@@ -1,0 +1,151 @@
+/* body {
+  background-color: #FEF5DF;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .ArtworksList {
+    background-color: #151514;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  
+  .ArtworksList .container {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    /* top:20px; right: 0; left: 0; bottom: 0; */
+    margin: auto;
+    margin-top: 50px;
+    box-sizing: border-box;
+  
+    /* background-color: black; */
+    /* background-size: cover; */
+    /* cursor: pointer; */
+    
+    -webkit-box-shadow: 0 0 5px #000;
+          box-shadow: 0 0 5px #000;
+    }
+  
+  
+    .ArtworksList .container p {
+      font-family: 'Lato',sans-serif;
+    }
+  
+  .cards-container {
+    width: 100vw;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+    /* border: 3px solid red; */
+  }
+  
+  
+  
+  .container {
+  background-color: white; 
+  width: auto;
+  }
+  
+  
+  
+  .overlay {
+    width: 300px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat 1fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    
+    background: rgba(114, 106, 106, 0.9);
+    /* color: #FEF5DF; */
+    opacity: 0;
+    transition: all 0.5s;
+    
+    font-family: 'Lato',sans-serif;
+  }
+  
+  
+  
+  .items {
+    padding-left: 20px;
+    letter-spacing: 3px;
+  }
+  
+  .head {
+    font-size: 30px;
+    line-height: 40px;
+    
+    transform: translateY(40px);
+    transition: all 0.7s;
+  }
+    
+  .head hr {
+      display: block;
+      width: 0;
+      
+      border: none;
+      border-bottom: solid 2px #FEF5DF;
+      
+      position: absolute;
+      bottom: 0; left:20px;
+      
+      transition: all .5s;
+    }
+  
+  
+  .price {
+    font-size: 22px;
+    line-height: 10px;
+    font-weight: bold;  
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s;
+  
+  }
+  
+  .cart {
+    font-size: 12px;
+    opacity: 0;
+    letter-spacing: 1px;
+    font-family: 'Lato', sans-serif;
+    transform: translateY(40px);
+    transition: all 0.7s;
+  }
+   
+  .cart span {
+      margin-left: 10px;
+      text-decoration: none;
+      color: black;
+    }
+  
+  
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  .container:hover .head {
+      transform: translateY(0px);
+    }
+    
+  .container:hover hr {
+      width: 75px;
+      transition-delay: 0.4s;
+    }
+    
+  .container:hover .price {
+      transform: translateY(0px);
+      transition-delay: 0.3s;
+      opacity: 1;
+    }
+    
+  .container:hover .cart {
+      transform: translateY(0px);
+      transition-delay: 0.6s;
+      opacity: 1;
+    }
+  

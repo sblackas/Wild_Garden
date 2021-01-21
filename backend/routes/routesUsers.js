@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10; // le nombre de fois que l'on hashe le mdp
 const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
+const middlewares = require('../middlewares/middlewares.js');
 
 
 //____Inscription
@@ -41,6 +42,7 @@ let userObject = [req.body.name, req.body.lastname, req.body.email, hashpassword
 
 
 //_____Connexion
+router.use('/users/sign-in', middlewares.authJWT)
 router.post('/users/sign-in', function (req, res) {
   db.query(`SELECT * FROM users WHERE u_email = '${req.body.email}'`, function (err, result) { // *=tout
     if (err) throw err;
@@ -91,6 +93,7 @@ router.get('/users/:id_user', function (req, res) {
 })
 
 //_____Supprimer d'un user
+router.use('/users/:id_user', middlewares.isAdmin)
 router.delete('/users/:id_user', function (req, res) {
   console.log(req.body);
   db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {

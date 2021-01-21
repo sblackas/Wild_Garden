@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
+const middlewares = require('../middlewares/middlewares.js');
 
+//____Poster un commentaire
+router.use('/feedback/add', middlewares.isArtist)
 router.post('/feedback/add', function (req, res) {
    let newFeedback = `INSERT INTO feedbacks (commentary) VALUES ('${req.body.comment}')`;
    db.query(newFeedback, function (err, result) {
@@ -10,6 +13,8 @@ router.post('/feedback/add', function (req, res) {
    });
 })
 
+//____Supprimer un commentaire
+router.use('/feedback/:id_feedback', middlewares.isArtist)
 router.delete('/feedback/:id_feedback', function (req, res) {
    console.log(req.body);
    db.query(`DELETE FROM feedbacks WHERE id_feedback = '${req.params.id_feedback}'`, function (error, results) {
@@ -18,6 +23,7 @@ router.delete('/feedback/:id_feedback', function (req, res) {
    });
 });
 
+//____Modifier un commentaire
 router.put('/feedback/:edit', function (req, res) {
    db.query(`UPDATE feedbacks SET commentary = '${req.body.comment}' WHERE id_feedback = '${req.params.edit}'`, function (error, results) {
       if (error) throw error;
@@ -26,9 +32,10 @@ router.put('/feedback/:edit', function (req, res) {
 });
 
 //_____Recuperer tous les commentaires posté par un user
+router.use('/get-feedback/:id_feedback', middlewares.isAdmin)
 router.get('/get-feedback-user/:id', function (req, res) {
    let userId = req.params.id
-   let getFeedback = `SELECT  users.u_name, users.u_lastname, feedbacks.commentary FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE id_user = '${userId}'`
+   let getFeedback = `SELECT  users.u_name, users.u_lastname, feedbacks.commentary FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE users.id_user = '${userId}'`
    db.query(getFeedback, function (err, results) {
       if (err) throw err
       res.send(results)

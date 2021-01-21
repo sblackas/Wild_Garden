@@ -8,6 +8,8 @@ import SignUp from './ComponentsHome/SignUp';
 import SignIn from './ComponentsHome/SignIn';
 import Home from './ComponentsHome/Home'
 import Dashboard from './ComponentsUser/Dashboard'
+import AddArtwork from './ComponentsUser/AddArtwork'
+import ArtworksList from './ComponentsUser/ArtworksList'
 
 const myRouter = (
       <Router>
@@ -16,6 +18,10 @@ const myRouter = (
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
               <Route path="/dashboard" component={Dashboard} />
+              <Route path="/add-artwork" component={AddArtwork} />
+              <Route path="/artworks-list" component={ArtworksList} />
+
+
 
           </Switch>
       </Router>

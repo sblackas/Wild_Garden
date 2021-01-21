@@ -18,10 +18,10 @@ class HeaderUser extends React.Component {
 
     render() {
         return (
-            <Navbar bg="dark" variant="dark">
+            <Navbar className="userNavbar" variant="dark">
                 <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/dashboard">Ajouter une oeuvre</Nav.Link>
-                    <Nav.Link as={Link} to="/dashboard">Toutes vos oeuvres</Nav.Link>
+                    <Nav.Link as={Link} to="/add-artwork">Ajouter une oeuvre</Nav.Link>
+                    <Nav.Link as={Link} to="/artworks-list">Toutes vos oeuvres</Nav.Link>
                     <Nav.Link as={Link} to="/dashboard">Mon espace</Nav.Link>
                 </Nav>
 

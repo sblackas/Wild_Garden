@@ -6,6 +6,8 @@ import axios from 'axios'
 import Header from './Header'
 import jwt from 'jsonwebtoken';
 import './SignIn.css';
+import Tab from 'react-bootstrap/Tabs'
+import Tabs from 'react-bootstrap/Tabs'
 
 class SignIn extends React.Component{
     state = {
@@ -53,8 +55,8 @@ class SignIn extends React.Component{
             localStorage.setItem("token", res.data.token) //Une fois que ca donne un token il faut le stocker, je le recupere dans addProduct
         })
         .catch(err => {
-          console.log(err.response.data);
-          this.setState({ message: err.response.data })
+          console.log(err.res.data);
+          this.setState({ message: err.res.data })
           console.log(this.state.message);
         })
     }
@@ -69,7 +71,9 @@ render() {
 
 <Header/>
 
-<div className="login-box" >
+<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+  <Tab eventKey="home" title="Admin">
+  <div className="login-box" >
 <h2>Welcome Back !</h2>
 <p>To keep enjoy our content please login with your personal info</p>
 <br></br>
@@ -88,6 +92,51 @@ render() {
 
   </form>
 </div>
+  </Tab>
+  <Tab eventKey="profile" title="Artist">
+  <div className="login-box" >
+<h2>Welcome Back !</h2>
+<p>To keep enjoy our content please login with your personal info</p>
+<br></br>
+  <form onSubmit={this.handleSubmit}>
+  { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null }
+    <div className="user-box">
+      <input type="email" onChange={this.inputEmail}/>
+      <label>Email</label>
+    </div>
+    <div className="user-box">
+      <input type="password"  onChange={this.inputPassword} />
+      <label>Password</label>
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
+    <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
+
+  </form>
+</div>
+  </Tab>
+  <Tab eventKey="contact" title="Simple User">
+  <div className="login-box" >
+<h2>Welcome Back !</h2>
+<p>To keep enjoy our content please login with your personal info</p>
+<br></br>
+  <form onSubmit={this.handleSubmit}>
+  { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null }
+    <div className="user-box">
+      <input type="email" onChange={this.inputEmail}/>
+      <label>Email</label>
+    </div>
+    <div className="user-box">
+      <input type="password"  onChange={this.inputPassword} />
+      <label>Password</label>
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
+    <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
+
+  </form>
+</div>
+  </Tab>
+</Tabs>
+
           </div>
   );
 }

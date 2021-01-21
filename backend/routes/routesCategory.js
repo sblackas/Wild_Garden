@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
+const middlewares = require('../middlewares/middlewares.js');
+
 
 //_____Ajouter une categorie
+router.use('/category/:id_feedback', middlewares.isAdmin)
 router.post('/category/add', function (req, res) {
     let newCategory = `INSERT INTO categories (cate_name, cate_picture) VALUES ('${req.body.name}','${req.body.picture}')`; 
        db.query(newCategory, function (err, result) { 
@@ -27,6 +30,7 @@ router.get('/category/:id_cate', function (req, res) {
 
 
 //_____Supprimer une categorie
+router.use('/category/:id_cate', middlewares.isAdmin)
 router.delete('/category/:id_cate', function (req, res) {
     console.log(req.body);
     db.query(`DELETE FROM categories WHERE id_cate = '${req.params.id_cate}'`, function (error, results) {
@@ -36,6 +40,7 @@ router.delete('/category/:id_cate', function (req, res) {
    });
 
 //_____Modifier une categorie  
+router.use('/category/:edit', middlewares.isAdmin)
    router.put('/category/:edit', function (req, res) {
     db.query(`UPDATE categories SET cate_name = '${req.body.name}', cate_picture = '${req.body.picture}' WHERE id_cate = '${req.params.edit}'` , function (error, results) {
   if (error) throw error;

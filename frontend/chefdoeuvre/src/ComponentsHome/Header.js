@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 // import Form from 'react-bootstrap/Form'
 // import FormControl from 'react-bootstrap/FormControl'
 import Nav from 'react-bootstrap/Nav'
-import titre from '../imagesHome/titre.png'
+import title from '../imagesHome/title.jpg'
 import './Header.css';
 
 
@@ -17,10 +17,10 @@ class Header extends React.Component {
 
         return (
 
-            <Navbar bg="dark" variant="dark">
+            <Navbar className="navbar" variant="dark">
                 <Nav className="mr-auto">
                 <Nav.Link as={Link} to="/">Galeries</Nav.Link>
-                <Navbar.Brand href="/"><img src={titre} className="titleheader" alt="" /> </Navbar.Brand>
+                <Navbar.Brand href="/"><img src={title} className="titleheader" alt="" /> </Navbar.Brand>
                 
                     <Nav.Link as={Link} to="/signup">Inscription</Nav.Link>
                     <Nav.Link as={Link} to="/signin">Connexion</Nav.Link>
