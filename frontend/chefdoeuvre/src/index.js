@@ -4,6 +4,17 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+// import { composeWithDevTools } from 'redux-devtools';
+import mainReducer from './Store/reducers/index';
+//____Persist Store
+// import { PersistGate } from 'redux-persist/integration/react'
+// import { persistStore, persistReducer } from 'redux-persist'
+// import storage from 'redux-persist/lib/storage'
+
+
+//___Components
 import SignUp from './ComponentsHome/SignUp';
 import SignIn from './ComponentsHome/SignIn';
 import Home from './ComponentsHome/Home'
@@ -11,7 +22,25 @@ import Dashboard from './ComponentsUser/Dashboard'
 import AddArtwork from './ComponentsUser/AddArtwork'
 import ArtworksList from './ComponentsUser/ArtworksList'
 
+
+
+
+// const persistConfig = {
+//   key: "root",
+//   storage,
+// }
+
+// const persistedReducer = persistReducer(persistConfig, mainReducer);
+
+const store = createStore(mainReducer, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
+
+// const persistor = persistStore(store)
+
+
 const myRouter = (
+  <Provider store={store}>
       <Router>
           <Switch>
               <Route exact path="/" component={Home} />
@@ -25,6 +54,8 @@ const myRouter = (
 
           </Switch>
       </Router>
+      </Provider>
+
 );
 
 ReactDOM.render(

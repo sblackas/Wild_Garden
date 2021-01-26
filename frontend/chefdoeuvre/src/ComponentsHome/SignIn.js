@@ -5,6 +5,8 @@ import React from 'react';
 import axios from 'axios'
 import Header from './Header'
 import jwt from 'jsonwebtoken';
+import { connect } from 'react-redux'
+import { loginArtist } from '../Store/actions/artist';
 import './SignIn.css';
 import Tab from 'react-bootstrap/Tabs'
 import Tabs from 'react-bootstrap/Tabs'
@@ -47,11 +49,11 @@ class SignIn extends React.Component{
                 email: decoded.email,
                 id: decoded.id
               };
+              localStorage.setItem("token", res.data.token)
               
-              // this.props.loginUser(loggedUser)
+              this.props.loginArtist(loggedUser)
               console.log(loggedUser);
               this.props.history.push('/dashboard');
-              localStorage.setItem("token", res.data.token) //Une fois que ca donne un token il faut le stocker, je le recupere dans addProduct
 
             } else if (res.status === 203) {
               console.log("else if 203");
@@ -99,7 +101,7 @@ render() {
       <label>Password</label>
     </div>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
-    <button id="btn1" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
+    <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
 
   </form>
 </div>
@@ -120,7 +122,7 @@ render() {
       <label>Password</label>
     </div>
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
-    <button id="btn2" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
+    <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
 
   </form>
 </div>
@@ -153,5 +155,16 @@ render() {
 }
 }
 
+const mapStateToProps = (state /*, ownProps*/) => {
+  return {
+    // counter: state.counter
+  }
+}
 
-export default SignIn ;
+const mapDispatchToProps = { loginArtist }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn) ;
+

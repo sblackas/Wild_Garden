@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './Header'
 import './Home.css' 
+import bghome from '../imagesHome/bghome.png'
+// import Ink58 from '../imagesHome/Ink58.mp4'
 
 // import {Link} from "react-router-dom";
 // import Nav from 'react-bootstrap/Nav'
@@ -13,6 +15,12 @@ render() {
   return (
     <div className="Home">
       <Header/>
+      {/* <video autoPlay loop muted id="bgvid">
+      <source src={ Ink58 } type="video/mp4"/>
+    </video> */}
+        <img src={ bghome } className="bg" alt=""/>
+
+
     <p>Welcome here this is the homa page </p>
     </div>
   );

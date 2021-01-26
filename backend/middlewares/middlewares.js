@@ -12,7 +12,7 @@ const authJWT = (req, res, next) => {
            jwt.verify(accessToken, config.secret, (err, decoded) => {
                console.log(err);
                if (err) {
-                   res.status(403).send("Invalid token")
+                  return res.status(403).send("Invalid token")
                }
            next()
            });
@@ -31,7 +31,7 @@ const isAdmin = (req, res, next) => {
             jwt.verify(tokenAdmin, config.secret, (err, decoded) => {
                 console.log(err);
                 if (err) {
-                    res.status(403).send("Unauthorized you are not the admin")
+                   return res.status(403).send("Unauthorized you are not the admin")
                 }
             next()
             });
@@ -66,15 +66,13 @@ const isArtist = (req, res, next) => {
         console.log(token);
 
         jwt.verify(token, config.secret, (err, decoded) => {
-            console.log(err)
             if (err) {
                 return res.status(403).json({error: 'Unauthorized you are not an artist'});
+            } else {
+                next();
             }
-            next();
         });
-    } else {
-        res.status(401).send("NON");
-    }
+    } 
 };
 
 module.exports
@@ -84,7 +82,7 @@ const emailMiddleware = (req, res, next) => {
     db.query(`SELECT * FROM users WHERE u_email ='${req.body.email}'`, async function (err, results) {
         if (results.length) {
             console.log('err email already exist')
-            res.status(400).send("Email already exists")
+             return res.status(400).send("Email already exists")
         } else {
             next()
         }

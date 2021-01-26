@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import { connect } from 'react-redux'
+import { logoutArtist, loggedArtist, loginArtist } from '../Store/actions/artist';
+import jwt from 'jsonwebtoken'
 
 class HeaderUser extends React.Component {
 
@@ -12,8 +15,17 @@ class HeaderUser extends React.Component {
     };
 
     logOutSubmit = () => {
-        this.props.logoutUser()
+        this.props.logoutArtist()
         this.props.history.push('/');
+    }
+
+    componentDidMount() {
+        
+    if (localStorage.getItem("token")) {
+        let decoded = jwt.decode(localStorage.getItem("token"))
+        this.props.loginArtist({id: decoded.id, email: decoded.email, token: localStorage.getItem("token")})
+    }
+
     }
 
     render() {
@@ -32,6 +44,13 @@ class HeaderUser extends React.Component {
     }
 }
 
-
-
-export default HeaderUser;
+const mapStateToProps = (state /*, ownProps*/) => {
+    return {}
+  }
+  
+  const mapDispatchToProps = { logoutArtist, loggedArtist, loginArtist }
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(HeaderUser) ;

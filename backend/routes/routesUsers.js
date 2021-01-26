@@ -42,24 +42,31 @@ let userObject = [req.body.name, req.body.lastname, req.body.email, hashpassword
 
 
 //_____Connexion
-router.use('/users/sign-in', middlewares.authJWT)
+// router.use('/users/sign-in', middlewares.authJWT)
 router.post('/users/sign-in', function (req, res) {
-  db.query(`SELECT * FROM users WHERE u_email = '${req.body.email}'`, function (err, result) { // *=tout
-    if (err) throw err;
-    if (result.length) {
+  console.log(req.body.email);
+  db.query(`SELECT * FROM users WHERE u_email = '${req.body.email}'`, function (err, result) { 
+
+// if(result.length == 0) {
+//   res.status(203).send("Adresse email inconnue")
+// } 
+
+    
+    console.log(result.length);
+    if (result.length > 0) {
       bcrypt.compare(req.body.password, result[0].u_password, function (err, theuser) {
         console.log(theuser);
         if (theuser) {
-          let token = jwt.sign({ id: result[0].id_user, name: result[0].u_name }, config.secret, { expiresIn: 86400 });
+          let token = jwt.sign({ id: result[0].id_user, email: result[0].u_email }, config.secret, { expiresIn: 86400 });
           console.log(token);
           res.send({ auth: true, token: token, user: result[0] });
         } else {
-          res.status(400).send("wrong password")
+          res.status(203).send("wrong password")
         }
       })
 
     } else {
-      res.status(400).send("sorry we don't know this user")
+      res.status(203).send("sorry we don't know this user")
     }
 
   });

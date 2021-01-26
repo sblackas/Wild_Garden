@@ -7,7 +7,7 @@ const middlewares = require('../middlewares/middlewares.js');
 //____Ajouter une oeuvre
 router.use('/artwork/add', middlewares.isArtist)
 router.post('/artwork/add', function (req, res) {
- let newArtwork = `INSERT INTO artworks (art_title, art_desc, art_picture) VALUES ('${req.body.title}','${req.body.description}','${req.body.picture}')`; 
+ let newArtwork = `INSERT INTO artworks (art_title, art_desc, art_picture, id_user) VALUES ('${req.body.title}','${req.body.description}','${req.body.picture}','${req.body.id_user}')`; 
     db.query(newArtwork, function (err, result) { 
     if (err) throw err;
     console.log('one new artwork has been added');
@@ -61,13 +61,18 @@ router.put('/artwork/:edit', function (req, res) {
   });
 
 //_____Recuperer toutes les oeuvres posté par un user
-  router.get('/get-artwork/:id', function (req,res) {
+ 
+router.get('/get-artwork/:id', function (req,res) {
+  try {
     let artId = req.params.id
-    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE id_user = '${artId}'`
+    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
     db.query(getUserArt, function (err, results) {
        if (err) throw err
        res.send(results)
     })
+  } catch (error) {
+    res.status(203).send(error)
+  }
  })
 
 //____Recuperer les oeuvres d'une categorie

@@ -1,10 +1,32 @@
 .titleheader {
     height: 6em;
-
+    margin-left: 280px;
+    margin-right: 200px;
 }
 
 .navbar {
-    background: #151514;
+    background: #100B09;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
 
+.mr-auto {
+    display: flex;
+}
+.linkheader {
+color: sienna;
+text-decoration: none;
+list-style: none;
+justify-content: flex-end;
+}
+
+.nav {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+a {
+    color: silver;
 }
 
