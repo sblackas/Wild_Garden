@@ -6,12 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-// import { composeWithDevTools } from 'redux-devtools';
 import mainReducer from './Store/reducers/index';
-//____Persist Store
-// import { PersistGate } from 'redux-persist/integration/react'
-// import { persistStore, persistReducer } from 'redux-persist'
-// import storage from 'redux-persist/lib/storage'
 
 
 //___Components
@@ -25,13 +20,9 @@ import PrivateRoute from './privateroutes'
 
 
 
-
 const store = createStore(mainReducer, 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
-
-// const persistor = persistStore(store)
-
 
 const myRouter = (
   <Provider store={store}>
