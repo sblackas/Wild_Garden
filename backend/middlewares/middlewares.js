@@ -32,31 +32,14 @@ const isAdmin = (req, res, next) => {
                 console.log(err);
                 if (err) {
                    return res.status(403).send("Unauthorized you are not the admin")
+                } else {
+                    next();
                 }
-            next()
             });
-        } else {
-            res.status(403)
-        }
+        } 
     };
 
 
-
-
-//____Check if logged one is artist
-// const isArtist = (req, res, next) => {
-//      let token = req.headers.token
-//     jwt.verify(token, config.secret, (err, decoded) => {
-
-//         if (decoded) {
-//             next()
-//         } else {
-//             res.status(403).send("your are not an artist")
-//         }
-//     })
-
-
-// }
 
 const isArtist = (req, res, next) => {
     const artistToken = req.headers.authorization;

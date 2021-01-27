@@ -7,6 +7,8 @@ import Header from './Header'
 import jwt from 'jsonwebtoken';
 import { connect } from 'react-redux'
 import { loginArtist } from '../Store/actions/artist';
+import { loginAdmin } from '../Store/actions/admin';
+
 import './SignIn.css';
 import Tab from 'react-bootstrap/Tabs'
 import Tabs from 'react-bootstrap/Tabs'
@@ -70,7 +72,45 @@ class SignIn extends React.Component{
     }
 
 
+    // fonction pour notre Submit
+    handleSubmitAdmin = event => {
+      event.preventDefault();
+  
+      const admin = {
+          email: this.state.email,
+          password: this.state.password
+      };
+  
+      axios.post('http://localhost:8000/admin/sign-in', admin)
+      .then(res => {
+          this.setState({ redirection: true})
+          if(res.status === 200) {
+            console.log(res);
+            let decoded = jwt.decode(res.data.token);
+            let loggedAdmin = {
+              token: res.data.token,
+              email: decoded.email,
+              id: decoded.id
+            };
+            localStorage.setItem("token", res.data.token)
+            
+            this.props.loginAdmin(loggedAdmin)
+            console.log(loggedAdmin);
+            this.props.history.push('/dashboard-admin');
 
+          } else if (res.status === 203) {
+            console.log("else if 203");
+            this.setState({message: res.data})
+            console.log(res.data);
+          }
+      
+        })
+      .catch(error => {
+        console.log("catch error");
+        this.setState({redirection: false})
+        console.log(error);
+      })
+  }
 
 render() {
     // const { redirection } = this.state;
@@ -89,7 +129,7 @@ render() {
 <h2>Welcome Back !</h2>
 <p>To keep enjoy our content please login with your personal info</p>
 <br></br>
-  <form onSubmit={this.handleSubmit}>
+  <form onSubmit={this.handleSubmitAdmin}>
   {/* { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null } */}
   { this.state.message && <p> {this.state.message} </p> }
     <div className="user-box">
@@ -127,27 +167,6 @@ render() {
   </form>
 </div>
   </Tab>
-  <Tab eventKey="contact" title="Simple User">
-  <div className="login-box" >
-<h2>Welcome Back !</h2>
-<p>To keep enjoy our content please login with your personal info</p>
-<br></br>
-  <form onSubmit={this.handleSubmit}>
-  {/* { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null } */}
-    <div className="user-box">
-      <input type="email" onChange={this.inputEmailSignIn}/>
-      <label>Email</label>
-    </div>
-    <div className="user-box">
-      <input type="password"  onChange={this.inputPasswordSignIn} />
-      <label>Password</label>
-    </div>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet"></link>
-    <button id="btn" type="submit"><span className="noselect">Submit</span><div id="circle"></div></button>
-
-  </form>
-</div>
-  </Tab>
 </Tabs>
 
           </div>
@@ -161,7 +180,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
   }
 }
 
-const mapDispatchToProps = { loginArtist }
+const mapDispatchToProps = { loginArtist, loginAdmin }
 
 export default connect(
   mapStateToProps,

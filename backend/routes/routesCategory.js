@@ -5,7 +5,7 @@ const middlewares = require('../middlewares/middlewares.js');
 
 
 //_____Ajouter une categorie
-router.use('/category/:id_feedback', middlewares.isAdmin)
+router.use('/category/add', middlewares.isAdmin)
 router.post('/category/add', function (req, res) {
     let newCategory = `INSERT INTO categories (cate_name, cate_picture) VALUES ('${req.body.name}','${req.body.picture}')`; 
        db.query(newCategory, function (err, result) { 

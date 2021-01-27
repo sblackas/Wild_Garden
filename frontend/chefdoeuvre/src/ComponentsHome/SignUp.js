@@ -117,10 +117,13 @@ validateForm = () => {
     errors["password"] = "*Please enter your password.";
   }
 
+// Must be at least 8 characters
+// At least 1 special character from @#$%&
+// At least 1 number, 1 lowercase, 1 uppercase lette
   if (typeof this.state["password"] !== "undefined") {
     if (!this.state["password"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
       formIsValid = false;
-      errors["password"] = "*Please enter secure and strong password.";
+      errors["password"] = "*Please enter secure and strong password. Must be at least 8 characters, 1 special characteh (@#$%&), 1 number, 1 lowercase, 1 uppercase letter";
     }
   }
 
@@ -235,43 +238,7 @@ render() {
             </Button>
   </Form>
   </Tab>
-  <Tab eventKey="signUpUser" title="Simple User">
-  <Form onSubmit={this.handleSubmit}> 
-  <p>{this.state.msgSuccess}</p>
-
-<Form.Group controlId="formBasicFirstName" >
-              <Form.Label>Prénom</Form.Label>
-              <Form.Control type="name" placeholder="Entrer votre prénom" onChange={this.inputName} />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicName">
-              <Form.Label>Nom</Form.Label>
-              <Form.Control type="name" placeholder="Entrer votre nom" onChange={this.inputLastName} />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Adresse Email </Form.Label>
-              <Form.Control type="email" placeholder="Entrer votre adresse email" onChange={this.inputEmail} />
-            </Form.Group>
-
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Mot de passe</Form.Label>
-              <Form.Control type="password" placeholder="Entrer votre mot de passe" onChange={this.inputPassword} />
-            </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-  </Form>
-  </Tab>
 </Tabs>
-
-
-
-
-
-
           </div>
         )
     }

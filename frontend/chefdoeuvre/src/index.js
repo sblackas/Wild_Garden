@@ -16,7 +16,12 @@ import Home from './ComponentsHome/Home'
 import Dashboard from './ComponentsUser/Dashboard'
 import AddArtwork from './ComponentsUser/AddArtwork'
 import ArtworksList from './ComponentsUser/ArtworksList'
+import AddCategory from './ComponentsAdmin/AddCategory'
 import PrivateRoute from './privateroutes'
+import DashboardAdmin from './ComponentsAdmin/DashboardAdmin';
+import CateList from './ComponentsAdmin/CateList'
+import UserList from './ComponentsAdmin/UserList'
+import RegisterForm from './ComponentsHome/RegisterForm'
 
 
 
@@ -34,6 +39,14 @@ const myRouter = (
               <PrivateRoute path="/dashboard" component={Dashboard} />
               <Route path="/add-artwork" component={AddArtwork} />
               <Route path="/artworks-list" component={ArtworksList} />
+              <Route path="/category-list" component={CateList} />
+              <Route path="/all-user-list" component={UserList} />
+              <Route path="/add-category" component={AddCategory} />
+              <Route path="/dashboard-admin" component={DashboardAdmin} />
+              <Route path="/test" component={RegisterForm} />
+
+
+
 
 
 
