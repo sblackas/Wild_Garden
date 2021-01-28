@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
 
 
 body {
@@ -104,7 +104,7 @@ body {
 
 /*pour le login box*/
 
-.login-box {
+/* .login-box {
   position: absolute;
   top: 95%;
   left: 50%;
@@ -328,7 +328,7 @@ body {
 
 /* pour le validate form */
 
-.errorMsg {
+ /*.errorMsg {
   color: #cc0000;
   margin-bottom: 12px;
 }
@@ -336,4 +336,4 @@ body {
 .sucessMsg {
   color: #6B8E23;
   margin-bottom: 10px;
-}
+} */

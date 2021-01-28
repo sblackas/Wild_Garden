@@ -32,6 +32,14 @@ const initialStates = {
           ...state,
           users: action.payload
         };
+        case "GET_DATA_USER":
+          return {
+            ...state,
+            name: action.name,
+            lastname: action.lastname,
+            email: action.email,
+            pp: action.pp
+          };
      default:
        return {
          ...state,

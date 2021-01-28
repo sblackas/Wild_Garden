@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from './Header'
+import Footer from './Footer'
 import './Home.css' 
 import bghome from '../imagesHome/bghome.png'
 // import Ink58 from '../imagesHome/Ink58.mp4'
@@ -15,13 +16,15 @@ render() {
   return (
     <div className="Home">
       <Header/>
+      
+      
+
+      <img src={ bghome } className="bg" alt=""/>
       {/* <video autoPlay loop muted id="bgvid">
       <source src={ Ink58 } type="video/mp4"/>
     </video> */}
-        <img src={ bghome } className="bg" alt=""/>
 
-
-    <p>Welcome here this is the homa page </p>
+<Footer/>
     </div>
   );
 }

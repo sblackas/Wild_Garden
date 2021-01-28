@@ -14,8 +14,9 @@ class AddArtwork extends React.Component {
     description: "",
     picture: "",
     id_user: "",
-    msgSuccess: ""
-
+    msgSuccess: "",
+  selectedOption:"",
+  categories : []
   };
 
   // /!\ Bien écrire les elements exactement comme dans la db
@@ -30,6 +31,12 @@ class AddArtwork extends React.Component {
     this.setState({ picture: event.target.value })
   };
 
+  handleSelect = ({ target }) => {
+    this.setState({
+        selectedOption: target.value,
+    });
+}
+
   handleSubmit = event => {
     event.preventDefault();
 
@@ -37,9 +44,10 @@ class AddArtwork extends React.Component {
       title: this.state.title,
       description: this.state.description,
       picture: this.state.picture,
-      id_user: this.props.id
+      id_user: this.props.id,
+      id_cate: this.state.selectedOption
     };
-    console.log(this.props.token);
+    console.log(artwork);
     axios.post('http://localhost:8000/artwork/add', artwork, { headers: {authorization: `Bearer ${this.props.token}` }})
       .then(res => {
         if (res.status === 200) {
@@ -60,6 +68,14 @@ class AddArtwork extends React.Component {
 
 
   render() {
+if(this.state.categories.length === 0) {
+    axios.get('http://localhost:8000/categories')
+    .then (res => {
+      console.log(res.data);
+      this.setState({ categories: res.data })
+
+    })
+}
     return (
       <div className="AddArtwork">
 
@@ -77,6 +93,13 @@ class AddArtwork extends React.Component {
               <label for="Titre"></label>
               <input type="text" id="title_input" placeholder="Titre" onChange={this.inputTitle} />
             </div>
+            <select
+            value={this.state.selectedOption}
+            onChange={this.handleSelect}
+            >
+              <option selected >Veuillez selectionnez une categorie</option>
+            {this.state.categories.map(({ id_cate, cate_name }) => <option value={id_cate} >{cate_name}</option>)}
+            </select>
             <div className="picture">
               <label for="Picture"></label>
               <input type="text" id="picture_input" placeholder="Image" onChange={this.inputPicture} />

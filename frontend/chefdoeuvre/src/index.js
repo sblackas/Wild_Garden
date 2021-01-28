@@ -36,13 +36,13 @@ const myRouter = (
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
-              <PrivateRoute path="/dashboard" component={Dashboard} />
+              <Route path="/dashboard" component={Dashboard} />
               <Route path="/add-artwork" component={AddArtwork} />
               <Route path="/artworks-list" component={ArtworksList} />
               <Route path="/category-list" component={CateList} />
               <Route path="/all-user-list" component={UserList} />
               <Route path="/add-category" component={AddCategory} />
-              <Route path="/dashboard-admin" component={DashboardAdmin} />
+              <PrivateRoute path="/dashboard-admin" component={DashboardAdmin} />
               <Route path="/test" component={RegisterForm} />
 
 

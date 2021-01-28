@@ -34,7 +34,7 @@ class ArtworksList extends React.Component {
                 <div className="Head"><HeaderUser /></div>
                 <div className="ProductListPage">
 
-                    <div className="title"><h1>&bull; Products List &bull;</h1></div>
+                    <div className="title"><h1>&bull; Artworks List &bull;</h1></div>
 
                     {console.log(this.state.artworks)}
                     <div className="cards-container">

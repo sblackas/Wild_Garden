@@ -7,7 +7,8 @@ const middlewares = require('../middlewares/middlewares.js');
 //____Ajouter une oeuvre
 router.use('/artwork/add', middlewares.isArtist)
 router.post('/artwork/add', function (req, res) {
- let newArtwork = `INSERT INTO artworks (art_title, art_desc, art_picture, id_user) VALUES ('${req.body.title}','${req.body.description}','${req.body.picture}','${req.body.id_user}')`; 
+  console.log(req.body);
+ let newArtwork = `INSERT INTO artworks (art_title, art_desc, art_picture, id_user, id_cate) VALUES ('${req.body.title}','${req.body.description}','${req.body.picture}','${req.body.id_user}', '${req.body.id_cate}')`; 
     db.query(newArtwork, function (err, result) { 
     if (err) throw err;
     console.log('one new artwork has been added');

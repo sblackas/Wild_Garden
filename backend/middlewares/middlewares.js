@@ -50,12 +50,15 @@ const isArtist = (req, res, next) => {
 
         jwt.verify(token, config.secret, (err, decoded) => {
             if (err) {
-                return res.status(403).json({error: 'Unauthorized you are not an artist'});
+                res.status(403).json({error: 'Unauthorized you are not an artist'});
             } else {
                 next();
             }
         });
-    } 
+    } else {
+        res.status(403).json({error: 'Unauthorized you are not an artist'});
+
+    }
 };
 
 module.exports

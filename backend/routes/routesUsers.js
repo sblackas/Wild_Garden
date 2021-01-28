@@ -100,7 +100,7 @@ router.get('/users/:id_user', function (req, res) {
 })
 
 //_____Supprimer d'un user
-router.use('/users/:id_user', middlewares.isAdmin)
+router.use('/users/:id_user', middlewares.isArtist)
 router.delete('/users/:id_user', function (req, res) {
   console.log(req.body);
   db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {
@@ -110,10 +110,14 @@ router.delete('/users/:id_user', function (req, res) {
 });
 
 //_____Modifier infos user
+router.use('/users/:edit', middlewares.isArtist)
 router.put('/users/:edit', function (req, res) {
-  db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_password = '${req.body.password}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'`, function (error, results) {
+  console.log('-------------------------------------------------------------------');
+  console.log(req.body);
+  console.log('-------------------------------------------------------------------');
+  db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;
-    res.send(JSON.stringify(results + "PROFILE HAS BEEN UPDATED"));
+    res.send("PROFILE HAS BEEN UPDATED");
     //  res.status(200).send("PROFILE HAS BEEN UPDATED");
   });
 });

@@ -19,3 +19,11 @@ export const usersList = (users) => ({
     type: "GET_ALL_USERS",
     payload: users
 })
+
+export const userData = (artist) => ({
+    type: "GET_DATA_USER",
+    // payload: artist
+    name: artist.name,
+    lastname: artist.lastname,
+    pp: artist.pp,
+})

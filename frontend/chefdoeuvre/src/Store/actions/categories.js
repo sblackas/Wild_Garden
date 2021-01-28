@@ -1,6 +1,7 @@
 export const listCate = (categories) => ({
     type: "GET_CATEGORIES",
-    payload: categories
+    payload: categories,
+    id: categories.id
 })
 
 export const newCategory = (category, admin) => ({

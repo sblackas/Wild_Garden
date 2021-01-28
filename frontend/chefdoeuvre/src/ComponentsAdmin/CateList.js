@@ -15,11 +15,11 @@ class CateList extends React.Component {
 
     render() {
         // console.log("ID => ", this.props.id)
-        if (this.props.id && !this.state.categories.length) {
+        if (this.props.id && this.state.categories.length === 0) {
             axios.get('http://localhost:8000/categories')
             .then(res => {
                 console.log(res);
-                this.setState({ artworks: res.data })
+                this.setState({ categories: res.data })
                 console.log(this.state.categories);
                 this.props.listCate(res.data)
                 

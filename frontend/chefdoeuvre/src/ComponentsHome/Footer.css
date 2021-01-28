@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
+
+.Footer {
+    background: #151514;
+    
+}
+
+.Footer h1 {
+    margin-top: 2px;
+    padding: 20px;
+}
+
+.Footer a {
+    text-decoration: none;
+    color: blanchedalmond;
+}
+
+.f-wrap {
+    top: 20px;
+    display: flex;
+padding: 30px;
+    justify-content: space-around;
+}
+.sitemap-left {
+    display: block;
+    text-align: center;
+    justify-content: left;
+    align-items: center;
+}
+
+.f-wrap-center {
+    text-align: center;
+}
+
+.arrowup {
+    height: 48%;
+    margin-top: 15px;
+    
+}
+
+.scroll-top {
+    height: 80px;
+    width: 80px;
+    text-align: center;
+    background: black;
+    border-radius: 50%;
+}
+
+
