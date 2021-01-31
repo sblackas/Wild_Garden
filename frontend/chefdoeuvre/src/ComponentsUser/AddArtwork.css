@@ -18,7 +18,7 @@ button {
 }
 
 
-button, input, textarea {
+button, input, select, textarea {
   color: #5A5A5A;
   font: inherit;
   margin: 0 auto;
@@ -70,7 +70,7 @@ h1 {
   width: 45%;
 }
 
-input[type='text'], [type='name'], textarea {
+input[type='text'], [type='name'],select, textarea {
 	background: none;
   border: none;
 	border-bottom: solid 2px #474544;
@@ -112,6 +112,17 @@ input[type='text']:focus, [type='name']:focus, textarea:focus {
 
 /* .picture {
   width: 100%;
+} */
+
+select {
+  background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+/* select::-ms-expand {
+  display: none;
 } */
 
 textarea {

@@ -1,6 +1,7 @@
 export const listArtworks = (artworks) => ({
     type: "GET_ARTWORKS",
-    payload: artworks
+    payload: artworks,
+
 })
 
 export const newArtwork = (artwork, artist) => ({

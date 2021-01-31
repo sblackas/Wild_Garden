@@ -3,6 +3,7 @@ import HeaderUser from './HeaderUser';
 import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
+import TableTest from './Table'
 // import { userData } from '../Store/actions/artist';
 
 
@@ -82,7 +83,7 @@ class Dashboard extends React.Component {
         <p>This is the dashboard </p>
 
         <div className="profileBox1">
-          <h1>&bull; Editer votre profil &bull;</h1>
+          <h1>&bull; Editez votre profil &bull;</h1>
           <div className="underline">
           </div>
           <p>{this.state.successMsg}</p>
@@ -113,7 +114,10 @@ class Dashboard extends React.Component {
             <button type="submit" value="Submit" id="form_button" onClick={this.handleSubmitEdition} ><span>Submit</span><div id="circle"></div></button>
           </div>
         </div>
+        <h1>&bull; Editez vos oeuvres &bull;</h1>
 
+
+<TableTest/>
 
       </div>
     );

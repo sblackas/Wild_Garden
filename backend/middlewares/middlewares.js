@@ -22,24 +22,52 @@ const authJWT = (req, res, next) => {
    };
 
 //____Check if logged one is admin 
-const isAdmin = (req, res, next) => {
-     let tokenAdmin = req.headers.authorization
+// const isAdmin = (req, res, next) => {
+//      let tokenAdmin = req.headers.authorization
+//         if (tokenAdmin) {
+//             const token = tokenAdmin.split(' ')[1];
+//             console.log(token);
+
+//             jwt.verify(tokenAdmin, config.secret, (err, decoded) => {
+//                 console.log(err);
+//                 if (err) {
+//                    return res.status(203).send("Unauthorized you are not the admin")
+//                 } else {
+//                     next();
+//                 }
+//             });
+//         } else {
+//             res.status(203).json({error: 'Unauthorized you are not an artist'});
+    
+//         }
+//     };
+
+    //Test
+
+    const isAdmin = (req,res,next) => {
+        let tokenAdmin = req.headers.authorization
         if (tokenAdmin) {
             const token = tokenAdmin.split(' ')[1];
-            console.log(token);
-
-            jwt.verify(tokenAdmin, config.secret, (err, decoded) => {
-                console.log(err);
-                if (err) {
-                   return res.status(403).send("Unauthorized you are not the admin")
-                } else {
-                    next();
-                }
-            });
-        } 
-    };
-
-
+    
+            jwt.verify(token, 'supersecret', (err, decoded) => {
+                if(err){
+                    console.log('invalid token');
+                    res.status(203).json({error: "Vous n'êtes pas autorisé à entrer"})
+                }  
+                else {
+                    db.query(`SELECT * FROM admin WHERE id_admin = '${decoded.id}'`, function(error, result){
+                        if(result.length){
+                               next() 
+                        } else {
+                            res.status(203).json({error: "Vous n'êtes pas autorisé à entrer"})
+                        }
+                    })
+                } 
+            })
+        } else {
+            res.status(400).json({error: "Vous n'avez pas de token"})
+        }
+    }
 
 const isArtist = (req, res, next) => {
     const artistToken = req.headers.authorization;
@@ -61,7 +89,7 @@ const isArtist = (req, res, next) => {
     }
 };
 
-module.exports
+
 
 //____Can't register the same email twice
 const emailMiddleware = (req, res, next) => {

@@ -9,7 +9,8 @@ const initialStates = {
       case "GET_ARTWORKS":
         return {
           ...state,
-          artworks: action.payload
+          artworks: action.payload,
+          
         };
         case "ADD_PRODUCTS":
         return {

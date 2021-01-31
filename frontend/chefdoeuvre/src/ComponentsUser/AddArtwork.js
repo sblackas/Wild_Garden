@@ -15,15 +15,14 @@ class AddArtwork extends React.Component {
     picture: "",
     id_user: "",
     msgSuccess: "",
-  selectedOption:"",
-  categories : []
+    selectedOption:"",
+    categories : []
   };
 
   // /!\ Bien écrire les elements exactement comme dans la db
   inputTitle = event => {
     this.setState({ title: event.target.value })
   };
-
   inputDesc = event => {
     this.setState({ description: event.target.value })
   };
@@ -65,21 +64,16 @@ class AddArtwork extends React.Component {
 
   }
 
-
-
   render() {
-if(this.state.categories.length === 0) {
-    axios.get('http://localhost:8000/categories')
-    .then (res => {
-      console.log(res.data);
-      this.setState({ categories: res.data })
-
+      if(this.state.categories.length === 0) {
+        axios.get('http://localhost:8000/categories')
+         .then (res => {
+         console.log(res.data);
+         this.setState({ categories: res.data })
     })
 }
     return (
       <div className="AddArtwork">
-
-
 
         <HeaderUser />
 
@@ -93,7 +87,7 @@ if(this.state.categories.length === 0) {
               <label for="Titre"></label>
               <input type="text" id="title_input" placeholder="Titre" onChange={this.inputTitle} />
             </div>
-            <select
+            <select id="subject_input" 
             value={this.state.selectedOption}
             onChange={this.handleSelect}
             >

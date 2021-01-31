@@ -15,7 +15,7 @@ export class AddCategory extends React.Component {
     }
 
     inputNameCate = event => {
-        this.setState({ title: event.target.value })
+        this.setState({ name: event.target.value })
       };
     
      inputPictureCate = event => {
@@ -52,7 +52,7 @@ export class AddCategory extends React.Component {
           </div>
           <p>{this.state.msgSuccess}</p>
           <form onSubmit={this.handleSubmit} id="contact_form">
-            <div className="title">
+            <div className="name">
               <label for="Nom"></label>
               <input type="text" id="title_input" placeholder="Nom" onChange={this.inputNameCate} />
             </div>
