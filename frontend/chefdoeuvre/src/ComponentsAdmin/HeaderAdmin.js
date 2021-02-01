@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav'
 import { connect } from 'react-redux'
 import { logoutAdmin, loginAdmin } from '../Store/actions/admin';
 import jwt from 'jsonwebtoken'
+import './HeaderAdmin.css'
 
 class HeaderAdmin extends React.Component {
 
@@ -30,7 +31,7 @@ class HeaderAdmin extends React.Component {
 
     render() {
         return (
-            <Navbar className="userNavbar" variant="dark">
+            <Navbar className="adminNavbar" variant="dark">
                 <Nav className="mr-auto">
                     <Nav.Link as={Link} to="/add-category">Ajouter une catégorie</Nav.Link>
                     <Nav.Link as={Link} to="/category-list">Toutes les categories</Nav.Link>

@@ -1,7 +1,6 @@
 const initialStates = {
     artworks: [],
     id: String
-    
  };
 
  const artworksReducer = (state = initialStates, action) => {
@@ -9,8 +8,7 @@ const initialStates = {
       case "GET_ARTWORKS":
         return {
           ...state,
-          artworks: action.payload,
-          
+          artworks: action.payload,          
         };
         case "ADD_PRODUCTS":
         return {

@@ -17,8 +17,8 @@ router.post('/artwork/add', function (req, res) {
 })
 
 //____Toutes les oeuvres
-router.get('/artworks', function (req, res) {
-    let allArtwoks = `SELECT id_artwork,art_title,, art_desc,art_picture FROM artworks`;
+router.get('/all-of-artworks', function (req, res) {
+    let allArtworks = `SELECT id_artwork, art_title, art_desc, art_picture FROM artworks`;
     db.query(allArtworks, function (err, results) {
   
       if (err) res.send(err);
@@ -43,8 +43,8 @@ router.get('/artwork/:id_artwork', function (req, res) {
 })
 
 //_____Supprimer son oeuvre
-router.use('/artwork/:id_artwork', middlewares.isArtist)
-router.delete('/artwork/:id_artwork', function (req, res) {
+router.use('/delete-artwork/:id_artwork', middlewares.isArtist)
+router.delete('/delete-artwork/:id_artwork', function (req, res) {
     console.log(req.body);
     db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
        if (error) throw error;
@@ -66,7 +66,7 @@ router.put('/artwork/:edit', function (req, res) {
 router.get('/get-artwork/:id', function (req,res) {
   try {
     let artId = req.params.id
-    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
+    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.id_artwork, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
     db.query(getUserArt, function (err, results) {
        if (err) throw err
        res.send(results)

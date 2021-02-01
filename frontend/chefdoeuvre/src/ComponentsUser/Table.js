@@ -17,8 +17,50 @@ export class TableTest extends React.Component {
 	// 	this.props.history.push('/admin/modifyproduct/' + id_product);
 	// }
 
-	componentDidMount(){
+	// handleSubmitDelete = event => {
+	// 	event.preventDefault();
+
+	// 	axios.delete(`http://localhost:8000/artwork/${this.props.id}`)
+	// 	.then(res => {
+	// 		this.setState({ artworks: res.data })
+
+	// 	})
+	// 	.catch(err => {
+	// 		console.log(err);
+	// 	  });
+	// }
+
+
+	deleteRow(id, e){
+		axios.delete(`http://localhost:8000/delete-artwork/${this.props.id_artwork}`)
+		  .then(res => {
+			console.log(res);
+			console.log(res.data);
+	  
+			const artworks = this.state.artworks.filter(item => item.id !== id);
+			this.setState({ artworks });
+		  })
+	  
+	  }
+
+	// componentDidMount(){
 	
+	// 	if (this.props.id && !this.state.artworks.length) {
+    //         axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
+    //         .then(res => {
+    //             console.log(res);
+    //             this.setState({ artworks: res.data })
+    //             console.log(this.state.artworks);
+    //             this.props.listArtworks(res.data)
+                
+    //         })
+    //     }
+		
+	// }
+
+
+
+	render() {
 		if (this.props.id && !this.state.artworks.length) {
             axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
             .then(res => {
@@ -27,14 +69,12 @@ export class TableTest extends React.Component {
                 console.log(this.state.artworks);
                 this.props.listArtworks(res.data)
                 
-            })
-        }
+			})
+			.catch(err => {
+			console.log(err);
+		  });
+		}
 		
-	}
-
-
-
-	render() {
 
 		return (
 			<div className="TablePage">
@@ -48,6 +88,7 @@ export class TableTest extends React.Component {
 						<thead>
 							<tr>
 								<th>ID </th>
+								{/* <th>Catégorie</th> */}
 								<th>Titre</th>
 								<th>Description</th>
 								<th>Image</th>
@@ -58,13 +99,14 @@ export class TableTest extends React.Component {
 							{this.state.artworks.map((elem) => {
 								return (
 									<tr key={elem.id}>
-										<td>{elem.id}</td>
+										<td>{elem.id_artwork}</td>
+										{/* <td>{elem.cate_name}</td> */}
 										<td>{elem.art_title}</td>
 										<td>{elem.art_desc}</td>
-										<td src={elem.art_picture} thumbnail className="thumbnail-table"></td>
+										<td><img src={elem.art_picture} alt="" className="thumbnail-table"/></td>
 										<td>
 											<div className="icon-container">
-												<button type="submit" value="Submit" id="table_button" onClick={this.handleSubmitDelete} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
+												<button type="submit" value="Submit" id="table_button" onClick={(e) => this.deleteRow(elem.id, e)} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
 												<button type="submit" value="Submit" id="table_button" onClick={this.handleSubmitEdition} ><img src={edit_icon} className="bin_icon" alt="" /><div id="circle-table"></div></button>
 											</div>
 										</td>

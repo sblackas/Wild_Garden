@@ -99,3 +99,7 @@ tbody td:hover:before {
   .icon-container {
       display: flex;
   }
+
+  .thumbnail-table {
+      height: 45px;
+  }

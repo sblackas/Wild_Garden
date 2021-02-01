@@ -9,7 +9,7 @@ const initialStates = {
       case "GET_CATEGORIES":
         return {
           ...state,
-          artworks: action.payload
+          categories: action.payload
         };
         case "ADD_CATEGORY":
         return {

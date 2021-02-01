@@ -2,6 +2,8 @@ import React from 'react';
 import HeaderAdmin from './HeaderAdmin';
 import './DashboardAdmin.css';
 import axios from 'axios' 
+import { connect } from 'react-redux'
+
 
 
 
@@ -11,7 +13,8 @@ class DashboardAdmin extends React.Component{
     name: "",
     lastname: "",
     email: "",
-    password: ""
+    password: "",
+    successMsg: ""
 
 };
 
@@ -28,22 +31,33 @@ editPassword = event => {
   this.setState({password:event.target.value})
 };
 
-handleSubmit = event => {
+EditProfileData = async event => {
   event.preventDefault();
 
- const editedAdmin = {
-      name: this.state.name,
-    lastname: this.state.lastname,
-       email: this.state.email,
-       password: this.state.password
-  };
+  let res = await axios.get(`http://localhost:8000/admin/${this.props.id}`)
+  console.log(res);
+  console.log(res.data);
 
-  axios.put('http://localhost:8000/admin/:edit', editedAdmin)
+ const editedAdmin = {
+  name: this.state.name || res.data[0]["a_name"], // soit tu me mets ce qu'il y a dans l'input OU ce qu'il y a 
+  lastname: this.state.lastname || res.data[0]["a_lastname"],
+  email: this.state.email || res.data[0]["a_email"],
+  };
+  console.log(editedAdmin, this.props.id);
+
+  axios.put(`http://localhost:8000/admin/${this.props.id}`, editedAdmin, { headers: {authorization: `Bearer ${this.props.token}` }})
   .then(res => {
       console.log(res);
       console.log(res.data);
-  })
+      this.setState({ successMsg: "Votre profil a bien été modifié !" })
 
+  })
+  .catch(error => {
+    console.log("catch error");
+    console.log(error);
+
+  }
+  )
 }
 
 render() {
@@ -54,13 +68,16 @@ render() {
 
 {/* <p>{this.props.token}</p> */}
 {/* <p>{this.props.user}</p> */}
+<p>{this.props.editedAdmin}</p>
+
 <p>This is the dashboard </p>
 
 <div className="profileBox1">
   <h1>&bull; Editer votre profil &bull;</h1>
   <div className="underline">
   </div>
-  <form onSubmit={this.handleSubmit}>
+  <p>{this.state.successMsg}</p>
+  <form onSubmit={this.EditProfileData}>
     <div className="firsttname">
       <label for="Name"></label>
       <input type="name" placeholder="Prénom" onChange={this.editName}/>
@@ -87,21 +104,27 @@ render() {
 
   </form>
   <div className="submit">
-      <button type="submit" value="Submit" id="form_button" ><span>Submit</span><div id="circle"></div></button>
+      <button type="submit" value="Submit" id="form_button" onClick={this.EditProfileData} ><span>Submit</span><div id="circle"></div></button>
     </div>
 </div>
 
-
-{/* <div className="profileBox2">
-  <h1>&bull; Your Products List &bull;</h1>
-
-</div> */}
 
     </div>
   );
 }
 }
 
+const mapStateToProps = (state /*, ownProps*/) => {
+  return {
+    id: state.adminReducer.id,
+    token: state.adminReducer.token
+  }
+}
 
+const mapDispatchToProps = {}
 
-export default DashboardAdmin;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardAdmin);
+

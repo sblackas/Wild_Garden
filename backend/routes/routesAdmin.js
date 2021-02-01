@@ -71,10 +71,10 @@ router.delete('/admin/:id_admin', function (req, res) {
 
 //_____Modifier admin
 router.put('/admin/:edit', function (req, res) {
-  db.query(`UPDATE admin SET a_name = '${req.body.name}', a_lastname = '${req.body.lastname}', a_email = '${req.body.email}', a_password = '${req.body.password}' WHERE id_admin = '${req.params.edit}'`, function (error, results) {
+  db.query(`UPDATE admin SET a_name = '${req.body.name}', a_lastname = '${req.body.lastname}', a_email = '${req.body.email}' WHERE id_admin = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;
     //  res.send(JSON.stringify(results + "PROFILE HAS BEEN UPDATED"));
-    res.json(results + 'PROFILE HAS BEEN UPDATED');
+    res.send('PROFILE HAS BEEN UPDATED');
 
   });
 });

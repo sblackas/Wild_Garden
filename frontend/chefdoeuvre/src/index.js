@@ -22,6 +22,7 @@ import DashboardAdmin from './ComponentsAdmin/DashboardAdmin';
 import CateList from './ComponentsAdmin/CateList'
 import UserList from './ComponentsAdmin/UserList'
 import RegisterForm from './ComponentsHome/RegisterForm'
+import  AllArtworkList  from './ComponentsAdmin/AllArtworkList';
 
 
 
@@ -44,6 +45,8 @@ const myRouter = (
               <Route path="/add-category" component={AddCategory} />
               <PrivateRoute path="/dashboard-admin" component={DashboardAdmin} />
               <Route path="/test" component={RegisterForm} />
+              <Route path="/all-artwork-list" component={AllArtworkList} />
+
 
 
 
