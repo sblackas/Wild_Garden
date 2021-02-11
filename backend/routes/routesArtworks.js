@@ -43,18 +43,36 @@ router.get('/artwork/:id_artwork', function (req, res) {
 })
 
 //_____Supprimer son oeuvre
-router.use('/delete-artwork/:id_artwork', middlewares.isArtist)
-router.delete('/delete-artwork/:id_artwork', function (req, res) {
-    console.log(req.body);
-    db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
-       if (error) throw error;
-           res.send('Artwork has been deleted!');
-         });
-   });
+// router.use('/delete-artwork/:id_artwork', middlewares.isArtist)
+// router.delete('/delete-artwork/:id_artwork', function (req, res) {
+//     console.log(req.body);
+//     db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
+//        if (error) throw error;
+//            res.send('Artwork has been deleted!');
+//          });
+//    });
+
+   router.delete('/delete-artwork/:id_artwork', middlewares.isArtist, function(req,res){
+    try {
+       let idArtworks = req.params.id_artwork
+
+       let deleteArtwork = `DELETE FROM artworks WHERE id_artwork = '${idArtworks}'`
+       db.query(deleteArtwork, function(err,resultat){
+           console.log(resultat);
+           if (err) throw err;
+           console.log("Number of records deleted: " + resultat.affectedRows);
+           res.status(200).send(resultat)
+       })
+    } catch (error) {
+        res.status(400);
+        
+    }
+  
+})
 
 //_____Modifier oeuvre
-router.use('/artwork/:edit', middlewares.isArtist)
-router.put('/artwork/:edit', function (req, res) {
+router.use('/update-artwork/:edit', middlewares.isArtist)
+router.put('/update-artwork/:edit', function (req, res) {
     db.query(`UPDATE artworks SET art_title = '${req.body.name}', art_desc = '${req.body.description}', art_picture = '${req.body.picture}' WHERE id_artwork = '${req.params.edit}'` , function (error, results) {
   if (error) throw error;
    res.json('THE ARTWORK HAS BEEN UPDATED');

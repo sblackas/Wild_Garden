@@ -21,8 +21,10 @@ import PrivateRoute from './privateroutes'
 import DashboardAdmin from './ComponentsAdmin/DashboardAdmin';
 import CateList from './ComponentsAdmin/CateList'
 import UserList from './ComponentsAdmin/UserList'
-import RegisterForm from './ComponentsHome/RegisterForm'
-import  AllArtworkList  from './ComponentsAdmin/AllArtworkList';
+import AllArtworkList  from './ComponentsAdmin/AllArtworkList';
+import EditArtwork from './ComponentsUser/EditArtwork';
+import SignInAdmin from './ComponentsAdmin/SignInAdmin'
+import SignUpAdmin from './ComponentsAdmin/SignUpAdmin'
 
 
 
@@ -37,15 +39,18 @@ const myRouter = (
               <Route exact path="/" component={Home} />
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
+              <Route path="/admin/signin" component={SignInAdmin} />
+              <Route path="/admin/signup" component={SignUpAdmin} />
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/add-artwork" component={AddArtwork} />
               <Route path="/artworks-list" component={ArtworksList} />
-              <Route path="/category-list" component={CateList} />
-              <Route path="/all-user-list" component={UserList} />
-              <Route path="/add-category" component={AddCategory} />
-              <PrivateRoute path="/dashboard-admin" component={DashboardAdmin} />
-              <Route path="/test" component={RegisterForm} />
-              <Route path="/all-artwork-list" component={AllArtworkList} />
+              <Route path="/admin/category-list" component={CateList} />
+              <Route path="/admin/user-list" component={UserList} />
+              <Route path="/admin/add-category" component={AddCategory} />
+              <PrivateRoute path="/admin/dashboard" component={DashboardAdmin} />
+              <Route path="/admin/all-artwork-list" component={AllArtworkList} />
+              <Route path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
+
 
 
 

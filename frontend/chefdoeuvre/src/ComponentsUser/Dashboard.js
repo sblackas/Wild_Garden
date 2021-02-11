@@ -38,7 +38,6 @@ class Dashboard extends React.Component {
   handleSubmitEdition = async event => {
     // async parce que la requete doit attendre sinon elle passera dans else
     event.preventDefault();
-    console.log("ICI", this.props.id);
 
     let resp = await axios.get(`http://localhost:8000/users/${this.props.id}`)
     // une requete axios GET et DELETE n'envoient jamais de req.body, elle ne le liront

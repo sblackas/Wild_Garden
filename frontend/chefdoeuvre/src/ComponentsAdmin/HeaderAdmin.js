@@ -33,11 +33,11 @@ class HeaderAdmin extends React.Component {
         return (
             <Navbar className="adminNavbar" variant="dark">
                 <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/add-category">Ajouter une catégorie</Nav.Link>
-                    <Nav.Link as={Link} to="/category-list">Toutes les categories</Nav.Link>
-                    <Nav.Link as={Link} to="/users-list">Utilisateurs</Nav.Link>
-                    <Nav.Link as={Link} to="/all-artwork-list">Toutes les oeuvres</Nav.Link>
-                    <Nav.Link as={Link} to="/dashboard-admin">Mon espace</Nav.Link>
+                    <Nav.Link as={Link} to="/admin/add-category">Ajouter une catégorie</Nav.Link>
+                    <Nav.Link as={Link} to="/admin/category-list">Toutes les categories</Nav.Link>
+                    <Nav.Link as={Link} to="/admin/users-list">Utilisateurs</Nav.Link>
+                    <Nav.Link as={Link} to="/admin/all-artwork-list">Toutes les oeuvres</Nav.Link>
+                    <Nav.Link as={Link} to="/admin/dashboard">Mon espace</Nav.Link>
                 </Nav>
 
                 <Navbar.Brand href="/" onClick={this.logOutSubmit} >Deconnexion</Navbar.Brand>

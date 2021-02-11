@@ -9,3 +9,8 @@ export const newArtwork = (artwork, artist) => ({
     id: artist.id,
     payload: artwork
 })
+
+export const deleteArtwork = (id_artwork) => ({
+    type: "DELETE_ARTWORK",
+    payload: id_artwork
+})

@@ -71,7 +71,7 @@ export class AllArtworkList extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         artworks: state.artworksReducer.artworks,
-        // id: state.artistReducer.id
+        id: state.artistReducer.id
 
     }
 }

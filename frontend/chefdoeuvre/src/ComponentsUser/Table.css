@@ -48,7 +48,7 @@ tbody td:hover:before {
     z-index: -1;
 }
 
-/* button */
+/* button supp */
 
 #table_button {
     background: rgb(121, 44, 44);
@@ -85,6 +85,49 @@ tbody td:hover:before {
   }
   
   #table_button:hover #circle-button {
+    height: 50px;
+    width: 50px;
+    left: 0;
+    border-radius: 0;
+    border-bottom: 2px solid #eee;
+  }
+
+/* button edition */
+  #table_button_edition {
+    background: rgb(211, 196, 196);
+    height: 40px;
+    width: 50px;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 20px;
+    font-family: 'Imbue';
+    position: relative;
+    transition: 1s;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  #table_button_edition #circle-table {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+    transition: 500ms;
+  }
+
+  #table_button_edition:hover {
+    background: transparent;
+  }
+  
+  #table_button_edition:hover #circle-button {
     height: 50px;
     width: 50px;
     left: 0;

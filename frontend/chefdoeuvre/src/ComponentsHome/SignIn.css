@@ -1,32 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
 
-html {
-    height: 100%;
+.SignIn {
+    height: 200vh;
     font-family: Imbue;
+    background-color: #100B09;
   }
  
 
-  img {
+ /* img {
     height: 100vh;
     object-fit: auto;
-  }
+  } */
 
-  h2 {
+  .SignIn h2 {
     font-family: 'Imbue';
   }
   
-p{
+  .SignIn p{
   font-family: 'Imbue';
 color: antiquewhite;
-font-size: 20px;
+font-size: 25px;
 text-align: center;
-}
+} 
 
-  .login-box {
+.SignIn  .login-box {
     position: absolute;
     top: 80%;
     left: 50%;
-    width: 400px;
+    width: 550px;
     padding: 40px;
     transform: translate(-50%, -50%);
     background: rgba(0,0,0,.5);
@@ -35,18 +36,18 @@ text-align: center;
     border-radius: 10px;
   }
   
-  .login-box h2 {
+  .SignIn .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
     color: #fff;
     text-align: center;
   }
   
-  .login-box .user-box {
+  .SignIn  .login-box .user-box {
     position: relative;
   }
   
-  .login-box .user-box input {
+  .SignIn  .login-box .user-box input {
     width: 100%;
     padding: 10px 0;
     font-size: 20px;
@@ -57,7 +58,7 @@ text-align: center;
     outline: none;
     background: transparent;
   }
-  .login-box .user-box label {
+  .SignIn .login-box .user-box label {
     position: absolute;
     top:0;
     left: 0;
@@ -69,7 +70,7 @@ text-align: center;
     transition: .5s;
   }
   
-  .login-box .user-box input:focus ~ label,
+  .SignIn  .login-box .user-box input:focus ~ label,
   .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
@@ -79,7 +80,7 @@ text-align: center;
 
 
 
-  #btn {
+  .SignIn  #btn {
     background: rgb(85, 85, 83);
     height: 40px;
     width: 320px;
@@ -98,7 +99,7 @@ text-align: center;
     padding-top: 5px;
   }
   
-  #btn #circle {
+  .SignIn #btn #circle {
     width: 5px;
     height: 5px;
     background: transparent;
@@ -119,11 +120,11 @@ text-align: center;
               user-select: none;
   }
   
-  #btn:hover {
+  .SignIn  #btn:hover {
     background: transparent;
   }
   
-  #btn:hover #circle {
+  .SignIn #btn:hover #circle {
     height: 50px;
     width: 320px;
     left: 0;
@@ -140,7 +141,7 @@ text-align: center;
     }
   }
   
-  .login-box a span:nth-child(2) {
+  .SignIn .login-box a span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -159,7 +160,7 @@ text-align: center;
     }
   }
   
-  .login-box a span:nth-child(3) {
+  .SignIn .login-box a span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -178,7 +179,7 @@ text-align: center;
     }
   }
   
-  .login-box a span:nth-child(4) {
+  .SignIn .login-box a span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -195,8 +196,4 @@ text-align: center;
     50%,100% {
       bottom: 100%;
     }
-  }
-  
- .tab-content {
-    background: black;
   }

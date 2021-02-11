@@ -16,7 +16,7 @@ class Header extends React.Component {
     render() {
 
         return (
-
+<div className="Header">
             <div className="navbar" variant="dark">
                 <Nav className="mr-auto">
                 <Nav.Link as={Link} to="/" className="linkheader">Galeries</Nav.Link>
@@ -27,7 +27,7 @@ class Header extends React.Component {
 
                 </Nav>
             </div>
-
+            </div>
         )
 
     }

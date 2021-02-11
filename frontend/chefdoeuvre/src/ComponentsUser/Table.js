@@ -4,12 +4,14 @@ import bin from '../imagesDashUser/bin.png'
 import edit_icon from '../imagesDashUser/edit_icon.png'
 import axios from 'axios';
 import { connect } from 'react-redux'
-import { listArtworks } from '../Store/actions/artworks';
+import { Link } from 'react-router-dom';
+import { listArtworks, deleteArtwork } from '../Store/actions/artworks';
 
 
 export class TableTest extends React.Component {
 	state = {
-		artworks: []
+		artworks: [],
+		msgSuccess: ""
 	};
 
 	// handleSubmitEdition = event => {
@@ -17,31 +19,20 @@ export class TableTest extends React.Component {
 	// 	this.props.history.push('/admin/modifyproduct/' + id_product);
 	// }
 
-	// handleSubmitDelete = event => {
-	// 	event.preventDefault();
 
-	// 	axios.delete(`http://localhost:8000/artwork/${this.props.id}`)
-	// 	.then(res => {
-	// 		this.setState({ artworks: res.data })
+	deleteRow(id_artwork, e) {
+        axios
+            .delete(`http://localhost:8000/delete-artwork/${id_artwork}`, {
+                headers: { authorization: `Bearer ${localStorage.getItem('token')}` }
+            })
+            .then((res) => {
+                if(res.status === 200) {
+                    this.props.deleteArtwork(id_artwork)
+                    this.setState({ msgSuccess: 'Produit supprimé avec succès' });
 
-	// 	})
-	// 	.catch(err => {
-	// 		console.log(err);
-	// 	  });
-	// }
-
-
-	deleteRow(id, e){
-		axios.delete(`http://localhost:8000/delete-artwork/${this.props.id_artwork}`)
-		  .then(res => {
-			console.log(res);
-			console.log(res.data);
-	  
-			const artworks = this.state.artworks.filter(item => item.id !== id);
-			this.setState({ artworks });
-		  })
-	  
-	  }
+                } 
+            });
+    }
 
 	// componentDidMount(){
 	
@@ -61,12 +52,12 @@ export class TableTest extends React.Component {
 
 
 	render() {
-		if (this.props.id && !this.state.artworks.length) {
+		if (this.props.id && !this.props.artworks.length) {
             axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
             .then(res => {
                 console.log(res);
                 this.setState({ artworks: res.data })
-                console.log(this.state.artworks);
+                console.log(this.props.artworks);
                 this.props.listArtworks(res.data)
                 
 			})
@@ -79,11 +70,12 @@ export class TableTest extends React.Component {
 		return (
 			<div className="TablePage">
 
+<p>{this.state.msgSuccess}</p>
 
 				<div class="containerTable">
 
 					<table>
-						{console.log(this.state.artworks)}
+						{/* {console.log(this.state.artworks)} */}
 
 						<thead>
 							<tr>
@@ -96,7 +88,7 @@ export class TableTest extends React.Component {
 							</tr>
 						</thead>
 						<tbody >
-							{this.state.artworks.map((elem) => {
+							{this.props.artworks.map((elem) => {
 								return (
 									<tr key={elem.id}>
 										<td>{elem.id_artwork}</td>
@@ -106,8 +98,8 @@ export class TableTest extends React.Component {
 										<td><img src={elem.art_picture} alt="" className="thumbnail-table"/></td>
 										<td>
 											<div className="icon-container">
-												<button type="submit" value="Submit" id="table_button" onClick={(e) => this.deleteRow(elem.id, e)} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
-												<button type="submit" value="Submit" id="table_button" onClick={this.handleSubmitEdition} ><img src={edit_icon} className="bin_icon" alt="" /><div id="circle-table"></div></button>
+												<button type="submit" value="Submit" id="table_button" onClick={(e) => this.deleteRow(elem.id_artwork, e)} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
+												<Link to={`/user/edition-artwork/${elem.id_artwork}`} ><button type="submit" value="Submit" id="table_button_edition" onClick={this.handleSubmitEdition} ><img src={edit_icon} className="bin_icon" alt="" /><div id="circle-table"></div></button></Link>
 											</div>
 										</td>
 									</tr>
@@ -127,13 +119,14 @@ export class TableTest extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
 	return {
 		artworks: state.artworksReducer.artworks,
-		id: state.artistReducer.id
+		id: state.artistReducer.id,
+		id_artwork: state.artworksReducer.id_artwork
 
 	}
 }
 
 
-const mapDispatchToProps = { listArtworks }
+const mapDispatchToProps = { listArtworks, deleteArtwork }
 
 export default connect(
 	mapStateToProps,
