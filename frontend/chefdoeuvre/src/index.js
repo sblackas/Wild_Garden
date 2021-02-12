@@ -25,6 +25,10 @@ import AllArtworkList  from './ComponentsAdmin/AllArtworkList';
 import EditArtwork from './ComponentsUser/EditArtwork';
 import SignInAdmin from './ComponentsAdmin/SignInAdmin'
 import SignUpAdmin from './ComponentsAdmin/SignUpAdmin'
+import PageAdmin from './ComponentsAdmin/PageAdmin'
+// import PageUser from './ComponentsUser/PageUser'
+import Header from './ComponentsHome/Header'
+import Footer from './ComponentsHome/Footer'
 
 
 
@@ -35,30 +39,28 @@ const store = createStore(mainReducer,
 const myRouter = (
   <Provider store={store}>
       <Router>
+        <Header/>
           <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/admin/signin" component={SignInAdmin} />
-              <Route path="/admin/signup" component={SignUpAdmin} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/add-artwork" component={AddArtwork} />
-              <Route path="/artworks-list" component={ArtworksList} />
-              <Route path="/admin/category-list" component={CateList} />
-              <Route path="/admin/user-list" component={UserList} />
-              <Route path="/admin/add-category" component={AddCategory} />
-              <PrivateRoute path="/admin/dashboard" component={DashboardAdmin} />
-              <Route path="/admin/all-artwork-list" component={AllArtworkList} />
-              <Route path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
-
-
-
-
-
-
+              <Route exact path="/admin" component={PageAdmin} />
+              {/* <Route exact path="/user" component={PageUser} /> */}
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/admin/signin" component={SignInAdmin} />
+              <Route exact path="/admin/signup" component={SignUpAdmin} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/add-artwork" component={AddArtwork} />
+              <Route exact path="/artworks-list" component={ArtworksList} />
+              <Route exact path="/admin/category-list" component={CateList} />
+              <Route exact path="/admin/user-list" component={UserList} />
+              <Route exact path="/admin/add-category" component={AddCategory} />
+              <PrivateRoute exact path="/admin/dashboard" component={DashboardAdmin} />
+              <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
+              <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
 
 
           </Switch>
+          <Footer/>
       </Router>
       </Provider>
 

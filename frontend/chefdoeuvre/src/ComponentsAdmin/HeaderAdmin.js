@@ -22,9 +22,9 @@ class HeaderAdmin extends React.Component {
 
     componentDidMount() {
         
-    if (localStorage.getItem("token")) {
-        let decoded = jwt.decode(localStorage.getItem("token"))
-        this.props.loginAdmin({id: decoded.id, email: decoded.email, token: localStorage.getItem("token")})
+    if (localStorage.getItem("tokenAdmin")) {
+        let decoded = jwt.decode(localStorage.getItem("tokenAdmin"))
+        this.props.loginAdmin({id: decoded.id, email: decoded.email, token: localStorage.getItem("tokenAdmin")})
     }
 
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderAdmin from './HeaderAdmin';
+// import HeaderAdmin from './HeaderAdmin';
 import './DashboardAdmin.css';
 import axios from 'axios' 
 import { connect } from 'react-redux'
@@ -63,7 +63,7 @@ EditProfileData = async event => {
 render() {
   return (
     <div className="Dashboard">
-      <HeaderAdmin/>
+      {/* <HeaderAdmin/> */}
 
 
 {/* <p>{this.props.token}</p> */}
@@ -79,20 +79,20 @@ render() {
   <p>{this.state.successMsg}</p>
   <form onSubmit={this.EditProfileData}>
     <div className="firsttname">
-      <label for="Name"></label>
+      <label htmlFor="Name"></label>
       <input type="name" placeholder="Prénom" onChange={this.editName}/>
     </div>
     <div className="lastname">
-      <label for="Name"></label>
+      <label htmlFor="Name"></label>
       <input type="name" id="lastname_input" placeholder="Nom" onChange={this.editLastName}/>
     </div>
     <div className="email">
-      <label for="email"></label>
+      <label htmlFor="email"></label>
       <input type="text" id="email_input" placeholder="Adresse Email" onChange={this.editEmail}/>
     </div>
 
     <div className="password">
-      <label for="password"></label>
+      <label htmlFor="password"></label>
       <input type="text" placeholder="Mot de passe" onChange={this.editPassword}></input>
     </div>
     

@@ -5,7 +5,7 @@ var jwt = require('jsonwebtoken');
 class PrivateRoute extends React.Component {
 
     render() {
-        let token = localStorage.getItem("token"); //on decode ce qu'il y a dans la var token
+        let token = localStorage.getItem("tokenAdmin"); //on decode ce qu'il y a dans la var token
         let decoded = jwt.decode(token)
         console.log(decoded);
         console.log(this.props.component);

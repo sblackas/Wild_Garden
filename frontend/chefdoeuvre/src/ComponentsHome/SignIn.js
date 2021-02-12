@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios'
-import Header from './Header'
 import jwt from 'jsonwebtoken';
 import { connect } from 'react-redux'
 import { loginArtist } from '../Store/actions/artist';
@@ -46,7 +45,7 @@ class SignIn extends React.Component{
                 email: decoded.email,
                 id: decoded.id
               };
-              localStorage.setItem("token", res.data.token)
+              localStorage.setItem("tokenUser", res.data.token)
               
               this.props.loginArtist(loggedUser)
               console.log(loggedUser);
@@ -72,7 +71,6 @@ render() {
   return (
       <div className="SignIn">
 
-<Header/>
 
   {/* { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null } */}
   { this.state.message && <p> {this.state.message} </p> }

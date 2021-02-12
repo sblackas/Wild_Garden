@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderUser from '../ComponentsUser/HeaderUser'
 import axios from 'axios'
 import './AddArtwork.css'
 // import jwt from 'jsonwebtoken';
@@ -75,7 +74,7 @@ class AddArtwork extends React.Component {
     return (
       <div className="AddArtwork">
 
-        <HeaderUser />
+
 
         <div className="containerForm">
           <h1>&bull; Ajouter une oeuvre &bull;</h1>

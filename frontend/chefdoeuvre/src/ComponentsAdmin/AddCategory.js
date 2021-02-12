@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import HeaderAdmin from './HeaderAdmin';
 import './AddCategory.css';
 import { connect } from "react-redux";
 import { newCategory } from '../Store/actions/categories';
@@ -44,7 +43,6 @@ export class AddCategory extends React.Component {
     render() {
         return (
             <div className="AddCategory">
-                <HeaderAdmin/>
 
                 <div className="containerForm">
           <h1>&bull; Ajouter une catégorie &bull;</h1>

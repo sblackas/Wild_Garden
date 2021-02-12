@@ -49,7 +49,7 @@ export class SignInAdmin extends React.Component {
                 email: decoded.email,
                 id: decoded.id
               };
-              localStorage.setItem("token", res.data.token)
+              localStorage.setItem("tokenAdmin", res.data.token)
               
               this.props.loginAdmin(loggedAdmin)
               console.log(loggedAdmin);

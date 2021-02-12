@@ -6,7 +6,9 @@
 .profileBox1 {
     border: solid 2px #474544;
     max-width: 1000px;
-    margin: 30px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30PX;
     position: relative;
     box-sizing: border-box;
     height: 75vh;

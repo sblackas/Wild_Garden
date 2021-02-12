@@ -1,5 +1,4 @@
 import React from 'react'
-import HeaderUser from './HeaderUser';
 import axios from 'axios';
 import { connect } from 'react-redux'
 
@@ -58,7 +57,6 @@ export class EditArtwork extends React.Component {
         console.log(testtom);
         return (
             <div className="EditArtwork">
-                        <HeaderUser />
 
                 <div class="l-container">
 

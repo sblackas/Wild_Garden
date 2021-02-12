@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import HeaderUser from './HeaderUser';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { listArtworks } from '../Store/actions/artworks';
@@ -32,7 +31,6 @@ class ArtworksList extends React.Component {
 
         return (
             <div>
-                <div className="Head"><HeaderUser /></div>
                 <div className="ArtworksListPage">
 
                     <div className="title"><h1>&bull; Artworks List &bull;</h1></div>

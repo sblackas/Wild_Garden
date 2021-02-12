@@ -1,7 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Header from './Header'
-import Footer from './Footer'
 import './Home.css' 
 import bghome from '../imagesHome/bghome.png'
 // import Ink58 from '../imagesHome/Ink58.mp4'
@@ -15,7 +13,7 @@ class Home extends React.Component{
 render() {
   return (
     <div className="Home">
-      <Header/>
+      {/* <Header/> */}
       
       
 
@@ -24,7 +22,7 @@ render() {
       <source src={ Ink58 } type="video/mp4"/>
     </video> */}
 
-<Footer/>
+
     </div>
   );
 }

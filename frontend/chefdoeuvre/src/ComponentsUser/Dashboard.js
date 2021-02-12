@@ -1,5 +1,4 @@
 import React from 'react';
-import HeaderUser from './HeaderUser';
 import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -74,12 +73,10 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div className="Dashboard">
-        <HeaderUser />
 
 
         {/* <p>{this.props.token}</p> */}
         <p>{this.props.editedUser}</p>
-        <p>This is the dashboard </p>
 
         <div className="profileBox1">
           <h1>&bull; Editez votre profil &bull;</h1>

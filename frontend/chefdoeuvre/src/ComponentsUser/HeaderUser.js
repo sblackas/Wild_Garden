@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { connect } from 'react-redux'
 import { logoutArtist, loginArtist } from '../Store/actions/artist';
+import { listArtworks } from '../Store/actions/artworks';
+
 import jwt from 'jsonwebtoken'
 
 class HeaderUser extends React.Component {
@@ -21,9 +23,9 @@ class HeaderUser extends React.Component {
 
     componentDidMount() {
         
-    if (localStorage.getItem("token")) {
-        let decoded = jwt.decode(localStorage.getItem("token"))
-        this.props.loginArtist({id: decoded.id, email: decoded.email, token: localStorage.getItem("token")})
+    if (localStorage.getItem("tokenUser")) {
+        let decoded = jwt.decode(localStorage.getItem("tokenUser"))
+        this.props.loginArtist({id: decoded.id, email: decoded.email, token: localStorage.getItem("tokenUser")})
     }
 
     }
@@ -45,10 +47,13 @@ class HeaderUser extends React.Component {
 }
 
 const mapStateToProps = (state /*, ownProps*/) => {
-    return {}
+    return {
+        artworks: state.artworksReducer.artworks,
+
+    }
   }
   
-  const mapDispatchToProps = { logoutArtist, loginArtist }
+  const mapDispatchToProps = { logoutArtist, loginArtist, listArtworks }
   
   export default connect(
     mapStateToProps,

@@ -1,5 +1,4 @@
 import React from 'react'
-import HeaderAdmin from '../ComponentsAdmin/HeaderAdmin';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -26,7 +25,6 @@ export class AllArtworkList extends React.Component {
 
         return (
             <div>
-                <div className="Head"><HeaderAdmin /></div>
                 <div className="ArtworksListPage">
 
                     <div className="title"><h1>&bull; All of Artworks List &bull;</h1></div>

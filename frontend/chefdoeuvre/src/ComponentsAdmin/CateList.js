@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import HeaderAdmin from './HeaderAdmin';
 import './CateList.css'
 import { connect } from 'react-redux'
 import { listCate } from '../Store/actions/categories';
@@ -33,7 +32,6 @@ class CateList extends React.Component {
 
         return (
             <div className="CateList">
-                <HeaderAdmin/>
                 <div className="CateListPage">
 
                     <div className="title"><h1>&bull; Category List &bull;</h1></div>
