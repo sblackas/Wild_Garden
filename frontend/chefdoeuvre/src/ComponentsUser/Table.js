@@ -5,12 +5,12 @@ import edit_icon from '../imagesDashUser/edit_icon.png'
 import axios from 'axios';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { listArtworks, deleteArtwork } from '../Store/actions/artworks';
+import { personalArtworks, deleteArtwork } from '../Store/actions/artworks';
 
 
 export class TableTest extends React.Component {
 	state = {
-		artworks: [],
+		artworksTab: [],
 		msgSuccess: ""
 	};
 
@@ -23,7 +23,7 @@ export class TableTest extends React.Component {
 	deleteRow(id_artwork, e) {
         axios
             .delete(`http://localhost:8000/delete-artwork/${id_artwork}`, {
-                headers: { authorization: `Bearer ${localStorage.getItem('token')}` }
+                headers: { authorization: `Bearer ${localStorage.getItem('tokenUser')}` }
             })
             .then((res) => {
                 if(res.status === 200) {
@@ -52,13 +52,13 @@ export class TableTest extends React.Component {
 
 
 	render() {
-		if (this.props.id && !this.props.artworks.length) {
+		if (this.props.id && !this.props.personalArtworks.length) {
             axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
             .then(res => {
                 console.log(res);
-                this.setState({ artworks: res.data })
-                console.log(this.props.artworks);
-                this.props.listArtworks(res.data)
+                this.setState({ artworksTab: res.data })
+                console.log(this.props.personalArtworks); //tableau vide qui se remplit
+                this.props.personalArtworks(res.data)
                 
 			})
 			.catch(err => {
@@ -88,7 +88,7 @@ export class TableTest extends React.Component {
 							</tr>
 						</thead>
 						<tbody >
-							{this.props.artworks.map((elem) => {
+							{this.props.personalArtworks.map((elem) => {
 								return (
 									<tr key={elem.id}>
 										<td>{elem.id_artwork}</td>
@@ -118,7 +118,8 @@ export class TableTest extends React.Component {
 
 const mapStateToProps = (state /*, ownProps*/) => {
 	return {
-		artworks: state.artworksReducer.artworks,
+		// artworks: state.artworksReducer.artworks,
+		personalArtworks: state.artworksReducer.personalArtworks,
 		id: state.artistReducer.id,
 		id_artwork: state.artworksReducer.id_artwork
 
@@ -126,7 +127,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
 }
 
 
-const mapDispatchToProps = { listArtworks, deleteArtwork }
+const mapDispatchToProps = { personalArtworks, deleteArtwork }
 
 export default connect(
 	mapStateToProps,

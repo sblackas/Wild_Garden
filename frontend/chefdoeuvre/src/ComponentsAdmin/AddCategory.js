@@ -45,7 +45,9 @@ export class AddCategory extends React.Component {
             <div className="AddCategory">
 
                 <div className="containerForm">
+                  <div className="title">
           <h1>&bull; Ajouter une catégorie &bull;</h1>
+          </div>
           <div className="underline">
           </div>
           <p>{this.state.msgSuccess}</p>

@@ -86,21 +86,21 @@ class Dashboard extends React.Component {
 
           <form onSubmit={this.handleSubmitEdition}>
             <div className="firsttname">
-              <label for="Name"></label>
+              <label htmlFor="Name"></label>
               <input type="name" placeholder="Prénom" onChange={this.editName} />
             </div>
             <div className="lastname">
-              <label for="Name"></label>
+              <label htmlFor="Name"></label>
               <input type="name" id="lastname_input" placeholder="Nom" onChange={this.editLastName} />
             </div>
             <div className="email">
-              <label for="email"></label>
+              <label htmlFor="email"></label>
               <input type="text" id="email_input" placeholder="Adresse Email" onChange={this.editEmail} />
             </div>
 
 
             <div className="pp">
-              <label for="Picture"></label>
+              <label htmlFor="Picture"></label>
               <input type="text" id="picture_profile" placeholder="Picture Profile" onChange={this.editPicture} />
             </div>
 

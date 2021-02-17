@@ -2,13 +2,13 @@ import React from 'react';
 import { Link, withRouter } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import title from '../imagesHome/title.png'
+import wglogo from '../imagesHome/wglogo.png'
 import './Header.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { listArtworks } from '../Store/actions/artworks';
+import { listArtworks, personalArtworks } from '../Store/actions/artworks';
 import { listCate } from '../Store/actions/categories';
-import { logoutArtist, loginArtist } from '../Store/actions/artist';
+import { logoutArtist, loginArtist, usersList } from '../Store/actions/artist';
 import { logoutAdmin, loginAdmin } from '../Store/actions/admin';
 
 
@@ -27,9 +27,19 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8000/get-artwork/${this.props.id}`)
+        axios.get('http://localhost:8000/all-of-artworks')
             .then(res => {
                 this.props.listArtworks(res.data)
+            })
+            .catch(error => {
+                console.log("catch error");
+                console.log(error);
+
+            }
+            )
+        axios.get(`http://localhost:8000/get-artwork/${this.props.id}`)
+            .then(res => {
+                this.props.personalArtworks(res.data)
             })
             .catch(error => {
                 console.log("catch error");
@@ -51,6 +61,14 @@ class Header extends React.Component {
         axios.get(`http://localhost:8000/artwork/${this.props.id_artwork}`)
             .then(res => {
                 this.props.listArtworks(res.data)
+            })
+            .catch(error => {
+                console.log("catch error");
+                console.log(error);
+            })
+            axios.get('http://localhost:8000/users')
+            .then(res => {
+                this.props.usersList(res.data)
             })
             .catch(error => {
                 console.log("catch error");
@@ -111,10 +129,10 @@ class Header extends React.Component {
             return (
 
                 <div className="Header">
-                    <div className="navbar" defaultActiveKey="/" variant="dark">
+                    <div className="navbar"  variant="dark">
                         <Nav className="mr-auto">
-                            <Nav.Link as={Link} to="/" className="linkheader">Galeries</Nav.Link>
-                            <Navbar.Brand href="/"><img src={title} className="titleheader" alt="" /> </Navbar.Brand>
+                            <Nav.Link as={Link} to="/galeries" className="linkheader">Galeries</Nav.Link>
+                            <Navbar.Brand href="/"><img src={wglogo} className="titleheader" alt="" /> </Navbar.Brand>
 
                             <Nav.Link as={Link} to="/signup" className="linkheader">Inscription</Nav.Link>
                             <Nav.Link as={Link} to="/signin" className="linkheader">Connexion</Nav.Link>
@@ -133,6 +151,7 @@ class Header extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         artworks: state.artworksReducer.artworks,
+        personalArtworks: state.artworksReducer.persosnalArtworks,
         id: state.artistReducer.id,
         id_artwork: state.artworksReducer.id_artwork,
         categories: state.cateReducer.categories,
@@ -143,6 +162,6 @@ const mapStateToProps = (state /*, ownProps*/) => {
     }
 }
 
-const mapDispatchToProps = { logoutArtist, loginArtist, listArtworks, logoutAdmin, loginAdmin, listCate }
+const mapDispatchToProps = { logoutArtist, loginArtist, listArtworks, logoutAdmin, loginAdmin, listCate, personalArtworks, usersList }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

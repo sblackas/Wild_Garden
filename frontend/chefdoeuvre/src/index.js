@@ -26,9 +26,10 @@ import EditArtwork from './ComponentsUser/EditArtwork';
 import SignInAdmin from './ComponentsAdmin/SignInAdmin'
 import SignUpAdmin from './ComponentsAdmin/SignUpAdmin'
 import PageAdmin from './ComponentsAdmin/PageAdmin'
-// import PageUser from './ComponentsUser/PageUser'
 import Header from './ComponentsHome/Header'
 import Footer from './ComponentsHome/Footer'
+import OurArtists from './ComponentsHome/OurArtists'
+
 
 
 
@@ -43,7 +44,6 @@ const myRouter = (
           <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/admin" component={PageAdmin} />
-              {/* <Route exact path="/user" component={PageUser} /> */}
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/signin" component={SignIn} />
               <Route exact path="/admin/signin" component={SignInAdmin} />
@@ -57,6 +57,8 @@ const myRouter = (
               <PrivateRoute exact path="/admin/dashboard" component={DashboardAdmin} />
               <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
               <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
+              <Route exact path="/galeries" component={OurArtists} />
+
 
 
           </Switch>

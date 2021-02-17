@@ -1,23 +1,21 @@
 import React from 'react'
 import axios from 'axios'
+import './AllArtworkList.css'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { listArtworks } from '../Store/actions/artworks';
 
 
 export class AllArtworkList extends React.Component {
-    state = {
-        allOfartworks: [],
-    }
+
 
 
     render() {
-        if (this.state.allOfartworks.length === 0) {
+        if (this.props.artworks.length === 0) {
             axios.get('http://localhost:8000/all-of-artworks')
                 .then(res => {
                     console.log(res);
-                    this.setState({ allOfartworks: res.data })
-                    console.log(this.state.allOfartworks);
+                    // console.log(this.props.artworks);
                     this.props.listArtworks(res.data)
 
                 })
@@ -25,13 +23,13 @@ export class AllArtworkList extends React.Component {
 
         return (
             <div>
-                <div className="ArtworksListPage">
+                <div className="AllArtworkList">
 
                     <div className="title"><h1>&bull; All of Artworks List &bull;</h1></div>
 
-                    {console.log(this.state.allOfartworks)}
+                    {/* {console.log(this.props.artworks)} */}
                     <div className="cards-container">
-                        {this.props.allOfartworks.map(elem => {
+                        {this.props.artworks.map(elem => {
                             return (
 
                                 <div className="container" key={elem.id} style={{ backgroundImage: `url(${elem.art_picture})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
@@ -48,7 +46,7 @@ export class AllArtworkList extends React.Component {
                                         </div>
                                         <div className="items cart">
                                             <i className="fa fa-shopping-cart"></i>
-                                            <Link to={`/artwortk-details/ ${elem.id}`} ><span>DETAILS</span></Link>
+                                            <Link to={`/artwortk-details/ ${elem.id_artwork}`} ><span>DETAILS</span></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +67,9 @@ export class AllArtworkList extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         artworks: state.artworksReducer.artworks,
-        id: state.artistReducer.id
+        id: state.artistReducer.id,
+        id_artwork: state.artworksReducer.id_artwork,
+
 
     }
 }

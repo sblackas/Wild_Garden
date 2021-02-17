@@ -1,0 +1,15 @@
+.AllArtworkList {
+    height: 600vh;
+    background-color: #151514;
+}
+
+
+
+.AllArtworkList .title {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.container {
+    margin-top: 20px;
+}

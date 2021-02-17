@@ -2,26 +2,26 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { listArtworks } from '../Store/actions/artworks';
+import { personalArtworks } from '../Store/actions/artworks';
 import './ArtworksList.css'
 
 
 class ArtworksList extends React.Component {
     state = {
-        artworks: [],
+        myArtworks: [],
     }
 
 
 
     render() {
         console.log("ID => ", this.props.id)
-        if (this.props.id && !this.state.artworks.length) {
+        if (this.props.id && !this.state.myArtworks.length) {
             axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
             .then(res => {
                 console.log(res);
-                this.setState({ artworks: res.data })
-                console.log(this.state.artworks);
-                this.props.listArtworks(res.data)
+                this.setState({ myArtworks: res.data })
+                console.log(this.state.myArtworks);
+                this.props.personalArtworks(res.data)
                 
             })
         }
@@ -35,9 +35,9 @@ class ArtworksList extends React.Component {
 
                     <div className="title"><h1>&bull; Artworks List &bull;</h1></div>
 
-                    {console.log(this.state.artworks)}
+                    {console.log(this.state.myArtworks)}
                     <div className="cards-container">
-                        {this.props.artworks.map(elem => {
+                        {this.props.personalArtworks.map(elem => {
                             return (
 
                                 <div className="container" key={elem.id} style={{ backgroundImage: `url(${elem.art_picture})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
@@ -74,13 +74,13 @@ class ArtworksList extends React.Component {
 
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-        artworks: state.artworksReducer.artworks,
+        personalArtworks: state.artworksReducer.personalArtworks,
         id: state.artistReducer.id
 
     }
 }
 
-const mapDispatchToProps = { listArtworks }
+const mapDispatchToProps = { personalArtworks }
 
 export default connect(
     mapStateToProps,

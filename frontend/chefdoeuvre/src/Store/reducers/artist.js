@@ -22,11 +22,6 @@ const initialStates = {
          email: null,
          id: null
        };
-      //  case "LOAD_USER" :
-      //    return {
-      //      ...state,
-      //      id: action.id
-      //    }
       case "GET_ALL_USERS":
         return {
           ...state,

@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-html {
+.AddCategory {
   font-family: 'Montserrat', Arial, sans-serif;
-
+  padding-top: 15px;
 }
 
  .AddCategory {
@@ -16,7 +16,6 @@ button {
   overflow: visible;
   
 }
-
 
 button, input, textarea {
   color: #5A5A5A;

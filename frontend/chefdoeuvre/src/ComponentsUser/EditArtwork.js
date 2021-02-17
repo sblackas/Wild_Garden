@@ -58,10 +58,10 @@ export class EditArtwork extends React.Component {
         return (
             <div className="EditArtwork">
 
-                <div class="l-container">
+                <div className="l-container">
 
-  <div class="b-game-card">
-    <div class="b-game-card__cover" key={testtom[0].id_artwork} style={{backgroundImage: `url(${testtom[0].art_picture})`}}>
+  <div classname="b-game-card">
+    <div classname="b-game-card__cover" key={testtom[0].id_artwork} style={{backgroundImage: `url(${testtom[0].art_picture})`}}>
   </div>
 </div>
 
@@ -73,15 +73,15 @@ export class EditArtwork extends React.Component {
 
           <form onSubmit={this.handleEditionOfArtwork}>
             <div className="firsttname">
-              <label for="Name"></label>
+              <label htmlFor="Name"></label>
               <input type="name" placeholder="Titre" onChange={this.editTitle} />
             </div>
             <div className="lastname">
-              <label for="Name"></label>
+              <label htmlFor="Name"></label>
               <input type="name" id="lastname_input" placeholder="Description" onChange={this.editDesc} />
             </div>
             <div className="pp">
-              <label for="Picture"></label>
+              <label htmlFor="Picture"></label>
               <input type="text" id="picture_rt" placeholder="Picture " onChange={this.editPicture} />
             </div>
 

@@ -1,5 +1,6 @@
 const initialStates = {
     artworks: [],
+    personalArtworks: [],
     id: String
  };
 
@@ -9,6 +10,11 @@ const initialStates = {
         return {
           ...state,
           artworks: action.payload,          
+        };
+        case "GET_MY_ARTWORKS":
+        return {
+          ...state,
+          personalArtworks: action.payload,          
         };
         case "ADD_PRODUCTS":
         return {

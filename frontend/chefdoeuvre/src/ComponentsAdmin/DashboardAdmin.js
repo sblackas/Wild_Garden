@@ -1,11 +1,8 @@
 import React from 'react';
-// import HeaderAdmin from './HeaderAdmin';
 import './DashboardAdmin.css';
 import axios from 'axios' 
 import { connect } from 'react-redux'
-
-
-
+import './DashboardAdmin.css'
 
 
 class DashboardAdmin extends React.Component{
@@ -62,15 +59,12 @@ EditProfileData = async event => {
 
 render() {
   return (
-    <div className="Dashboard">
-      {/* <HeaderAdmin/> */}
+    <div className="DashboardAdmin">
 
 
 {/* <p>{this.props.token}</p> */}
 {/* <p>{this.props.user}</p> */}
 <p>{this.props.editedAdmin}</p>
-
-<p>This is the dashboard </p>
 
 <div className="profileBox1">
   <h1>&bull; Editer votre profil &bull;</h1>

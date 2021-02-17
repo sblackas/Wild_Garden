@@ -3,6 +3,11 @@ export const listArtworks = (artworks) => ({
     payload: artworks,
 })
 
+export const personalArtworks = (personalArtworks) => ({
+    type: "GET_MY_ARTWORKS",
+    payload: personalArtworks,
+})
+
 export const newArtwork = (artwork, artist) => ({
     type: "ADD_ARTWORK",
     // token: artist.token,

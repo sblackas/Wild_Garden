@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&display=swap');
 
 .Footer {
     background: #100B09;
+    border: solid black 2px;
+    font-family: 'Encode Sans Condensed';
     
 }
 
