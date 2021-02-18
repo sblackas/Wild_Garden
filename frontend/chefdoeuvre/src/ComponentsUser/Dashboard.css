@@ -1,6 +1,8 @@
 .Dashboard {
     background: #151514;
     height: 400vh;
+    border-top: solid 2px black;
+
 }
 
 .profileBox1 {

@@ -16,8 +16,10 @@ export const usersList = (users) => ({
 
 export const userData = (artist) => ({
     type: "GET_DATA_USER",
-    // payload: artist
-    name: artist.name,
-    lastname: artist.lastname,
-    pp: artist.pp,
+    payload: artist
+    // name: artist.name,
+    // lastname: artist.lastname,
+    // pp: artist.pp,
+    // id: artist.id
+
 })

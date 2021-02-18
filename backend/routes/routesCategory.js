@@ -19,7 +19,7 @@ router.get('/category/:id_cate', function (req, res) {
     try {
         db.query(`SELECT cate_name, cate_picture FROM categories WHERE id_cate = '${req.params.id_cate}'`, (err, result) => {
             if (err) throw err
-            console.log(result);
+            // console.log(result);
             res.json(result)
 
         })
@@ -32,7 +32,7 @@ router.get('/category/:id_cate', function (req, res) {
 //_____Supprimer une categorie
 router.use('/category/:id_cate', middlewares.isAdmin)
 router.delete('/category/:id_cate', function (req, res) {
-    console.log(req.body);
+    // console.log(req.body);
     db.query(`DELETE FROM categories WHERE id_cate = '${req.params.id_cate}'`, function (error, results) {
        if (error) throw error;
            res.send('Category has been deleted!');
@@ -54,7 +54,7 @@ router.get('/categories', function (req, res) {
     db.query(allCate, function (err, results) {
   
       if (err) res.send(err);
-      console.log(results);
+      // console.log(results);
       res.send(results)
     })
   

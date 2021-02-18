@@ -10,7 +10,6 @@ import { personalArtworks, deleteArtwork } from '../Store/actions/artworks';
 
 export class TableTest extends React.Component {
 	state = {
-		artworksTab: [],
 		msgSuccess: ""
 	};
 
@@ -52,13 +51,13 @@ export class TableTest extends React.Component {
 
 
 	render() {
-		if (this.props.id && !this.props.personalArtworks.length) {
+		if (this.props.id && !this.props.myArtworks.length) {
             axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
             .then(res => {
                 console.log(res);
-                this.setState({ artworksTab: res.data })
+                // this.setState({ artworksTab: res.data })
                 console.log(this.props.personalArtworks); //tableau vide qui se remplit
-                this.props.personalArtworks(res.data)
+                this.personalArtworks(res.data)
                 
 			})
 			.catch(err => {
@@ -72,7 +71,7 @@ export class TableTest extends React.Component {
 
 <p>{this.state.msgSuccess}</p>
 
-				<div class="containerTable">
+				<div className="containerTable">
 
 					<table>
 						{/* {console.log(this.state.artworks)} */}
@@ -88,7 +87,7 @@ export class TableTest extends React.Component {
 							</tr>
 						</thead>
 						<tbody >
-							{this.props.personalArtworks.map((elem) => {
+							{this.props.myArtworks.map((elem) => {
 								return (
 									<tr key={elem.id}>
 										<td>{elem.id_artwork}</td>
@@ -119,7 +118,7 @@ export class TableTest extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
 	return {
 		// artworks: state.artworksReducer.artworks,
-		personalArtworks: state.artworksReducer.personalArtworks,
+		myArtworks: state.artworksReducer.myArtworks,
 		id: state.artistReducer.id,
 		id_artwork: state.artworksReducer.id_artwork
 

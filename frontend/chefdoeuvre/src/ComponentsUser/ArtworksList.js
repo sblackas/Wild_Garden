@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -14,17 +14,17 @@ class ArtworksList extends React.Component {
 
 
     render() {
-        console.log("ID => ", this.props.id)
-        if (this.props.id && !this.state.myArtworks.length) {
-            axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
-            .then(res => {
-                console.log(res);
-                this.setState({ myArtworks: res.data })
-                console.log(this.state.myArtworks);
-                this.props.personalArtworks(res.data)
+        // console.log("ID => ", this.props.id)
+        // if (this.props.id && !this.state.myArtworks.length) {
+        //     axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
+        //     .then(res => {
+        //         console.log("test", res.data);
+        //         // this.setState({ myArtworks: res.data })
+        //         // console.log(this.state.myArtworks);
+        //         this.props.personalArtworks(res.data)
                 
-            })
-        }
+        //     })
+        // }
 
         // j'ai mis cette condition dans le render au lieu du componentDimount. Si y'a un id et qu'il y a le tableau vide alors tu me fais le axios
         // quand c'est fait alors il render mes oeuvres et recommence à render mais cette fois ci le tableau n'est plus vide a cause du render d'avant ca ne se refait pas
@@ -35,9 +35,9 @@ class ArtworksList extends React.Component {
 
                     <div className="title"><h1>&bull; Artworks List &bull;</h1></div>
 
-                    {console.log(this.state.myArtworks)}
+                    {/* {console.log(this.state.myArtworks)} */}
                     <div className="cards-container">
-                        {this.props.personalArtworks.map(elem => {
+                        {this.props.myArtworks.map(elem => {
                             return (
 
                                 <div className="container" key={elem.id} style={{ backgroundImage: `url(${elem.art_picture})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
@@ -74,7 +74,7 @@ class ArtworksList extends React.Component {
 
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-        personalArtworks: state.artworksReducer.personalArtworks,
+        myArtworks: state.artworksReducer.myArtworks,
         id: state.artistReducer.id
 
     }

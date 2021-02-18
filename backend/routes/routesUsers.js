@@ -75,11 +75,11 @@ router.post('/users/sign-in', function (req, res) {
 
 //_____Liste des users
 router.get('/users', function (req, res) {
-  let allUsers = `SELECT id_user,u_name FROM users`;
+  let allUsers = `SELECT id_user,u_name, u_lastname, u_email FROM users`;
   db.query(allUsers, function (err, todoUser) {
 
     if (err) res.send(err);
-    console.log(todoUser);
+    // console.log(todoUser);
     res.send(todoUser)
   })
 
@@ -88,9 +88,9 @@ router.get('/users', function (req, res) {
 //_____Infos d'un user
 router.get('/users/:id_user', function (req, res) {
   try {
-    db.query(`SELECT u_name, u_lastname, u_email, u_pp FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
+    db.query(`SELECT * FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
       if (err) throw err
-      console.log(result);
+      // console.log(result);
       res.json(result)
 
     })
@@ -102,7 +102,7 @@ router.get('/users/:id_user', function (req, res) {
 //_____Supprimer d'un user
 router.use('/users/:id_user', middlewares.isArtist)
 router.delete('/users/:id_user', function (req, res) {
-  console.log(req.body);
+  // console.log(req.body);
   db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {
     if (error) throw error;
     res.send('User has been deleted!');
@@ -112,9 +112,9 @@ router.delete('/users/:id_user', function (req, res) {
 //_____Modifier infos user
 router.use('/users/:edit', middlewares.isArtist)
 router.put('/users/:edit', function (req, res) {
-  console.log('-------------------------------------------------------------------');
-  console.log(req.body);
-  console.log('-------------------------------------------------------------------');
+  // console.log('-------------------------------------------------------------------');
+  // console.log(req.body);
+  // console.log('-------------------------------------------------------------------');
   db.query(`UPDATE users SET u_name = '${req.body.name}', u_lastname = '${req.body.lastname}', u_email = '${req.body.email}', u_pp = '${req.body.pp}' WHERE id_user = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;
     res.send("PROFILE HAS BEEN UPDATED");

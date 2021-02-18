@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux'
+import { personalArtworks } from '../Store/actions/artworks';
+
 
 
 
@@ -53,7 +55,7 @@ export class EditArtwork extends React.Component {
 
     render() {
         console.log(this.props.match.params.id_artwork);
-        let testtom = this.props.artworks.filter(elem => elem.id_artwork == this.props.match.params.id_artwork)
+        let testtom = this.props.myArtworks.filter(elem => elem.id_artwork == this.props.match.params.id_artwork)
         console.log(testtom);
         return (
             <div className="EditArtwork">
@@ -103,12 +105,14 @@ const mapStateToProps = (state /*, ownProps*/) => {
       id: state.artistReducer.id,
       token: state.artistReducer.token,
       id_artwork: state.artworksReducer.id_artwork,
-      artworks: state.artworksReducer.artworks
+      artworks: state.artworksReducer.artworks,
+      myArtworks: state.artworksReducer.myArtworks
+
 
     }
   }
 
-  const mapDispatchToProps = {}
+  const mapDispatchToProps = { personalArtworks }
 
   export default connect(
     mapStateToProps,

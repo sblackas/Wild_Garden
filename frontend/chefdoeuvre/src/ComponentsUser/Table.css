@@ -7,12 +7,16 @@
     /* background: linear-gradient(45deg, #49a09d, #5f2c82); */
     font-family: sans-serif;
     font-weight: 100;
+    position: relative;
 }
 .containerTable {
-    position: absolute;
-    top: 145%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    /* margin-top: 30px; */
+    margin-right: auto;
+    margin-left: auto;
+    /* top: 155%; */
+    /* left: 10%; */
+    transform: translate(-10%, -10%);
 }
 table {
     width: 990px;

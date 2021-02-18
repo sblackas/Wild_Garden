@@ -1,4 +1,5 @@
 import React from 'react';
+import jwt from 'jsonwebtoken'
 import { Link, withRouter } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -27,6 +28,23 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
+                   //toutes les oeuvres personelles d'un artiste
+if (localStorage.getItem("tokenUser")) {
+let decoded =jwt.decode(localStorage.getItem("tokenUser"))
+                    axios.get(`http://localhost:8000/get-artwork/${decoded.id}`)
+                        .then(res => {
+                            console.log(res.data);
+                            this.props.personalArtworks(res.data)
+                        })
+                        .catch(error => {
+                            console.log("catch error");
+                            console.log(error);
+            
+            
+                        }
+                        )
+                    }
+        //toutes les oeuvres
         axios.get('http://localhost:8000/all-of-artworks')
             .then(res => {
                 this.props.listArtworks(res.data)
@@ -37,16 +55,9 @@ class Header extends React.Component {
 
             }
             )
-        axios.get(`http://localhost:8000/get-artwork/${this.props.id}`)
-            .then(res => {
-                this.props.personalArtworks(res.data)
-            })
-            .catch(error => {
-                console.log("catch error");
-                console.log(error);
-
-            }
-            )
+ 
+        
+            //toutes les cate
         axios.get('http://localhost:8000/categories')
             .then(res => {
                 console.log(res.data);
@@ -58,6 +69,7 @@ class Header extends React.Component {
 
             }
             )
+            //infos d'une oeuvre
         axios.get(`http://localhost:8000/artwork/${this.props.id_artwork}`)
             .then(res => {
                 this.props.listArtworks(res.data)
@@ -66,7 +78,8 @@ class Header extends React.Component {
                 console.log("catch error");
                 console.log(error);
             })
-            axios.get('http://localhost:8000/users')
+//tous les artiste
+        axios.get('http://localhost:8000/users')
             .then(res => {
                 this.props.usersList(res.data)
             })
@@ -74,6 +87,15 @@ class Header extends React.Component {
                 console.log("catch error");
                 console.log(error);
             })
+            //infos d'un artiste
+            // axios.get(`http://localhost:8000/users/${this.props.id}`)
+            // .then(res => {
+            //     this.props.userData(res.data)
+            // })
+            // .catch(error => {
+            //     console.log("catch error");
+            //     console.log(error);
+            // })
     }
 
     render() {
@@ -129,7 +151,7 @@ class Header extends React.Component {
             return (
 
                 <div className="Header">
-                    <div className="navbar"  variant="dark">
+                    <div className="navbar" variant="dark">
                         <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/galeries" className="linkheader">Galeries</Nav.Link>
                             <Navbar.Brand href="/"><img src={wglogo} className="titleheader" alt="" /> </Navbar.Brand>
@@ -151,10 +173,11 @@ class Header extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         artworks: state.artworksReducer.artworks,
-        personalArtworks: state.artworksReducer.persosnalArtworks,
+        myArtworks: state.artworksReducer.myArtworks,
         id: state.artistReducer.id,
         id_artwork: state.artworksReducer.id_artwork,
         categories: state.cateReducer.categories,
+        // userData:state.artistReducer.userData
 
         // token: state.artistReducer.token,
 

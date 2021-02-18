@@ -2,13 +2,14 @@ const initialStates = {
     token: null,
     email: null,
     id: null,
-    users: []
+    users: [],
+    userData: []
  };
  
  const artistReducer = (state = initialStates, action) => {
    switch (action.type) {
      case "SIGNIN_ARTIST":
-       localStorage.setItem("id", action.id)
+      //  localStorage.setItem("id", action.id)
        return {
          ...state,
          token: action.token,
@@ -30,10 +31,13 @@ const initialStates = {
         case "GET_DATA_USER":
           return {
             ...state,
-            name: action.name,
-            lastname: action.lastname,
-            email: action.email,
-            pp: action.pp
+            userData: action.payload
+            // name: action.name,
+            // lastname: action.lastname,
+            // email: action.email,
+            // pp: action.pp,
+            // id: action.id
+
           };
      default:
        return {

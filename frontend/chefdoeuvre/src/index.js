@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -29,6 +31,7 @@ import PageAdmin from './ComponentsAdmin/PageAdmin'
 import Header from './ComponentsHome/Header'
 import Footer from './ComponentsHome/Footer'
 import OurArtists from './ComponentsHome/OurArtists'
+import ArtistGalery  from './ComponentsHome/ArtistGalery'
 
 
 
@@ -58,6 +61,8 @@ const myRouter = (
               <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
               <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
               <Route exact path="/galeries" component={OurArtists} />
+              <Route exact path="/galerie-of/:id_user" component={ArtistGalery} />
+
 
 
 

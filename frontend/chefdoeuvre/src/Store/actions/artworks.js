@@ -1,11 +1,11 @@
 export const listArtworks = (artworks) => ({
     type: "GET_ARTWORKS",
-    payload: artworks,
+    payload: artworks
 })
 
-export const personalArtworks = (personalArtworks) => ({
+export const personalArtworks = (myArtworks) => ({
     type: "GET_MY_ARTWORKS",
-    payload: personalArtworks,
+    payload: myArtworks
 })
 
 export const newArtwork = (artwork, artist) => ({

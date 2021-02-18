@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios' // importer tout ce qu'on utiliser dans le component
-import Header from './Header'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
@@ -139,7 +138,6 @@ render() {
   return (
    <div>
 
-<Header/>
 
 
   <Form onSubmit={this.handleSubmit}> 

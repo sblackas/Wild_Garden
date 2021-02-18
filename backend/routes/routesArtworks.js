@@ -22,7 +22,7 @@ router.get('/all-of-artworks', function (req, res) {
     db.query(allArtworks, function (err, results) {
   
       if (err) res.send(err);
-      console.log(results);
+      // console.log(results);
       res.send(results)
     })
   
@@ -33,7 +33,7 @@ router.get('/artwork/:id_artwork', function (req, res) {
     try {
         db.query(`SELECT art_title, art_desc, art_picture FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, (err, result) => {
             if (err) throw err
-            console.log(result);
+            // console.log(result);
             res.json(result)
 
         })
@@ -58,7 +58,7 @@ router.get('/artwork/:id_artwork', function (req, res) {
 
        let deleteArtwork = `DELETE FROM artworks WHERE id_artwork = '${idArtworks}'`
        db.query(deleteArtwork, function(err,resultat){
-           console.log(resultat);
+          //  console.log(resultat);
            if (err) throw err;
            console.log("Number of records deleted: " + resultat.affectedRows);
            res.status(200).send(resultat)
@@ -85,9 +85,10 @@ router.get('/get-artwork/:id', function (req,res) {
   try {
     let artId = req.params.id
     let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.id_artwork, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
-    db.query(getUserArt, function (err, results) {
-       if (err) throw err
-       res.send(results)
+    db.query(getUserArt, function (err, resultas) {
+       if (err) throw err,
+       console.log(resultas);
+       res.status(200).send(resultas)
     })
   } catch (error) {
     res.status(203).send(error)

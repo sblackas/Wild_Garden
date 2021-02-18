@@ -3,11 +3,6 @@ import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
 import TableTest from './Table'
-// import { userData } from '../Store/actions/artist';
-
-
-
-
 
 
 class Dashboard extends React.Component {

@@ -1,6 +1,6 @@
 const initialStates = {
     artworks: [],
-    personalArtworks: [],
+    myArtworks: [],
     id: String
  };
 
@@ -14,7 +14,8 @@ const initialStates = {
         case "GET_MY_ARTWORKS":
         return {
           ...state,
-          personalArtworks: action.payload,          
+          myArtworks: action.payload
+
         };
         case "ADD_PRODUCTS":
         return {
@@ -26,14 +27,14 @@ const initialStates = {
             }]
         };
         case "DELETE_ARTWORK":
-      let indexOfElemToDelete  = state.artworks.map(e => e.id_artwork).indexOf(action.payload);
+      let indexOfElemToDelete  = state.myArtworks.map(e => e.id_artwork).indexOf(action.payload);
       return {
         ...state,
-              artwworks: [
-                ...state.artworks.slice(0, indexOfElemToDelete),
-                ...state.artworks.slice(
+        myArtworks: [
+                ...state.myArtworks.slice(0, indexOfElemToDelete),
+                ...state.myArtworks.slice(
                   indexOfElemToDelete + 1,
-                  state.artworks.length
+                  state.myArtworks.length
                 ),
               ],
             };
