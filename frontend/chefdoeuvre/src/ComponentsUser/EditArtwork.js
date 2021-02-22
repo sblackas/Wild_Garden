@@ -7,8 +7,6 @@ import { personalArtworks } from '../Store/actions/artworks'
 import { editArtwork } from '../Store/actions/artworks'
 import './EditArtwork.css'
 
-
-
 export class EditArtwork extends React.Component {
   state = {
     title: "",
@@ -49,8 +47,7 @@ export class EditArtwork extends React.Component {
         description: testtom[0].art_desc,
         picture: testtom[0].art_picture,
         id_cate: testtom[0].id_cate
-      }
-      );
+      });
     }
   }
 
@@ -87,8 +84,6 @@ export class EditArtwork extends React.Component {
 
   }
 
-  // }
-
   render() {
 
     return (
@@ -96,7 +91,6 @@ export class EditArtwork extends React.Component {
         {this.state.title.length && (
 // this state title lenght pour regler que je puisse modifier les input
           <div className="l-container">
-
             <div className="b-game-card">
               <div className="b-game-card__cover" key={this.state.id_artwork || ""} >
                 <img src={this.state.picture || ""} alt="" />
@@ -105,10 +99,8 @@ export class EditArtwork extends React.Component {
 
             <div className="profileBox1">
               <h1>&bull; Editez votre oeuvre &bull;</h1>
-              <div className="underline">
-              </div>
+              <div className="underline"></div>
               <p>{this.state.msgSuccess}</p>
-
               <form onSubmit={this.handleEditionOfArtwork}>
                 <div className="titre">
                   <label htmlFor="titre">Titre</label>
@@ -122,23 +114,17 @@ export class EditArtwork extends React.Component {
                   <label htmlFor="Picture">Picture</label>
                   <input type="text" id="picture_rt" value={this.state.picture} onChange={this.editPicture} />
                 </div>
-                <select id="subject_input"
-                  onChange={this.editCate}
-                >
+                <select id="subject_input" onChange={this.editCate}>
                   <option selected >Veuillez selectionnez une categorie</option>
                   {this.props.categories.map(({ id_cate, cate_name }) => <option value={id_cate} >{cate_name}</option>)}
                 </select>
-
               </form>
               <div className="submit">
                 <button type="submit" value="Submit" id="form_button" onClick={this.handleSubmitEdition} ><span>Submit</span><div id="circle"></div></button>
               </div>
             </div>
-
           </div>
-
         )}
-
       </div>
     )
   }
@@ -152,9 +138,6 @@ const mapStateToProps = (state /*, ownProps*/) => {
     artworks: state.artworksReducer.artworks,
     myArtworks: state.artworksReducer.myArtworks,
     categories: state.cateReducer.categories,
-
-
-
   }
 }
 

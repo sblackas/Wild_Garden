@@ -6,6 +6,10 @@ const saltRounds = 10; // le nombre de fois que l'on hashe le mdp
 const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
 const middlewares = require('../middlewares/middlewares.js');
+var multer  = require('multer');
+var upload = multer({ dest: './uploads/' });
+const fs = require('fs')
+
 
 
 //____Inscription
@@ -122,5 +126,31 @@ router.put('/users/:edit', function (req, res) {
   });
 });
 
+//Ajouter une photo de profil
+router.post('/single', upload.single('profile'), function (req, res, next) {
+  try {
+    console.log(req.file);
+    let fileType = req.file.mimetype.split('/')[1];
+    let newFileName = req.file.filename + "." + fileType;
+    fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function(){
+      console.log("callback");
+    });
+    db.query(`UPDATE users SET u_pp = '${newFileName}' WHERE id_user = ${req.body.id_user} `, function (err, result) {
+       if (err) throw err;
+      res.status(200).send(result);
+    });
+  } catch(error) {
+    console.log(error);
+  }
+})
+
+// var storage = multer.diskStorage({
+//   destination: function(req, file, cb) {
+//       cb(null, '../uploads');
+//    },
+//   filename: function (req, file, cb) {
+//       cb(null , file.originalname);
+//   }
+// });
 
 module.exports = router;

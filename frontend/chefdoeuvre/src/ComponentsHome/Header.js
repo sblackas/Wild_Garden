@@ -37,7 +37,6 @@ class Header extends React.Component {
                 id: decoded.id
             };
             this.props.loginArtist(loggedUser)
-
             console.log(decoded);
             axios.get(`http://localhost:8000/get-artwork/${decoded.id}`)
                 .then(res => {
@@ -62,7 +61,6 @@ class Header extends React.Component {
             }
             )
 
-
         //toutes les categories
         axios.get('http://localhost:8000/categories')
             .then(res => {
@@ -72,7 +70,6 @@ class Header extends React.Component {
             .catch(error => {
                 console.log("catch error");
                 console.log(error);
-
             }
             )
 
@@ -104,7 +101,6 @@ class Header extends React.Component {
                         <Navbar.Brand href="/" onClick={this.logOutSubmitAdmin} >Deconnexion</Navbar.Brand>
 
                     </Navbar>
-
                 );
             } else {
                 return (
@@ -146,17 +142,13 @@ class Header extends React.Component {
                             <Nav.Link as={Link} to="/nos-artistes" className="linkheader">Artistes</Nav.Link>
                             <Nav.Link as={Link} to="/les-oeuvres" className="linkheader">Oeuvres</Nav.Link>
                             <Navbar.Brand href="/"><img src={wglogo} className="titleheader" alt="" /> </Navbar.Brand>
-
                             <Nav.Link as={Link} to="/signup" className="linkheader">Inscription</Nav.Link>
                             <Nav.Link as={Link} to="/signin" className="linkheader">Connexion</Nav.Link>
-
                         </Nav>
                     </div>
                 </div>
-
             )
         }
-
     }
 }
 
@@ -168,14 +160,17 @@ const mapStateToProps = (state /*, ownProps*/) => {
         id: state.artistReducer.id,
         id_artwork: state.artworksReducer.id_artwork,
         categories: state.cateReducer.categories,
-        // userData:state.artistReducer.userData
-
-        // token: state.artistReducer.token,
-
-
     }
 }
 
-const mapDispatchToProps = { logoutArtist, loginArtist, listArtworks, logoutAdmin, loginAdmin, listCate, personalArtworks, usersList }
+const mapDispatchToProps = { 
+    logoutArtist, 
+    loginArtist, 
+    listArtworks, 
+    logoutAdmin, 
+    loginAdmin, 
+    listCate, 
+    personalArtworks, 
+    usersList }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

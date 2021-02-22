@@ -11,8 +11,6 @@ class ArtworksList extends React.Component {
         myArtworks: [],
     }
 
-
-
     render() {
         // console.log("ID => ", this.props.id)
         // if (this.props.id && !this.state.myArtworks.length) {
@@ -22,7 +20,6 @@ class ArtworksList extends React.Component {
         //         // this.setState({ myArtworks: res.data })
         //         // console.log(this.state.myArtworks);
         //         this.props.personalArtworks(res.data)
-                
         //     })
         // }
 
@@ -34,7 +31,6 @@ class ArtworksList extends React.Component {
                 <div className="ArtworksListPage">
 
                     <div className="title"><h1>&bull; Artworks List &bull;</h1></div>
-
                     {/* {console.log(this.state.myArtworks)} */}
                     <div className="cards-container">
                         {this.props.myArtworks.map(elem => {
@@ -49,23 +45,17 @@ class ArtworksList extends React.Component {
                                             <hr />
                                         </div>
                                         <div className="items price">
-
                                             {/* <p className="new">{elem.price}€</p> */}
                                         </div>
                                         <div className="items cart">
                                             <i className="fa fa-shopping-cart"></i>
-                                            <Link to={`/artwortk-details/ ${elem.id}`} ><span>DETAILS</span></Link>
+                                            <Link to={`/user/edition-artwork/${elem.id_artwork}`} ><span>DETAILS</span></Link>
                                         </div>
                                     </div>
                                 </div>
-
-
                             )
                         })}
                     </div>
-
-
-
                 </div>
             </div>
         )
@@ -75,7 +65,9 @@ class ArtworksList extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         myArtworks: state.artworksReducer.myArtworks,
-        id: state.artistReducer.id
+        id: state.artistReducer.id,
+        id_artwork: state.artworksReducer.id_artwork,
+
 
     }
 }

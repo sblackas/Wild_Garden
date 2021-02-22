@@ -1,6 +1,6 @@
 .Dashboard {
     background: #151514;
-    height: 400vh;
+    height: 250vh;
     border-top: solid 2px black;
 
 }
@@ -49,5 +49,5 @@
 	transition: all 0.3s;
 }
 
-/* table */
+
 

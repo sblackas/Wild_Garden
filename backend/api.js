@@ -24,7 +24,7 @@ api.use(bodyParser.urlencoded({extended: true}));
 api.use("/", routes, routesCategory, routesAdmin, routesArtworks, routesFeedback); 
 
 
-
+api.use(express.static('./uploads'));
 
 api.listen(8000, function () {
     console.log('Server listening on port 8000');

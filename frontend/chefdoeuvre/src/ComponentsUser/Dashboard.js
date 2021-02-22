@@ -2,20 +2,24 @@ import React from 'react';
 import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
-// import { usersList } from '../Store/actions/artist';
-
 import TableTest from './Table'
 
-
 class Dashboard extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+    this.state ={
     name: "",
     lastname: "",
     pp: "",
     email: "",
     successMsg: "",
-
+    file: "",
+    id_user:""
   };
+  this.fileUploader = this.fileUploader.bind(this);
+        this.onChange = this.onChange.bind(this);
+  }
+
 
   editName = event => {
     this.setState({ name: event.target.value })
@@ -43,6 +47,7 @@ class Dashboard extends React.Component {
   //   }
   //   );
   // }
+
   handleSubmitEdition = async event => {
     // async parce que la requete doit attendre sinon elle passera dans else
     event.preventDefault();
@@ -61,28 +66,52 @@ class Dashboard extends React.Component {
     };
     console.log(editedUser, this.props.id);
 
-    axios.put(`http://localhost:8000/users/${this.props.id}`, editedUser, { headers: {authorization: `Bearer ${this.props.token}` }})
+    axios.put(`http://localhost:8000/users/${this.props.id}`, editedUser, { headers: { authorization: `Bearer ${this.props.token}` } })
       .then(res => {
         console.log(res);
         console.log(res.data);
         this.setState({ successMsg: "Votre profil a bien été modifié !" })
-
       })
       .catch(error => {
         console.log("catch error");
         console.log(error);
+      })
+  }
 
-      }
-      )
+  // const [image, setImage] = useState({});
+  fileUploader = event => {
+    event.preventDefault();
 
+      const formData = new FormData();
+      formData.append("file", this.state.file);
+      formData.append('id_user', this.state.id_user)
+      const config = {
+          headers: {
+              'content-type': 'multipart/form-data'
+          }
+      };
+    axios.post('http://localhost:8000/single', formData, config)
+      .then(res => {
+        console.log('ICI');
+        if (res.status === 200) {
+          console.log(res);
+          console.log(res.data);
+        }
+      })
+      .catch(error => {
+        console.log("catch error");
+        console.log(error);
+      })
 
   }
 
+  onChange(e) {
+    this.setState({file:e.target.files[0]});
+  }
 
   render() {
     return (
       <div className="Dashboard">
-
 
         {/* <p>{this.props.token}</p> */}
         <p>{this.props.editedUser}</p>
@@ -92,7 +121,7 @@ class Dashboard extends React.Component {
           <div className="underline">
           </div>
           <div className="messageSS">
-          <p>{this.state.successMsg}</p>
+            <p>{this.state.successMsg}</p>
           </div>
 
           <form onSubmit={this.handleSubmitEdition}>
@@ -100,31 +129,37 @@ class Dashboard extends React.Component {
               <label htmlFor="Name"></label>
               <input type="name" placeholder="Prénom" value={this.state.name} onChange={this.editName} />
             </div>
+
             <div className="lastname">
               <label htmlFor="Name"></label>
               <input type="name" id="lastname_input" placeholder="Nom" value={this.state.lastname} onChange={this.editLastName} />
             </div>
+
             <div className="email">
               <label htmlFor="email"></label>
               <input type="text" id="email_input" placeholder="Adresse Email" value={this.state.email} onChange={this.editEmail} />
             </div>
-
 
             <div className="pp">
               <label htmlFor="Picture"></label>
               <input type="text" id="picture_profile" placeholder="Picture Profile" value={this.state.pp} onChange={this.editPicture} />
             </div>
 
-
           </form>
           <div className="submit">
             <button type="submit" value="Submit" id="form_button" onClick={this.handleSubmitEdition} ><span>Submit</span><div id="circle"></div></button>
           </div>
         </div>
+
+        <div className="multer">
+          <form >
+            <input type="file"  onChange= {this.onChange} />
+            <button onClick={this.fileUploader}>Upload</button>
+          </form>
+        </div>
         <h1>&bull; Editez vos oeuvres &bull;</h1>
 
-
-<TableTest/>
+        <TableTest />
 
       </div>
     );
@@ -138,7 +173,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
   }
 }
 
-const mapDispatchToProps = {  }
+const mapDispatchToProps = {}
 
 export default connect(
   mapStateToProps,
