@@ -1,17 +1,20 @@
-.ArtistGalery {
-    height: 200vh;
+.ListOfArtworks {
+    height: 250vh;
     background: #100B09;
-    color: white;
-    border-top: solid black 2px
+    border-top: solid 2px black;
 
-
+    /* font-family: 'Barlow', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    text-rendering: optimizeLegibility; */
+    /* max-width: 900px; */
+    float: none;
+    margin: auto; 
 }
 
-.user-bio {
-  border: blanchedalmond solid 2px;
-}
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,700');
 
-#h-portfolio {  
+#portfolio {  
     margin: 1rem 0;
     -webkit-column-count: 4; 
     -moz-column-count: 4;

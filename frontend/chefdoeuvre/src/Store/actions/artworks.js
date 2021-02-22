@@ -19,3 +19,8 @@ export const deleteArtwork = (id_artwork) => ({
     type: "DELETE_ARTWORK",
     payload: id_artwork
 })
+
+export const editArtwork = (artwork) => ({
+    type: "UPDATE_MY_ARTWORK",
+    payload: artwork
+})

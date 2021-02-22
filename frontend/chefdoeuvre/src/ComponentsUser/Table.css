@@ -15,9 +15,18 @@
     margin-right: auto;
     margin-left: auto;
     /* top: 155%; */
-    /* left: 10%; */
-    transform: translate(-10%, -10%);
+    left: 14%;
+    transform: translate(0%, 0%);
 }
+
+.messageS {
+  color: #fff;
+  background: #151514;
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 table {
     width: 990px;
     border-collapse: collapse;

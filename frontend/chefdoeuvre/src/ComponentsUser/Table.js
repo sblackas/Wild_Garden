@@ -8,15 +8,18 @@ import { Link } from 'react-router-dom';
 import { personalArtworks, deleteArtwork } from '../Store/actions/artworks';
 
 
+
 export class TableTest extends React.Component {
-	state = {
-		msgSuccess: ""
+	constructor(props) {
+        super(props)
+	this.state = {
+		msgSuccess: "",
+
 	};
 
-	// handleSubmitEdition = event => {
-	// 	event.preventDefault();
-	// 	this.props.history.push('/admin/modifyproduct/' + id_product);
-	// }
+	
+	}
+
 
 
 	deleteRow(id_artwork, e) {
@@ -48,38 +51,46 @@ export class TableTest extends React.Component {
 		
 	// }
 
+	handleChange = (e) => {
+        console.log(e.target.id, e.target.value)
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
 
 
 	render() {
-		if (this.props.id && !this.props.myArtworks.length) {
-            axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
-            .then(res => {
-                console.log(res);
-                // this.setState({ artworksTab: res.data })
-                console.log(this.props.personalArtworks); //tableau vide qui se remplit
-                this.personalArtworks(res.data)
+		// if (this.props.id && !this.props.myArtworks.length) {
+        //     axios.get(`http://localhost:8000/get-artwork/${this.props.id}` )
+        //     .then(res => {
+        //         console.log(res);
+        //         // this.setState({ artworksTab: res.data })
+        //         console.log(this.props.personalArtworks); //tableau vide qui se remplit
+        //         this.personalArtworks(res.data)
                 
-			})
-			.catch(err => {
-			console.log(err);
-		  });
-		}
+		// 	})
+		// 	.catch(err => {
+		// 	console.log(err);
+		//   });
+		// };
+		// if(!this.state.show){
+		// 	return null;
+		// }
 		
 
 		return (
 			<div className="TablePage">
-
+<div className="messageS">
 <p>{this.state.msgSuccess}</p>
-
+</div>
 				<div className="containerTable">
 
 					<table>
-						{/* {console.log(this.state.artworks)} */}
 
 						<thead>
 							<tr>
 								<th>ID </th>
-								{/* <th>Catégorie</th> */}
+								<th>Catégorie</th>
 								<th>Titre</th>
 								<th>Description</th>
 								<th>Image</th>
@@ -91,7 +102,7 @@ export class TableTest extends React.Component {
 								return (
 									<tr key={elem.id}>
 										<td>{elem.id_artwork}</td>
-										{/* <td>{elem.cate_name}</td> */}
+										<td>{elem.id_cate}</td>
 										<td>{elem.art_title}</td>
 										<td>{elem.art_desc}</td>
 										<td><img src={elem.art_picture} alt="" className="thumbnail-table"/></td>
@@ -99,12 +110,15 @@ export class TableTest extends React.Component {
 											<div className="icon-container">
 												<button type="submit" value="Submit" id="table_button" onClick={(e) => this.deleteRow(elem.id_artwork, e)} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
 												<Link to={`/user/edition-artwork/${elem.id_artwork}`} ><button type="submit" value="Submit" id="table_button_edition" onClick={this.handleSubmitEdition} ><img src={edit_icon} className="bin_icon" alt="" /><div id="circle-table"></div></button></Link>
+
 											</div>
 										</td>
 									</tr>
 								)
 							}
 							)}
+
+
 
 						</tbody>
 					</table>

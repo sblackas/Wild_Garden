@@ -46,7 +46,7 @@ class SignIn extends React.Component{
                 id: decoded.id
               };
               localStorage.setItem("tokenUser", res.data.token)
-              
+              console.log(res.data.token);
               this.props.loginArtist(loggedUser)
               console.log(loggedUser);
               this.props.history.push('/dashboard');

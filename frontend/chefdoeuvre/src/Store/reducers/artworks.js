@@ -38,8 +38,19 @@ const initialStates = {
                 ),
               ],
             };
-
-   
+            case "UPDATE_MY_ARTWORK":
+              let indexOfElemToEdit  = state.myArtworks.map(e => e.id_product).indexOf(action.payload.id_artwork);
+             return {
+              ...state,
+                    myArtworks : [
+                        ...state.myArtworks.slice(0, indexOfElemToEdit),
+                       action.payload,
+                        ...state.myArtworks.slice(
+                          indexOfElemToEdit + 1,
+                          state.myArtworks.length
+                        ),
+                      ],
+             };
       default:
         return {
           ...state,

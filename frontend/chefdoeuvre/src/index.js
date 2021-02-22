@@ -32,6 +32,8 @@ import Header from './ComponentsHome/Header'
 import Footer from './ComponentsHome/Footer'
 import OurArtists from './ComponentsHome/OurArtists'
 import ArtistGalery  from './ComponentsHome/ArtistGalery'
+import ListOfArtworks from './ComponentsHome/ListOfArtworks'
+
 
 
 
@@ -42,7 +44,7 @@ const store = createStore(mainReducer,
 
 const myRouter = (
   <Provider store={store}>
-      <Router>
+      <Router forceRefresh={true}>
         <Header/>
           <Switch>
               <Route exact path="/" component={Home} />
@@ -60,7 +62,8 @@ const myRouter = (
               <PrivateRoute exact path="/admin/dashboard" component={DashboardAdmin} />
               <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
               <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
-              <Route exact path="/galeries" component={OurArtists} />
+              <Route exact path="/nos-artistes" component={OurArtists} />
+              <Route exact path="/les-oeuvres" component={ListOfArtworks} />
               <Route exact path="/galerie-of/:id_user" component={ArtistGalery} />
 
 

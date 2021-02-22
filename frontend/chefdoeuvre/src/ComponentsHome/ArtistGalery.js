@@ -1,16 +1,57 @@
 import React from 'react'
+import axios from 'axios'
 import './ArtistGalery.css'
 import { connect } from 'react-redux'
 import { personalArtworks } from '../Store/actions/artworks';
-import { userData } from '../Store/actions/artist';
+
 
 
 
 export class ArtistGalery extends React.Component {
+  state = {
+    userData: [],
+    galeryTab: [],
+    name: "",
+    lastname: "",
+    pp: "",
+
+  }
+
+  componentDidMount(){
+
+    axios.get(`http://localhost:8000/users/${this.props.id}`)
+    .then(res => {
+      console.log(res.data);
+      this.state.userData(res.data)
+  })
+  .catch(error => {
+      console.log("catch error");
+      console.log(error);
+
+
+  }
+  );
+
+  axios.get(`http://localhost:8000/get-artwork/${this.props.id}`)
+  .then(res => { 
+      console.log(res.data);
+      this.props.personalArtworks(res.data)
+  })
+  .catch(error => {
+      console.log("catch error");
+      console.log(error);
+
+
+  }
+  )
+  
+  }
+
+
     render() {
         return (
             <div className="ArtistGalery">
-                {this.props.userData.map(elem => {
+                {this.state.userData.map(elem => {
                        return (
                 <div className="user-bio">
 
@@ -25,28 +66,16 @@ export class ArtistGalery extends React.Component {
                 )
             })}
 
-                <section className="gallery" >
-                {this.props.myArtworks.map(elem => {
+<div id="h-portfolio" >
+{this.state.galeryTab.map(elem => {
                             return (
-          <div className="galleryList"
-            key={elem.id}>
-            <img src={elem.art_picture} alt={elem.art_title} />
-            <div className='flex-center' >
-              <div className="bbox"
-                color='white'
-                style={{
-                  position: 'absolute',
-                  top: '50%'
-                }}
-              >
-                
-              </div>
-            </div>
-          </div>
-        );
-      })}
-    </section>
+        <div className="tile scale-anm web all" key={elem.id}>
+          <img src={elem.art_picture} alt="" />
+        </div>
+)
+})} 
 
+  </div>
             </div>
         )
     }
@@ -56,14 +85,13 @@ const mapStateToProps = (state /*, ownProps*/) => {
     return {
         myArtworks: state.artworksReducer.myArtworks,
         id: state.artistReducer.id,
-        userData: state.artistReducer.userData,
 
 
 
     }
 }
 
-const mapDispatchToProps = { personalArtworks, userData }
+const mapDispatchToProps = { personalArtworks }
 
 export default connect(
     mapStateToProps,

@@ -8,7 +8,11 @@ import { usersList } from '../Store/actions/artist';
 
 
 export class OurArtists extends React.Component {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+    }
+  }
 
     render() {
 
@@ -50,7 +54,7 @@ export class OurArtists extends React.Component {
           <div className="fig-author-figure-title">{elem.u_name}</div> 
           <div className="fig-author-figure-title">{elem.u_lastname}</div>
           <div className="fig-author-figure-title">Pays</div>
-          <div className="fig-author-figure-title">Nombre d'oeuvres</div>
+          <div className="fig-author-figure-title"> {this.props.count} Nombre d'oeuvres</div>
         </figcaption>
       </figure>
       )

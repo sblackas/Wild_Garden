@@ -28,22 +28,28 @@ class Header extends React.Component {
     }
 
     componentDidMount() {
-                   //toutes les oeuvres personelles d'un artiste
-if (localStorage.getItem("tokenUser")) {
-let decoded =jwt.decode(localStorage.getItem("tokenUser"))
-                    axios.get(`http://localhost:8000/get-artwork/${decoded.id}`)
-                        .then(res => {
-                            console.log(res.data);
-                            this.props.personalArtworks(res.data)
-                        })
-                        .catch(error => {
-                            console.log("catch error");
-                            console.log(error);
-            
-            
-                        }
-                        )
-                    }
+        //toutes les oeuvres personelles d'un artiste
+        if (localStorage.getItem("tokenUser")) {
+            let decoded = jwt.decode(localStorage.getItem("tokenUser"))
+            let loggedUser = {
+                token: localStorage.getItem("tokenUser"),
+                email: decoded.email,
+                id: decoded.id
+            };
+            this.props.loginArtist(loggedUser)
+
+            console.log(decoded);
+            axios.get(`http://localhost:8000/get-artwork/${decoded.id}`)
+                .then(res => {
+                    console.log(res.data);
+                    this.props.personalArtworks(res.data)
+                })
+                .catch(error => {
+                    console.log("catch error");
+                    console.log(error);
+
+                })
+        }
         //toutes les oeuvres
         axios.get('http://localhost:8000/all-of-artworks')
             .then(res => {
@@ -55,9 +61,9 @@ let decoded =jwt.decode(localStorage.getItem("tokenUser"))
 
             }
             )
- 
-        
-            //toutes les cate
+
+
+        //toutes les categories
         axios.get('http://localhost:8000/categories')
             .then(res => {
                 console.log(res.data);
@@ -69,16 +75,8 @@ let decoded =jwt.decode(localStorage.getItem("tokenUser"))
 
             }
             )
-            //infos d'une oeuvre
-        axios.get(`http://localhost:8000/artwork/${this.props.id_artwork}`)
-            .then(res => {
-                this.props.listArtworks(res.data)
-            })
-            .catch(error => {
-                console.log("catch error");
-                console.log(error);
-            })
-//tous les artiste
+
+        //tous les artistes
         axios.get('http://localhost:8000/users')
             .then(res => {
                 this.props.usersList(res.data)
@@ -87,15 +85,7 @@ let decoded =jwt.decode(localStorage.getItem("tokenUser"))
                 console.log("catch error");
                 console.log(error);
             })
-            //infos d'un artiste
-            // axios.get(`http://localhost:8000/users/${this.props.id}`)
-            // .then(res => {
-            //     this.props.userData(res.data)
-            // })
-            // .catch(error => {
-            //     console.log("catch error");
-            //     console.log(error);
-            // })
+
     }
 
     render() {
@@ -153,7 +143,8 @@ let decoded =jwt.decode(localStorage.getItem("tokenUser"))
                 <div className="Header">
                     <div className="navbar" variant="dark">
                         <Nav className="mr-auto">
-                            <Nav.Link as={Link} to="/galeries" className="linkheader">Galeries</Nav.Link>
+                            <Nav.Link as={Link} to="/nos-artistes" className="linkheader">Artistes</Nav.Link>
+                            <Nav.Link as={Link} to="/les-oeuvres" className="linkheader">Oeuvres</Nav.Link>
                             <Navbar.Brand href="/"><img src={wglogo} className="titleheader" alt="" /> </Navbar.Brand>
 
                             <Nav.Link as={Link} to="/signup" className="linkheader">Inscription</Nav.Link>

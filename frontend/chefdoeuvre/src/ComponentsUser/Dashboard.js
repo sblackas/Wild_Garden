@@ -2,6 +2,8 @@ import React from 'react';
 import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
+// import { usersList } from '../Store/actions/artist';
+
 import TableTest from './Table'
 
 
@@ -28,7 +30,19 @@ class Dashboard extends React.Component {
     this.setState({ email: event.target.value })
   };
 
+  // componentDidMount () {
+  //   // console.log(this.props.match.params.edit);
+  //   let profiletoedit = this.props.users.filter(elem => elem.id == this.props.match.params.edit)
+  //   console.log(profiletoedit);
 
+  //   this.setState({
+  //    name: profiletoedit[0].u_name,
+  //     lastname: profiletoedit[0].u_lastname,
+  //     pp: profiletoedit[0].u_pp,
+  //     email: profiletoedit[0].u_email
+  //   }
+  //   );
+  // }
   handleSubmitEdition = async event => {
     // async parce que la requete doit attendre sinon elle passera dans else
     event.preventDefault();
@@ -77,26 +91,28 @@ class Dashboard extends React.Component {
           <h1>&bull; Editez votre profil &bull;</h1>
           <div className="underline">
           </div>
+          <div className="messageSS">
           <p>{this.state.successMsg}</p>
+          </div>
 
           <form onSubmit={this.handleSubmitEdition}>
             <div className="firsttname">
               <label htmlFor="Name"></label>
-              <input type="name" placeholder="Prénom" onChange={this.editName} />
+              <input type="name" placeholder="Prénom" value={this.state.name} onChange={this.editName} />
             </div>
             <div className="lastname">
               <label htmlFor="Name"></label>
-              <input type="name" id="lastname_input" placeholder="Nom" onChange={this.editLastName} />
+              <input type="name" id="lastname_input" placeholder="Nom" value={this.state.lastname} onChange={this.editLastName} />
             </div>
             <div className="email">
               <label htmlFor="email"></label>
-              <input type="text" id="email_input" placeholder="Adresse Email" onChange={this.editEmail} />
+              <input type="text" id="email_input" placeholder="Adresse Email" value={this.state.email} onChange={this.editEmail} />
             </div>
 
 
             <div className="pp">
               <label htmlFor="Picture"></label>
-              <input type="text" id="picture_profile" placeholder="Picture Profile" onChange={this.editPicture} />
+              <input type="text" id="picture_profile" placeholder="Picture Profile" value={this.state.pp} onChange={this.editPicture} />
             </div>
 
 
@@ -122,7 +138,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
   }
 }
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {  }
 
 export default connect(
   mapStateToProps,

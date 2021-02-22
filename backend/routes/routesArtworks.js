@@ -73,8 +73,11 @@ router.get('/artwork/:id_artwork', function (req, res) {
 //_____Modifier oeuvre
 router.use('/update-artwork/:edit', middlewares.isArtist)
 router.put('/update-artwork/:edit', function (req, res) {
-    db.query(`UPDATE artworks SET art_title = '${req.body.name}', art_desc = '${req.body.description}', art_picture = '${req.body.picture}' WHERE id_artwork = '${req.params.edit}'` , function (error, results) {
-  if (error) throw error;
+  console.log(req.body);
+  console.log(req.params.edit);
+    db.query(`UPDATE artworks SET art_title = '${req.body.title}', art_desc = '${req.body.description}', art_picture = '${req.body.picture}', id_cate = '${req.body.id_cate}' WHERE id_artwork = '${req.params.edit}'` , function (error, results) {
+  console.log(results);
+      if (error) throw error;
    res.json('THE ARTWORK HAS BEEN UPDATED');
      });
   });
@@ -84,7 +87,7 @@ router.put('/update-artwork/:edit', function (req, res) {
 router.get('/get-artwork/:id', function (req,res) {
   try {
     let artId = req.params.id
-    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.id_artwork, artworks.art_title, artworks.art_desc, artworks.art_picture FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
+    let getUserArt = `SELECT  users.u_name, users.u_lastname, artworks.id_artwork, artworks.art_title, artworks.art_desc, artworks.art_picture, artworks.id_cate FROM users INNER JOIN artworks on users.id_user = artworks.id_user WHERE artworks.id_user = '${artId}'`
     db.query(getUserArt, function (err, resultas) {
        if (err) throw err,
        console.log(resultas);
@@ -96,13 +99,31 @@ router.get('/get-artwork/:id', function (req,res) {
  })
 
 //____Recuperer les oeuvres d'une categorie
-router.get('/get-cate-artworks/:id', function (req,res) {
-    let artCateId = req.params.id
-    let getCateArt = `SELECT  artworks.art_title, artworks.art_desc, artworks.art_picture, categories.cate_name FROM artworks INNER JOIN categories on artworks.id_artwork = categories.id_artwork WHERE id_artwork = '${artCateId}'`
-    db.query(getCateArt, function (err, results) {
-       if (err) throw err
-       res.send(results)
-    })
- })
+// router.get('/get-cate-artworks/filter/:id', function (req,res) {
+//     let artCateId = req.params.id
+//     let getCateArt = `SELECT  artworks.art_title, artworks.art_desc, artworks.art_picture, categories.cate_name FROM artworks INNER JOIN categories on artworks.id_artwork = categories.id_artwork WHERE id_artwork = '${artCateId}'`
+//     db.query(getCateArt, function (err, results) {
+//        if (err) throw err
+//        res.send(results)
+//     })
+//  })
+
+ router.get("/artworks/filter/:id_cate", (req, res) => {
+  try {
+      db.query(`SELECT * FROM artworks WHERE id_cate = ${req.params.id_cate}`, function (err, resultss) {
+          if (err) {
+              res.status(400).send("Error")
+          } else { 
+              console.log(resultss)
+              res.status(200).send(resultss)
+          }
+      })
+
+  } catch (err) {
+      console.log(err);
+      res.status(400).send("Error")
+
+  }
+})
 
 module.exports = router;
