@@ -3,6 +3,7 @@ import './Dashboard.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
 import TableTest from './Table'
+import jwt from 'jsonwebtoken'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -34,19 +35,26 @@ class Dashboard extends React.Component {
     this.setState({ email: event.target.value })
   };
 
-  // componentDidMount () {
-  //   // console.log(this.props.match.params.edit);
-  //   let profiletoedit = this.props.users.filter(elem => elem.id == this.props.match.params.edit)
-  //   console.log(profiletoedit);
+  componentDidMount () {
+    // console.log(this.props.match.params.edit);
+    let token= jwt.decode(localStorage.getItem('tokenUser'))
+  
+    axios.get(`http://localhost:8000/users/${token.id}`)
+    .then(res => {
+      this.setState({
+        name: res.data[0].u_name,
+         lastname: res.data[0].u_lastname,
+         pp: res.data[0].u_pp,
+         email: res.data[0].u_email
+       }
+       );
+    })
 
-  //   this.setState({
-  //    name: profiletoedit[0].u_name,
-  //     lastname: profiletoedit[0].u_lastname,
-  //     pp: profiletoedit[0].u_pp,
-  //     email: profiletoedit[0].u_email
-  //   }
-  //   );
-  // }
+    // let profiletoedit = this.props.users.filter(elem => elem.id == this.props.match.params.edit)
+    // console.log(profiletoedit);
+
+    
+  }
 
   handleSubmitEdition = async event => {
     // async parce que la requete doit attendre sinon elle passera dans else
@@ -78,21 +86,26 @@ class Dashboard extends React.Component {
       })
   }
 
-  // const [image, setImage] = useState({});
   fileUploader = event => {
     event.preventDefault();
 
       const formData = new FormData();
-      formData.append("file", this.state.file);
-      formData.append('id_user', this.state.id_user)
+      formData.append("profile", this.state.file);
+      // console.log(this.state.file);
+      // // formData.append('id_user', this.state.id_user)
+      // console.log(formData);
       const config = {
           headers: {
               'content-type': 'multipart/form-data'
           }
       };
-    axios.post('http://localhost:8000/single', formData, config)
+      // const toSend = {
+      //   profile: formData, 
+      //   id_user: this.state.id_user,
+      // }
+    axios.post(`http://localhost:8000/single/${this.props.id}`, formData, config)
       .then(res => {
-        console.log('ICI');
+        console.log('HERE');
         if (res.status === 200) {
           console.log(res);
           console.log(res.data);
@@ -102,11 +115,18 @@ class Dashboard extends React.Component {
         console.log("catch error");
         console.log(error);
       })
-
   }
-
   onChange(e) {
     this.setState({file:e.target.files[0]});
+    console.log();
+  }
+
+ getImagePath = (newFileName) => {
+    return `C:/Users/vivia/OneDrive/Documents/Code SIIMPLON NANTERRE/Wild_Garden_Project/backend/uploads/${newFileName}`
+    // return `@/Wild_Garden_Project/backend/uploads/${newFileName}`
+
+    // return `http://localhost:8000/uploads/${newFileName}`
+
   }
 
   render() {
@@ -124,24 +144,28 @@ class Dashboard extends React.Component {
             <p>{this.state.successMsg}</p>
           </div>
 
+          <div className="rondPP">
+          <img className="rondPPimg" src={this.getImagePath(this.state.pp)} alt='pp' />
+          </div>
+
           <form onSubmit={this.handleSubmitEdition}>
             <div className="firsttname">
-              <label htmlFor="Name"></label>
+              <label htmlFor="Name">Prénom</label>
               <input type="name" placeholder="Prénom" value={this.state.name} onChange={this.editName} />
             </div>
 
             <div className="lastname">
-              <label htmlFor="Name"></label>
+              <label htmlFor="Name">Nom</label>
               <input type="name" id="lastname_input" placeholder="Nom" value={this.state.lastname} onChange={this.editLastName} />
             </div>
 
             <div className="email">
-              <label htmlFor="email"></label>
+              <label htmlFor="email">Email</label>
               <input type="text" id="email_input" placeholder="Adresse Email" value={this.state.email} onChange={this.editEmail} />
             </div>
 
             <div className="pp">
-              <label htmlFor="Picture"></label>
+              <label htmlFor="Picture">Photo de Profil</label>
               <input type="text" id="picture_profile" placeholder="Picture Profile" value={this.state.pp} onChange={this.editPicture} />
             </div>
 

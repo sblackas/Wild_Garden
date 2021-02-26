@@ -13,7 +13,7 @@
     margin-bottom: 30PX;
     position: relative;
     box-sizing: border-box;
-    height: 75vh;
+    height: 95vh;
 
   }
 
@@ -49,5 +49,18 @@
 	transition: all 0.3s;
 }
 
+.rondPP {
+  background-color: gray;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
 
-
+/* .rondPPimg {
+  --disable-web-security;
+  --allow-file-access-from-files; 
+  --allow-file-access
+} */

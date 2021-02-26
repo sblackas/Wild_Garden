@@ -1,6 +1,6 @@
 const initialStates = {
     categories: [],
-    id: String
+    id: ""
     
  };
 

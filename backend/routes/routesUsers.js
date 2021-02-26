@@ -7,10 +7,31 @@ const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
 const middlewares = require('../middlewares/middlewares.js');
 var multer  = require('multer');
+// const path = require("path");
 var upload = multer({ dest: './uploads/' });
 const fs = require('fs')
 
+// const storage = multer.diskStorage({
+//   destination: "./uploads/",
+//   filename: function(req, file, cb){
+//      cb(null,"IMAGE-" + Date.now() + path.extname(file.originalname));
+//   }
+// });
 
+// const upload = multer({
+//   storage: storage,
+//   limits:{fileSize: 1000000},
+// }).single("myImage");
+// router.post("/upload", upload(req, res, err)){
+//      console.log("Request ---", req.body);
+//      console.log("Request file ---", req.file);//Here you get file.
+//      /*Now do where ever you want to do*/
+//      if(!err)
+//         return res.send(200).end();
+
+//   }
+
+// ;
 
 //____Inscription
 router.post('/users/sign-up', function (req, res) {
@@ -126,16 +147,17 @@ router.put('/users/:edit', function (req, res) {
   });
 });
 
-//Ajouter une photo de profil
-router.post('/single', upload.single('profile'), function (req, res, next) {
+//Uploader un fichier 
+router.post('/single/:id_user', upload.single('profile'), function (req, res, next) {
   try {
+    console.log(req.body);
     console.log(req.file);
     let fileType = req.file.mimetype.split('/')[1];
     let newFileName = req.file.filename + "." + fileType;
     fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function(){
       console.log("callback");
     });
-    db.query(`UPDATE users SET u_pp = '${newFileName}' WHERE id_user = ${req.body.id_user} `, function (err, result) {
+    db.query(`UPDATE users SET u_pp = '${newFileName}' WHERE id_user = '${req.params.id_user}' `, function (err, result) {
        if (err) throw err;
       res.status(200).send(result);
     });

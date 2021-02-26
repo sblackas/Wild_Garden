@@ -1,0 +1,26 @@
+.Oeuvre {
+    background: #100B09;
+    border-top: solid black 2px;
+    min-height: 330vh;
+
+}
+
+.Oeuvre .ll-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+    border: aquamarine solid 2px;
+    display: flex;
+   justify-content: center;
+}
+
+.Oeuvre .b-game-card__cover img {
+    height: 90vh;
+    border: red solid 2px;
+    
+   
+}
+
+/* comment container */
+
+

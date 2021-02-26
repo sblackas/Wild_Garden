@@ -51,16 +51,12 @@ class AddArtwork extends React.Component {
         if (res.status === 200) {
           console.log(res);
           console.log(res.data);
-
-        
-        
-        // this.props.newArtwork(addedArtwork)
         this.setState({ msgSuccess: "Bien ajouté" })
         }
-        
-
       })
-
+      .catch(function (error) {
+        console.log(error);
+    });
   }
 
   render() {

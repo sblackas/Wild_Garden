@@ -61,8 +61,6 @@ connection.connect(function(err){
         FOREIGN KEY (id_user) REFERENCES users(id_user),
         FOREIGN KEY (id_artwork) REFERENCES artworks(id_artwork)
      )`);
-
-
 });
 
 module.exports = connection;

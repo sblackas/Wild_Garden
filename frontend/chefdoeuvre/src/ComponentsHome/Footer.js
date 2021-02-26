@@ -18,7 +18,9 @@ export class Footer extends React.Component {
                 <div className="sitemap-left">
                     <h2>SITEMAP</h2>
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/artistes">Galeries</Nav.Link>
+                    <Nav.Link as={Link} to="/nos-artistes">Artistes</Nav.Link>
+                    <Nav.Link as={Link} to="/les-oeuvres">Oeuvres</Nav.Link>
+
                 </div>
                 <div className="f-wrap-center">
                 <h2>SOCIAL</h2>
