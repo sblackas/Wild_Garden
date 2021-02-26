@@ -8,17 +8,17 @@ import jwt from 'jsonwebtoken'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.state ={
-    name: "",
-    lastname: "",
-    pp: "",
-    email: "",
-    successMsg: "",
-    file: "",
-    id_user:""
-  };
-  this.fileUploader = this.fileUploader.bind(this);
-        this.onChange = this.onChange.bind(this);
+    this.state = {
+      name: "",
+      lastname: "",
+      pp: "",
+      email: "",
+      successMsg: "",
+      file: "",
+      id_user: ""
+    };
+    // this.fileUploader = this.fileUploader.bind(this);
+    // this.onChange = this.onChange.bind(this);
   }
 
 
@@ -35,25 +35,25 @@ class Dashboard extends React.Component {
     this.setState({ email: event.target.value })
   };
 
-  componentDidMount () {
+  componentDidMount() {
     // console.log(this.props.match.params.edit);
-    let token= jwt.decode(localStorage.getItem('tokenUser'))
-  
+    let token = jwt.decode(localStorage.getItem('tokenUser'))
+
     axios.get(`http://localhost:8000/users/${token.id}`)
-    .then(res => {
-      this.setState({
-        name: res.data[0].u_name,
-         lastname: res.data[0].u_lastname,
-         pp: res.data[0].u_pp,
-         email: res.data[0].u_email
-       }
-       );
-    })
+      .then(res => {
+        this.setState({
+          name: res.data[0].u_name,
+          lastname: res.data[0].u_lastname,
+          pp: res.data[0].u_pp,
+          email: res.data[0].u_email
+        }
+        );
+      })
 
     // let profiletoedit = this.props.users.filter(elem => elem.id == this.props.match.params.edit)
     // console.log(profiletoedit);
 
-    
+
   }
 
   handleSubmitEdition = async event => {
@@ -86,48 +86,41 @@ class Dashboard extends React.Component {
       })
   }
 
-  fileUploader = event => {
-    event.preventDefault();
+  // fileUploader = event => {
+  //   event.preventDefault();
 
-      const formData = new FormData();
-      formData.append("profile", this.state.file);
-      // console.log(this.state.file);
-      // // formData.append('id_user', this.state.id_user)
-      // console.log(formData);
-      const config = {
-          headers: {
-              'content-type': 'multipart/form-data'
-          }
-      };
-      // const toSend = {
-      //   profile: formData, 
-      //   id_user: this.state.id_user,
-      // }
-    axios.post(`http://localhost:8000/single/${this.props.id}`, formData, config)
-      .then(res => {
-        console.log('HERE');
-        if (res.status === 200) {
-          console.log(res);
-          console.log(res.data);
-        }
-      })
-      .catch(error => {
-        console.log("catch error");
-        console.log(error);
-      })
-  }
-  onChange(e) {
-    this.setState({file:e.target.files[0]});
-    console.log();
-  }
+  //   const formData = new FormData();
+  //   formData.append("profile", this.state.file);
+  //   const config = {
+  //     headers: {
+  //       'content-type': 'multipart/form-data'
+  //     }
+  //   };
+  //   axios.post(`http://localhost:8000/single/${this.props.id}`, formData, config)
+  //     .then(res => {
+  //       console.log('HERE');
+  //       if (res.status === 200) {
+  //         console.log(res);
+  //         console.log(res.data);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log("catch error");
+  //       console.log(error);
+  //     })
+  // }
 
- getImagePath = (newFileName) => {
-    return `C:/Users/vivia/OneDrive/Documents/Code SIIMPLON NANTERRE/Wild_Garden_Project/backend/uploads/${newFileName}`
-    // return `@/Wild_Garden_Project/backend/uploads/${newFileName}`
+  // onChange(e) {
+  //   this.setState({file:e.target.files[0]});
+  //   console.log();
+  // }
 
-    // return `http://localhost:8000/uploads/${newFileName}`
+  //  getImagePath = (newFileName) => {
+  //     return `C:/Users/vivia/OneDrive/Documents/Code SIIMPLON NANTERRE/Wild_Garden_Project/backend/uploads/${newFileName}`
+  //     // return `@/Wild_Garden_Project/backend/uploads/${newFileName}`
+  //     // return `http://localhost:8000/uploads/${newFileName}`
 
-  }
+  //   }
 
   render() {
     return (
@@ -145,7 +138,9 @@ class Dashboard extends React.Component {
           </div>
 
           <div className="rondPP">
-          <img className="rondPPimg" src={this.getImagePath(this.state.pp)} alt='pp' />
+            {/* <img className="rondPPimg" src={this.getImagePath(this.state.pp)} alt='pp' /> */}
+            <img className="rondPPimg" alt='pp' />
+
           </div>
 
           <form onSubmit={this.handleSubmitEdition}>
@@ -175,12 +170,13 @@ class Dashboard extends React.Component {
           </div>
         </div>
 
-        <div className="multer">
+        {/* <div className="multer">
           <form >
             <input type="file"  onChange= {this.onChange} />
             <button onClick={this.fileUploader}>Upload</button>
           </form>
-        </div>
+        </div> */}
+
         <h1>&bull; Editez vos oeuvres &bull;</h1>
 
         <TableTest />

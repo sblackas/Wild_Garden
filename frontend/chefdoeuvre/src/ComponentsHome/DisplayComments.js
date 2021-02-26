@@ -2,15 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './DisplayComments.css'
 import { connect } from 'react-redux'
-// import { personalArtworks } from '../Store/actions/artworks'
 import { listCommentsOnArtwork } from '../Store/actions/comments'
-
-
-
 
 export class DisplayComments extends Component {
    
-
     componentDidMount() {
   
         axios.get(`http://localhost:8000/get-feedback-artwork/${this.props.idArtwork}`)
@@ -31,18 +26,17 @@ export class DisplayComments extends Component {
                     {this.props.commentsOnArtwork.map(elem =>{
                         return (
                             <div id="comment-container">
-                            <div className="com-profile-img"></div>
+                            <div className="com-profile-img" alt="userpic">{elem.u_pp}</div>
                             <div className="good">
                                 <h1>{elem.u_name}</h1>
                                 <h1>{elem.u_lastname}</h1>
-                                <div class="com-description">
+                                <div className="com-description">
                                    {elem.commentary} 
-      </div>
+                                </div>
                             </div>
                         </div>
                          )
-                 })}  
-                   
+                     })}  
                 </section>
             </div>
         )
@@ -51,9 +45,6 @@ export class DisplayComments extends Component {
 
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
-        id: state.artistReducer.id,
-        id_artwork: state.artworksReducer.id_artwork,
-        artworks: state.artworksReducer.artworks,
         commentsOnArtwork: state.commentsReducer.commentsOnArtwork
 
 

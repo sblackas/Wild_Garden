@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { personalArtworks } from '../Store/actions/artworks'
-// import { listComments } from '../Store/actions/comments'
 import AddComment from './AddComment'
 import './Oeuvre.css'
 import DisplayComments from './DisplayComments'
@@ -14,7 +13,6 @@ export class Oeuvre extends Component {
         description: "",
         picture: "",
         id_artwork: this.props.match.params.id_artwork,
-        commentOnArtwork: this.props.comments
     };
 
     componentDidMount() {

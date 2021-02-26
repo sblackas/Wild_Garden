@@ -12,10 +12,9 @@
 .containerTable {
     position: relative;
     /* margin-top: 30px; */
-    margin-right: auto;
-    margin-left: auto;
+   padding-left: 10%;
     /* top: 155%; */
-    left: 14%;
+    /* left: 14%; */
     transform: translate(0%, 0%);
 }
 
@@ -28,7 +27,7 @@
 }
 
 table {
-    width: 990px;
+    width: 90%;
     border-collapse: collapse;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);

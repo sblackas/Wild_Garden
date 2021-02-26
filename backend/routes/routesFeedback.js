@@ -49,7 +49,7 @@ router.get('/feedbacks', function (req, res) {
 // router.use('/get-feedback/:id', middlewares.isAdmin)
 router.get('/get-feedback-user/:id', function (req, res) {
    let userId = req.params.id
-   let getFeedback = `SELECT  users.u_name, users.u_lastname, feedbacks.commentary FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE users.id_user = '${userId}'`
+   let getFeedback = `SELECT  users.u_name, users.u_lastname, users.u_pp, feedbacks.commentary FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE users.id_user = '${userId}'`
    db.query(getFeedback, function (err, results) {
       if (err) throw err
       res.send(results)
@@ -59,7 +59,7 @@ router.get('/get-feedback-user/:id', function (req, res) {
 //_____Recuperer tous les commentaires postés sur une oeuvre
 router.get('/get-feedback-artwork/:id_artwork', function (req, res) {
    let artFeedbackId = req.params.id_artwork
-   let getFeedbackOnArt = `SELECT feedbacks.commentary, users.u_name, users.u_lastname FROM feedbacks INNER JOIN users on feedbacks.id_user = users.id_user WHERE feedbacks.id_artwork = ${artFeedbackId}`
+   let getFeedbackOnArt = `SELECT feedbacks.commentary, users.u_name, users.u_lastname, users.u_pp FROM feedbacks INNER JOIN users on feedbacks.id_user = users.id_user WHERE feedbacks.id_artwork = ${artFeedbackId}`
    db.query(getFeedbackOnArt, function (err, results) {
       if (err) throw err
       res.send(results)

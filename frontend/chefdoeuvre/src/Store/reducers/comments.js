@@ -1,6 +1,7 @@
 const initialStates = {
     comments: [],
     commentsOnArtwork: [],
+    myComments: [],
     id: ""
     
  };
@@ -25,6 +26,11 @@ const initialStates = {
         return {
           ...state,
           commentsOnArtwork: action.payload
+        };
+        case "GET_MY_COMMENTS":
+        return {
+          ...state,
+          myComments: action.payload
         };
    
       default:

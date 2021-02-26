@@ -33,8 +33,9 @@ import Footer from './ComponentsHome/Footer'
 import OurArtists from './ComponentsHome/OurArtists'
 import ArtistGalery  from './ComponentsHome/ArtistGalery'
 import ListOfArtworks from './ComponentsHome/ListOfArtworks'
-import DisplayComments from './ComponentsHome/DisplayComments'
+// import DisplayComments from './ComponentsHome/DisplayComments'
 import Oeuvre from './ComponentsHome/Oeuvre'
+import MyComments from './ComponentsUser/MyComments'
 
 
 
@@ -68,8 +69,10 @@ const myRouter = (
               <Route exact path="/nos-artistes" component={OurArtists} />
               <Route exact path="/les-oeuvres" component={ListOfArtworks} />
               <Route exact path="/galerie-of/:id_user" component={ArtistGalery} />
-              <Route exact path="/display-comment" component={DisplayComments} />
+              {/* <Route exact path="/display-comment" component={DisplayComments} /> */}
               <Route exact path="/the-artwork/:id_artwork" component={Oeuvre} />
+              <Route exact path="/my-comments" component={MyComments} />
+
 
 
           </Switch>

@@ -125,7 +125,8 @@ class Header extends React.Component {
                 <Navbar className="userNavbar" variant="dark">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/add-artwork">Ajouter une oeuvre</Nav.Link>
-                        <Nav.Link as={Link} to="/artworks-list">Toutes vos oeuvres</Nav.Link>
+                        <Nav.Link as={Link} to="/artworks-list">Mes oeuvres</Nav.Link>
+                        <Nav.Link as={Link} to="/my-comments">Mes commentaires</Nav.Link>
                         <Nav.Link as={Link} to="/dashboard">Mon espace</Nav.Link>
                     </Nav>
 

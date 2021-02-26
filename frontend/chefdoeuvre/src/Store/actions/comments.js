@@ -13,3 +13,8 @@ export const listCommentsOnArtwork = (comments) => ({
     type: "GET_ARTWORK_COMMENTS",
     payload: comments
 })
+
+export const listOfMyComments = (comments) => ({
+    type: "GET_MY_COMMENTS",
+    payload: comments
+})
