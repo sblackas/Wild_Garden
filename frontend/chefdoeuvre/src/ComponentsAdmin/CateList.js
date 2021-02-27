@@ -2,17 +2,39 @@ import axios from 'axios';
 import React from 'react';
 import './CateList.css'
 import { connect } from 'react-redux'
-import { listCate } from '../Store/actions/categories';
+import { listCate, deleteCate } from '../Store/actions/categories';
 import { Link } from 'react-router-dom';
+import bin from '../imagesDashUser/bin.png'
+
 
 
 
 class CateList extends React.Component {
     state = {
         categories: [],
+        msgSuccess: ""
     }
 
+	deleteCategory(id_cate, e) {
+        axios
+            .delete(`http://localhost:8000/category/${id_cate}`, {
+                headers: { authorization: `Bearer ${localStorage.getItem('tokenAdmin')}` }
+            })
+            .then((res) => {
+                if(res.status === 200) {
+                    this.props.deleteCate(id_cate)
+                    this.setState({ msgSuccess: 'Catégorie supprimée avec succès' });
+                    console.log('have been removed');
+                } 
+            });
+    }
 
+    handleChange = (e) => {
+        console.log(e.target.id, e.target.value)
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
 
     render() {
         // console.log("ID => ", this.props.id)
@@ -35,8 +57,9 @@ class CateList extends React.Component {
                 <div className="CateListPage">
 
                     <div className="title"><h1>&bull; Category List &bull;</h1></div>
+                    <p>{this.state.msgSuccess}</p>
 
-                    {console.log(this.state.categories)}
+                    {/* {console.log(this.state.categories)} */}
                     <div className="cards-container">
                         {this.props.categories.map(elem => {
                             return (
@@ -53,12 +76,11 @@ class CateList extends React.Component {
                                         </div>
                                         <div className="items cart">
                                             <i className="fa fa-shopping-cart"></i>
-                                            <Link to={`/artwortk-details/ ${elem.id}`} ><span>DETAILS</span></Link>
+                                            <Link to={`/admin/edit-category/${elem.id_cate}`} ><span>MODIFIER</span></Link>
+                                            <button type="submit" value="Submit" id="table_button" onClick={(e) => this.deleteCategory(elem.id_cate, e)} ><img src={bin} className="bin_icon" alt="" /><div id="circle-table"></div></button>
                                         </div>
                                     </div>
                                 </div>
-
-
                             )
                         })}
                     </div>
@@ -74,12 +96,13 @@ class CateList extends React.Component {
 const mapStateToProps = (state /*, ownProps*/) => {
     return {
         categories: state.cateReducer.categories,
-        id: state.adminReducer.id
+        id: state.adminReducer.id,
+        id_cate: state.cateReducer.id_cate
 
     }
 }
 
-const mapDispatchToProps = { listCate }
+const mapDispatchToProps = { listCate, deleteCate }
 
 export default connect(
     mapStateToProps,

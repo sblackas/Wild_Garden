@@ -41,10 +41,10 @@ export class MyComments extends Component {
     render() {
         return (
             <div className="MyComments">
-                <section id="section-com">
+                <section className="section-com">
                     {this.props.myComments.map(elem =>{
                         return (
-                            <div id="comment-container">
+                            <div className="comment-container">
                             <div className="com-profile-img" alt="mypic">{elem.u_pp}</div>
                             <div className="good">
                                 <h1>{elem.u_name}</h1>

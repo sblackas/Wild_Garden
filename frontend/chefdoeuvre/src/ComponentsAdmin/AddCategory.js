@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import jwt from 'jsonwebtoken'
 import './AddCategory.css';
 import { connect } from "react-redux";
 import { newCategory } from '../Store/actions/categories';
@@ -9,6 +10,7 @@ export class AddCategory extends React.Component {
     state = {
         name: "",
         picture: "",
+        id_admin: "",
         msgSuccess: ""
 
     }
@@ -25,16 +27,21 @@ export class AddCategory extends React.Component {
       handleSubmit = event => {
         event.preventDefault();
     
+         let decodedToken = localStorage.getItem('tokenAdmin')
+         decodedToken = jwt.decode(decodedToken)
+
         const category = {
           name: this.state.name,
           picture: this.state.picture,
-          id_cate: this.props.id
+          // id_cate: this.props.id,
+          id_admin: parseInt(decodedToken.id)
+          // id_admin: this.props.token
         };
-        console.log(this.props.token);
-        axios.post('http://localhost:8000/category/add', category, { headers: {authorization: `Bearer ${this.props.token}` }})
+        axios.post('http://localhost:8000/category/add', category, { headers: {authorization: `Bearer ${localStorage.getItem('tokenAdmin')}` }})
       .then(res => {
         if (res.status === 200) {
           console.log(res.data);
+          // this.props.newCategory(res.data)
         this.setState({ msgSuccess: "Bien ajouté" })
         }
       })
@@ -53,11 +60,11 @@ export class AddCategory extends React.Component {
           <p>{this.state.msgSuccess}</p>
           <form onSubmit={this.handleSubmit} id="contact_form">
             <div className="title">
-              <label for="Nom"></label>
+              <label htmlFor="Nom"></label>
               <input type="text" id="title_input" placeholder="Nom" onChange={this.inputNameCate} />
             </div>
             <div className="picture">
-              <label for="Picture"></label>
+              <label htmlFor="Picture"></label>
               <input type="text" id="picture_input" placeholder="Image" onChange={this.inputPictureCate} />
             </div>
             <div className="submit">

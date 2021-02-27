@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { listArtworks } from '../Store/actions/artworks';
 import './ListOfArtworks.css'
 import Filter from './Filter'
+import { Link } from 'react-router-dom';
+
 
 export class ListOfArtworks extends Component {
     constructor(props) {
@@ -41,6 +43,11 @@ export class ListOfArtworks extends Component {
         console.log(artworksLo)
         return (
             <div className="ListOfArtworks">
+
+{/* <div className="titlepage">
+    <h1>All of the <br></br><span>Artworks</span></h1>
+</div> */}
+
                 <Filter count={artworksLo.length}
                     categorie={this.state.categorie}
                     filterArtworks={this.filterArtworks}></Filter>
@@ -51,7 +58,9 @@ export class ListOfArtworks extends Component {
                         return (
                             
                             <div  className="tile scale-anm web all" key={elem.id}>
+                                <Link to={`/the-artwork/${elem.id_artwork}`} >
                                 <img src={elem.art_picture} alt="" />
+                                </Link>
                             </div>
                         )
                     })}

@@ -32,7 +32,6 @@ export class Filter extends Component {
         return (
             <div className="filter">
                 
-                    <div className="filter-result">Il y a {this.props.count} oeuvres</div>
                     <div className="filter-order"> Filtre {''} 
                     <select value={this.state.value} onChange={this.props.filterArtworks}>
                         <option>Categorie</option>
@@ -43,6 +42,7 @@ export class Filter extends Component {
                             )
                         })}
                     </select></div>
+                    <div className="filter-result">Il y a {this.props.count} oeuvres</div>
 
             
             </div>

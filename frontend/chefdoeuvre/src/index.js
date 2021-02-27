@@ -33,9 +33,15 @@ import Footer from './ComponentsHome/Footer'
 import OurArtists from './ComponentsHome/OurArtists'
 import ArtistGalery  from './ComponentsHome/ArtistGalery'
 import ListOfArtworks from './ComponentsHome/ListOfArtworks'
-// import DisplayComments from './ComponentsHome/DisplayComments'
 import Oeuvre from './ComponentsHome/Oeuvre'
 import MyComments from './ComponentsUser/MyComments'
+import EditCategory from './ComponentsAdmin/EditCategory'
+// import EditUser from './ComponentsAdmin/EditUser'
+// import EditionArtwork from './ComponentsAdmin/EditionArtwork'
+// import EditAComment from './ComponentsAdmin/EditAcomment'
+
+
+
 
 
 
@@ -69,9 +75,12 @@ const myRouter = (
               <Route exact path="/nos-artistes" component={OurArtists} />
               <Route exact path="/les-oeuvres" component={ListOfArtworks} />
               <Route exact path="/galerie-of/:id_user" component={ArtistGalery} />
-              {/* <Route exact path="/display-comment" component={DisplayComments} /> */}
               <Route exact path="/the-artwork/:id_artwork" component={Oeuvre} />
               <Route exact path="/my-comments" component={MyComments} />
+              <Route exact path="/admin/edit-category/:id_cate" component={EditCategory} />
+              {/* <Route exact path="/admin/edit-user/:id_user" component={EditUser} />
+              <Route exact path="/admin/edit-artwork/:id_artwork" component={EditionArtwork} />
+              <Route exact path="/admin/edit-comment/:id_feedback" component={EditAComment} /> */}
 
 
 

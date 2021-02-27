@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,700');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 .ListOfArtworks {
-    height: 250vh;
+    min-height: 200vh;
     background: #100B09;
     border-top: solid 2px black;
+    border-bottom: solid 2px black;
 
     /* font-family: 'Barlow', sans-serif;
     font-size: 1.125rem;
@@ -12,7 +16,18 @@
     margin: auto; 
 }
 
-@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,700');
+/* .titlepage h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 40px;
+  font-weight: normal;
+  color: white;
+  letter-spacing: 0px;
+}
+
+h1 span {
+  font-style: italic;
+} */
+
 
 #portfolio {  
     margin: 1rem 0;
@@ -25,10 +40,10 @@
     -webkit-column-width: 33.33333333333333%;
     -moz-column-width: 33.33333333333333%;
     column-width: 33.33333333333333%;
-    max-width: 990px;
+    max-width: 95%;
     margin-right:auto;
     margin-left: auto;
-    padding-top: 5rem;
+    padding-top: 4rem;
 
   }
 .tile { 

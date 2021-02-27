@@ -47,7 +47,6 @@ const mapStateToProps = (state /*, ownProps*/) => {
     return {
         commentsOnArtwork: state.commentsReducer.commentsOnArtwork
 
-
     }
 }
 

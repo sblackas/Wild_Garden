@@ -25,25 +25,11 @@ export class AddComment extends Component {
         this.setState({ comment: event.target.value })
     };
 
-    // componentDidMount() {
-    //     let theusercomment = this.props.comments.filter(elem => elem.id == this.props.match.params.id)
-    //     console.log("-------------------------")
-    //     console.log(theusercomment)
-    //     if (!this.state.name.length && theusercomment.length) {
-    //      this.setState({
-    //         name: theusercomment[0].u_name,
-    //         lastname: theusercomment[0].lastname,
-    //         id_user: theusercomment[0].id_user
-    //       });
-    //     }
-    //   }
 
     AddAComment = event => {
         event.preventDefault();
-        // if (this.validateForm()) {
+
         const comment = {
-            // name: this.state.name,
-            // lastname: this.state.lastname,
             comment: this.state.comment,
             id_user: this.props.id, 
             id_artwork: this.props.id_artwork
@@ -70,14 +56,6 @@ export class AddComment extends Component {
 <p>{this.state.msgSuccess}</p>
 
                 <form onSubmit={this.AddAComment}  >           
-                 {/* <div className="name">
-                    <label for="Titre"></label>
-                    <input type="text" id="title_input" placeholder="Name" onChange={this.inputName} />
-                </div>
-                <div className="lastname">
-                    <label for="Titre"></label>
-                    <input type="text" id="lastname_input" placeholder="Last Name" onChange={this.inputLastName} />
-                </div> */}
                 <div className="message">
                     <label htmlFor="com"></label>
                     <textarea placeholder="You can add your comment right here" id="message_input" cols="30" rows="7" onChange={this.inputComment}/>

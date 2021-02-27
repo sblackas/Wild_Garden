@@ -18,7 +18,7 @@
 
   .CateListPage {
     background-color: #151514;
-height: 150vh;
+min-height: 100vh;
   }  
   .CateListPage .container {
     width: 300px;
@@ -44,10 +44,10 @@ height: 150vh;
   
   .cards-container {
     background-color: #151514;
-
-    width: 100vw;
+margin-left: auto;
+margin-right: auto;
+    max-width: 95%;
     display: flex;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     /* border: 3px solid red; */
   }

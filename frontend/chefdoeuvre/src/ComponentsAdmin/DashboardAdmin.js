@@ -1,11 +1,13 @@
 import React from 'react';
 import './DashboardAdmin.css';
-import axios from 'axios' 
+import axios from 'axios'
 import { connect } from 'react-redux'
 import './DashboardAdmin.css'
+import jwt from 'jsonwebtoken'
 
 
-class DashboardAdmin extends React.Component{
+
+class DashboardAdmin extends React.Component {
   state = {
     name: "",
     lastname: "",
@@ -13,99 +15,109 @@ class DashboardAdmin extends React.Component{
     password: "",
     successMsg: ""
 
-};
-
-editName = event => {
-  this.setState({name:event.target.value})
-};
-editLastName = event => {
-    this.setState({lastname:event.target.value})
   };
-editEmail = event => {
-  this.setState({email:event.target.value})
-};
-editPassword = event => {
-  this.setState({password:event.target.value})
-};
 
-EditProfileData = async event => {
-  event.preventDefault();
-
-  let res = await axios.get(`http://localhost:8000/admin/${this.props.id}`)
-  console.log(res);
-  console.log(res.data);
-
- const editedAdmin = {
-  name: this.state.name || res.data[0]["a_name"], // soit tu me mets ce qu'il y a dans l'input OU ce qu'il y a 
-  lastname: this.state.lastname || res.data[0]["a_lastname"],
-  email: this.state.email || res.data[0]["a_email"],
+  editName = event => {
+    this.setState({ name: event.target.value })
   };
-  console.log(editedAdmin, this.props.id);
+  editLastName = event => {
+    this.setState({ lastname: event.target.value })
+  };
+  editEmail = event => {
+    this.setState({ email: event.target.value })
+  };
+  editPassword = event => {
+    this.setState({ password: event.target.value })
+  };
 
-  axios.put(`http://localhost:8000/admin/${this.props.id}`, editedAdmin, { headers: {authorization: `Bearer ${this.props.token}` }})
-  .then(res => {
-      console.log(res);
-      console.log(res.data);
-      this.setState({ successMsg: "Votre profil a bien été modifié !" })
+  componentDidMount() {
+    // console.log(this.props.match.params.edit);
+    let tokendecoded = jwt.decode(localStorage.getItem('tokenAdmin'))
 
-  })
-  .catch(error => {
-    console.log("catch error");
-    console.log(error);
-
+    axios.get(`http://localhost:8000/admin/${tokendecoded.id}`)
+      .then(res => {
+        this.setState({
+          name: res.data[0].a_name,
+          lastname: res.data[0].a_lastname,
+          email: res.data[0].a_email
+        }
+        );
+      })
   }
-  )
-}
 
-render() {
-  return (
-    <div className="DashboardAdmin">
+  EditProfileData = async event => {
+    event.preventDefault();
 
+    let res = await axios.get(`http://localhost:8000/admin/${this.props.id}`)
+    console.log(res);
+    console.log(res.data);
 
-{/* <p>{this.props.token}</p> */}
-{/* <p>{this.props.user}</p> */}
-<p>{this.props.editedAdmin}</p>
+    const editedAdmin = {
+      name: this.state.name || res.data[0]["a_name"], // soit tu me mets ce qu'il y a dans l'input OU ce qu'il y a 
+      lastname: this.state.lastname || res.data[0]["a_lastname"],
+      email: this.state.email || res.data[0]["a_email"],
+    };
+    console.log(editedAdmin, this.props.id);
 
-<div className="profileBox1">
-  <h1>&bull; Editer votre profil &bull;</h1>
-  <div className="underline">
-  </div>
-  <p>{this.state.successMsg}</p>
-  <form onSubmit={this.EditProfileData}>
-    <div className="firsttname">
-      <label htmlFor="Name"></label>
-      <input type="name" placeholder="Prénom" onChange={this.editName}/>
-    </div>
-    <div className="lastname">
-      <label htmlFor="Name"></label>
-      <input type="name" id="lastname_input" placeholder="Nom" onChange={this.editLastName}/>
-    </div>
-    <div className="email">
-      <label htmlFor="email"></label>
-      <input type="text" id="email_input" placeholder="Adresse Email" onChange={this.editEmail}/>
-    </div>
+    axios.put(`http://localhost:8000/admin/${this.props.id}`, editedAdmin, { headers: { authorization: `Bearer ${this.props.token}` } })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+        this.setState({ successMsg: "Votre profil a bien été modifié !" })
 
-    <div className="password">
-      <label htmlFor="password"></label>
-      <input type="text" placeholder="Mot de passe" onChange={this.editPassword}></input>
-    </div>
-    
-    {/* <div className="pp">
-      <label for="Picture"></label>
-      <input type="text"  id="picture_profile" placeholder="Picture Profile" onChange={this.editPicture}/>
-    </div> */}
+      })
+      .catch(error => {
+        console.log("catch error");
+        console.log(error);
+
+      }
+      )
+  }
+
+  render() {
+    return (
+      <div className="DashboardAdmin">
 
 
-  </form>
-  <div className="submit">
-      <button type="submit" value="Submit" id="form_button" onClick={this.EditProfileData} ><span>Submit</span><div id="circle"></div></button>
-    </div>
-</div>
+        {/* <p>{this.props.token}</p> */}
+        {/* <p>{this.props.user}</p> */}
+        <p>{this.props.editedAdmin}</p>
+
+        <div className="profileBox1">
+          <h1>&bull; Editer votre profil &bull;</h1>
+          <div className="underline">
+          </div>
+          <p>{this.state.successMsg}</p>
+          <form onSubmit={this.EditProfileData}>
+            <div className="firsttname">
+              <label htmlFor="Name">Prénom</label>
+              <input type="name" placeholder="Prénom" value={this.state.name || '' } onChange={this.editName} />
+            {/* value={this.state.value || ""} car A component is changing a controlled input to be uncontrolled. */}
+            </div>
+            <div className="lastname">
+              <label htmlFor="Name">Nom</label>
+              <input type="name" id="lastname_input" placeholder="Nom" value={this.state.lastname || ''} onChange={this.editLastName} />
+            </div>
+            <div className="email">
+              <label htmlFor="email">Adresse Email</label>
+              <input type="text" id="email_input" placeholder="Adresse Email" value={this.state.email || ''} onChange={this.editEmail} />
+            </div>
+
+            <div className="password">
+              <label htmlFor="password">Mot de passe</label>
+              <input type="text" placeholder="Mot de passe" onChange={this.editPassword}></input>
+            </div>
+
+          </form>
+          <div className="submit">
+            <button type="submit" value="Submit" id="form_button" onClick={this.EditProfileData} ><span>Submit</span><div id="circle"></div></button>
+          </div>
+        </div>
 
 
-    </div>
-  );
-}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state /*, ownProps*/) => {

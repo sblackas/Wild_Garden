@@ -1,7 +1,9 @@
 .Oeuvre {
     background: #100B09;
     border-top: solid black 2px;
-    min-height: 330vh;
+    border-bottom: solid black 1px;
+
+    min-height: 230vh;
 
 }
 
