@@ -28,7 +28,7 @@ router.post('/admin/sign-in', function (req, res) {
       bcrypt.compare(req.body.password, result[0].a_password, function (err, theadmin) {
         console.log(theadmin);
         if (theadmin) {
-          let token = jwt.sign({ id: result[0].id_admin, name: result[0].a_name , admin : true}, config.secret, { expiresIn: 86400 });
+          let token = jwt.sign({ id: result[0].id_admin, name: result[0].a_name , email: result[0].a_email, admin : true}, config.secret, { expiresIn: 86400 });
           console.log(token);
           res.send({ auth: true, token: token, user: result[0] });
         } else {

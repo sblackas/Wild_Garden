@@ -1,21 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&display=swap');
 
-.Footer {
+#Footer {
     background: #100B09;
-    border: solid black 1px;
-    font-family: 'Encode Sans Condensed';
+    /* border: solid black 1px; */
+    /* font-family: 'Encode Sans Condensed'; */
+    font-family: 'Imbue';
     
 }
 
-.Footer h1 {
+#Footer h1 {
     margin-top: 2px;
     padding: 20px;
 }
+/* #Footer h2 {
+    
+    font-size: 30px;
+} */
 
-.Footer a {
+.f-wrap a {
     text-decoration: none;
     color: blanchedalmond;
+    font-size: 25px;
 }
 
 .f-wrap {
@@ -24,6 +30,12 @@
 padding: 30px;
     justify-content: space-around;
 }
+
+.f-wrap h2{
+    font-size: 30px;
+ 
+}
+
 .sitemap-left {
     display: block;
     text-align: center;
@@ -36,8 +48,8 @@ padding: 30px;
 }
 
 .arrowup {
-    height: 48%;
-    margin-top: 15px;
+    height: 25px;
+    /* margin-top: 15px; */
     
 }
 
@@ -47,6 +59,9 @@ padding: 30px;
     text-align: center;
     background: black;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 

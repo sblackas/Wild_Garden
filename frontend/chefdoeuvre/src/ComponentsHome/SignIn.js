@@ -77,11 +77,10 @@ render() {
 
  
   <div className="login-box" >
-<h2>Welcome Back !</h2>
-<p>To keep enjoy our content please login with your personal info</p>
+<h2>Ravi de vous revoir !</h2>
+<p>Connectez-vous avec vos informations personnelles</p>
 <br></br>
   <form onSubmit={this.handleSubmit}>
-  {/* { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null } */}
     <div className="user-box">
       <input type="email" onChange={this.inputEmailSignIn}/>
       <label>Email</label>

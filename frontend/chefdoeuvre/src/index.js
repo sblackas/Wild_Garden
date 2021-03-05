@@ -36,9 +36,10 @@ import ListOfArtworks from './ComponentsHome/ListOfArtworks'
 import Oeuvre from './ComponentsHome/Oeuvre'
 import MyComments from './ComponentsUser/MyComments'
 import EditCategory from './ComponentsAdmin/EditCategory'
-// import EditUser from './ComponentsAdmin/EditUser'
-// import EditionArtwork from './ComponentsAdmin/EditionArtwork'
-// import EditAComment from './ComponentsAdmin/EditAcomment'
+import MyFavs from './ComponentsUser/MyFavs'
+import AllComments from './ComponentsAdmin/AllComments'
+
+
 
 
 
@@ -67,10 +68,11 @@ const myRouter = (
               <Route exact path="/add-artwork" component={AddArtwork} />
               <Route exact path="/artworks-list" component={ArtworksList} />
               <Route exact path="/admin/category-list" component={CateList} />
-              <Route exact path="/admin/user-list" component={UserList} />
+              <Route exact path="/admin/users-list" component={UserList} />
               <Route exact path="/admin/add-category" component={AddCategory} />
               <PrivateRoute exact path="/admin/dashboard" component={DashboardAdmin} />
               <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
+              <Route exact path="/admin/all-comments" component={AllComments} />
               <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
               <Route exact path="/nos-artistes" component={OurArtists} />
               <Route exact path="/les-oeuvres" component={ListOfArtworks} />
@@ -78,9 +80,8 @@ const myRouter = (
               <Route exact path="/the-artwork/:id_artwork" component={Oeuvre} />
               <Route exact path="/my-comments" component={MyComments} />
               <Route exact path="/admin/edit-category/:id_cate" component={EditCategory} />
-              {/* <Route exact path="/admin/edit-user/:id_user" component={EditUser} />
-              <Route exact path="/admin/edit-artwork/:id_artwork" component={EditionArtwork} />
-              <Route exact path="/admin/edit-comment/:id_feedback" component={EditAComment} /> */}
+              <Route exact path="/my-favorites" component={MyFavs} />
+
 
 
 

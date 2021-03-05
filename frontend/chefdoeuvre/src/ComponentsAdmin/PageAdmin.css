@@ -1,0 +1,23 @@
+#PageAdmin {
+    min-height: 80VH;
+    background: #100B09;
+
+}
+
+#PageAdmin p {
+    font-family: 'voga';
+    font-size: 60px;
+    text-align: center;
+    color: white;
+    padding: 13%;
+    line-height: 0.7;
+}
+
+#PageAdmin .italic {
+    font-style: italic;
+}
+
+#PageAdmin .souligné {
+border-bottom: black solid 1px;  
+font-weight: bold;  
+}

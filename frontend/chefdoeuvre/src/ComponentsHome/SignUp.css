@@ -1,35 +1,3 @@
-#register, #login {
-    width: 300px;
-    border: 1px solid #d6d7da;
-    padding: 0px 15px 15px 15px;
-    border-radius: 5px;
-    font-family: arial;
-    line-height: 16px;
-    color: #333333;
-    font-size: 14px;
-    background: #ffffff;
-    margin: 100px auto;
-  }
-  
-  form label, form input {
-    display: block;
-    margin-bottom: 10px;
-    width: 90%
-  }
-  
-  form input {
-    padding: 10px;
-    border: solid 1px #BDC7D8;
-  
-  }
-  
-  .button {
-    background-color: #00BFFF;
-    border-color: #3ac162;
-    font-weight: bold;
-    padding: 12px 15px;
-    color: #ffffff;
-  }
   
   .errorMsg {
     color: #cc0000;
@@ -41,4 +9,198 @@
     color: #6B8E23;
     font-size: 25px;
     margin-bottom: 10px;
+  }
+
+  .SignUp {
+    background-color: #100B09;
+    min-height: 150vh;
+    background-image: url('../imagesHome/goldenfoil.png');
+    background-size: contain;
+background-repeat: no-repeat;
+  }
+
+  .SignUp h2 {
+    font-family: 'voga';
+  }
+  
+  .SignUp p{
+  font-family: 'Imbue';
+color: antiquewhite;
+font-size: 25px;
+text-align: center;
+} 
+
+.SignUp  .login-box {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 550px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+  
+  .SignUp .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .SignUp  .login-box .user-box {
+    position: relative;
+  }
+  
+  .SignUp  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+.SignUp .login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 20px;
+    font-family: 'Imbue';
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .SignUp  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: antiquewhite;
+    font-size: 20px;
+  }
+
+
+
+  .SignUp  #btn {
+    background: rgb(20, 20, 20);
+    height: 40px;
+    width: 320px;
+    border: none;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 20px;
+    font-family: 'Imbue';
+    position: relative;
+    transition: 1s;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-top: 5px;
+  }
+  
+  .SignUp #btn #circle {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+    transition: 500ms;
+  }
+  
+  .noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+  }
+  
+  .SignUp  #btn:hover {
+    background: transparent;
+  }
+  
+  .SignUp #btn:hover #circle {
+    height: 50px;
+    width: 320px;
+    left: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,100% {
+      left: 100%;
+    }
+  }
+  
+  .SignUp .login-box a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #03e9f4);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s
+  }
+  
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,100% {
+      top: 100%;
+    }
+  }
+  
+  .SignUp .login-box a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #03e9f4);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s
+  }
+  
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,100% {
+      right: 100%;
+    }
+  }
+  
+  .SignUp .login-box a span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #03e9f4);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s
+  }
+  
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,100% {
+      bottom: 100%;
+    }
   }

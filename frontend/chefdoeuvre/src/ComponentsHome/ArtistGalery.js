@@ -53,8 +53,8 @@ export class ArtistGalery extends React.Component {
           return (
             <div className="user-bio">
               
-              <div className="rond">
-          <img src={elem.u_pp} alt='pp' />
+              <div className="rond" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
+          {/* <img src={elem.u_pp} alt='pp' /> */}
           </div>
           <div className="user-info">
                 <h2>{elem.u_name}</h2>

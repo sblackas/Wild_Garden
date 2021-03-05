@@ -46,11 +46,12 @@ connection.connect(function(err){
      )`);
 
      connection.query(`CREATE TABLE IF NOT EXISTS favorites
-    (id_favorite INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-     id_user INT,
-     id_artwork INT,
+    (
+     id_user INT NOT NULL,
+     id_artwork INT NOT NULL,
      FOREIGN KEY (id_user) REFERENCES users(id_user),
-     FOREIGN KEY (id_artwork) REFERENCES artworks(id_artwork)
+     FOREIGN KEY (id_artwork) REFERENCES artworks(id_artwork),
+     PRIMARY KEY (id_user, id_artwork)
      )`);
 
      connection.query(`CREATE TABLE IF NOT EXISTS feedbacks

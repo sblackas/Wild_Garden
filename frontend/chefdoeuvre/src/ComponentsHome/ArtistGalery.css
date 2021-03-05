@@ -2,9 +2,8 @@
     min-height: 200vh;
     background: #100B09;
     color: white;
-    border-top: solid black 2px
-
-
+    border-top: solid black 2px;
+    border-bottom: solid white 2px;
 }
 
 .m-container {
@@ -15,7 +14,7 @@
 .user-bio {
   border-right: blanchedalmond solid 2px;
   width: 25%;
-  height: 180vh;
+  min-height: 200vh;
 }
 
 #h-portfolio {  

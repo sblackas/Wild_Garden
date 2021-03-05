@@ -69,6 +69,7 @@ const authJWT = (req, res, next) => {
         }
     }
 
+    //fonctionne pour les deux token
 const isArtist = (req, res, next) => {
     const artistToken = req.headers.authorization;
 

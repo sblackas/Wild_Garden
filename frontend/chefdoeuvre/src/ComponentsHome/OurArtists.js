@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { listCate } from '../Store/actions/categories';
 import { usersList } from '../Store/actions/artist';
+import { personalArtworks } from '../Store/actions/artworks'
 
 
 export class OurArtists extends React.Component {
@@ -18,9 +19,15 @@ export class OurArtists extends React.Component {
 
         return (
             <div className="OurArtists">
+              <div className="popo">
+              <p className="titleOurartists">Nos Artistes</p>
+              <p className="bg-text">ARTWORKS</p>
+              </div>
+                <div className="o-text">
+    <p>Lorem ipsum dolor sit amet,  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
                 <div className="line">
                 </div>
-                
                 <div className="content-wrapper">
                 {this.props.categories.map(elem => {
                        return (
@@ -44,19 +51,19 @@ export class OurArtists extends React.Component {
 <div className="artistContainer">
 {this.props.users.map(elem => {
                        return (
-      <figure className="fir-image-figure">
+      <div className="fir-image-figure">
         {/* <a className="fir-imageover" rel="noopener" target="_blank" href="#"> */}
         <Link to={`/galerie-of/${elem.id_user}`}>
-          <img className="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author" />
+          <div className="fir-author-image fir-clickcircle" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
           </Link>
         {/* </a> */}
         <figcaption>
           <div className="fig-author-figure-title">{elem.u_name}</div> 
           <div className="fig-author-figure-title">{elem.u_lastname}</div>
           <div className="fig-author-figure-title">Pays</div>
-          <div className="fig-author-figure-title"> {this.props.count} Nombre d'oeuvres</div>
+          <div className="fig-author-figure-title"> {this.props.myArtworks.length} Nombre d'oeuvres</div>
         </figcaption>
-      </figure>
+      </div>
       )
     })}
       </div>
@@ -75,12 +82,13 @@ export class OurArtists extends React.Component {
             categories: state.cateReducer.categories,
             users: state.artistReducer.users,
             // id: state.artistReducer.id,
+            myArtworks: state.artworksReducer.myArtworks
 
     
         }
     }
     
-    const mapDispatchToProps = { listCate, usersList }
+    const mapDispatchToProps = { listCate, usersList, personalArtworks }
     
     export default connect(
         mapStateToProps,

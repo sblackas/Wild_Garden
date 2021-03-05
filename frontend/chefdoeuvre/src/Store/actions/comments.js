@@ -18,3 +18,13 @@ export const listOfMyComments = (comments) => ({
     type: "GET_MY_COMMENTS",
     payload: comments
 })
+
+export const deleteComment = (id_feedback) => ({
+    type: "DELETE_COMMENT",
+    payload: id_feedback
+})
+
+export const editComment = (comment) => ({
+    type: "UPDATE_COMMENT",
+    payload: comment
+})

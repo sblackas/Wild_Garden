@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
 
 
-.SignInAdmin {
-    background: #18171f;
+#SignInAdmin {
+    background: #100B09;
     color: #efedef;
     font-family: 'Imbue';
     font-size: 16px;
@@ -10,21 +10,23 @@
     letter-spacing: 0.01em;
     line-height: 1.6em;
     margin: 0;
-    padding: 100px;
-    height: 200vh;
+    padding: 20px 100px;
+    height: 120vh;
+    text-align: center;
+
 }
 
-.SignInAdmin h1 {
-    border-bottom: brown 2px solid;
+#SignInAdmin h1 {
+    border-bottom: rgb(0, 0, 0) 2px solid;
 }
    
-.SignInAdmin hr {
+#SignInAdmin hr {
     color: rgb(116, 98, 98) 1px solid;
 }
  
-.SignInAdmin .login-box-admin {
+#SignInAdmin .login-box-admin {
   position: absolute;
-  top: 70%;
+  top: 60%;
   left: 50%;
   width: 580px;
   padding: 40px;
@@ -50,9 +52,6 @@
 .login-box-admin .user-box {
   position: relative;
 }
-
-
-
 
 
         .login-box-admin .user-box input {
@@ -85,7 +84,7 @@
           top: -20px;
           left: 0;
           text-align: left;
-          color: #7fbde0;
+          color: #ffffff;
           font-size: 25px;
                 }
 

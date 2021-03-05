@@ -26,8 +26,8 @@ export class DisplayComments extends Component {
                     {this.props.commentsOnArtwork.map(elem =>{
                         return (
                             <div id="comment-container">
-                            <div className="com-profile-img" alt="userpic">{elem.u_pp}</div>
-                            <div className="good">
+                            <div className="com-profile-img" alt="userpic" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}></div>
+                            <div id="good">
                                 <h1>{elem.u_name}</h1>
                                 <h1>{elem.u_lastname}</h1>
                                 <div className="com-description">

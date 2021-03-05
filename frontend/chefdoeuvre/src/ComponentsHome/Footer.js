@@ -11,9 +11,8 @@ export class Footer extends React.Component {
 
     
         return (
-            <div className="Footer">
+            <div id="Footer">
              
-                <h1>About Us</h1>
                 <div className="f-wrap">
                 <div className="sitemap-left">
                     <h2>SITEMAP</h2>
@@ -32,7 +31,7 @@ export class Footer extends React.Component {
                 <div className="f-wrap-right">
                     <h2>Top</h2>
                     <div className="scroll-top">
-                        <a href="#navbar" ><img src={arrowup} className="arrowup" alt=""/></a>
+                        <a href="#Header" ><img src={arrowup} className="arrowup" alt=""/></a>
                     </div>
                 </div>
                 </div>

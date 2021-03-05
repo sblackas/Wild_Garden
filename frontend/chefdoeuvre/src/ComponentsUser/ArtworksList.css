@@ -10,7 +10,7 @@
 
   .ArtworksListPage {
     background-color: #151514;
-    height: 250vh;
+    height: auto;
     border-top: solid 2px black;
 
   }
@@ -19,6 +19,10 @@
     padding: 20PX;
   }
   
+  .title {
+    text-align: center;
+  }
+
   .ArtworksListPage .container {
     width: 300px;
     height: 400px;
@@ -50,6 +54,7 @@
     /* justify-content: space-between; */
     flex-wrap: wrap;
     /* border: 3px solid red; */
+    padding-bottom: 5%;
   }
   
   

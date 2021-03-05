@@ -44,13 +44,14 @@ export class SignInAdmin extends React.Component {
             if(res.status === 200) {
               console.log(res);
               let decoded = jwt.decode(res.data.token);
+              // alert(decoded.email);
               let loggedAdmin = {
                 token: res.data.token,
                 email: decoded.email,
                 id: decoded.id
               };
               localStorage.setItem("tokenAdmin", res.data.token)
-              
+              localStorage.setItem('email', decoded.email)
               this.props.loginAdmin(loggedAdmin)
               console.log(loggedAdmin);
               this.props.history.push('/admin/dashboard');
@@ -118,7 +119,7 @@ export class SignInAdmin extends React.Component {
 
     render() {
         return (
-            <div className="SignInAdmin">
+            <div id="SignInAdmin">
                 <h1>
            Administrateur
 </h1>

@@ -32,13 +32,19 @@ const initialStates = {
           return {
             ...state,
             userData: action.payload
-            // name: action.name,
-            // lastname: action.lastname,
-            // email: action.email,
-            // pp: action.pp,
-            // id: action.id
-
           };
+          case "DELETE_USER":
+            let indexOfElemToDelete  = state.users.map(e => e.id_user).indexOf(action.payload);
+            return {
+              ...state,
+              users: [
+                      ...state.users.slice(0, indexOfElemToDelete),
+                      ...state.users.slice(
+                        indexOfElemToDelete + 1,
+                        state.users.length
+                      ),
+                    ],
+                  };
      default:
        return {
          ...state,

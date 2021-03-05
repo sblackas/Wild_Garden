@@ -29,7 +29,7 @@ class Dashboard extends React.Component {
     this.setState({ lastname: event.target.value })
   };
   editPicture = event => {
-    this.setState({ user_pp: event.target.value })
+    this.setState({ pp: event.target.value })
   };
   editEmail = event => {
     this.setState({ email: event.target.value })
@@ -47,13 +47,8 @@ class Dashboard extends React.Component {
           pp: res.data[0].u_pp,
           email: res.data[0].u_email
         }
-        );
-      })
-
-    // let profiletoedit = this.props.users.filter(elem => elem.id == this.props.match.params.edit)
-    // console.log(profiletoedit);
-
-
+      );
+    })
   }
 
   handleSubmitEdition = async event => {
@@ -137,9 +132,9 @@ class Dashboard extends React.Component {
             <p>{this.state.successMsg}</p>
           </div>
 
-          <div className="rondPP">
+          <div className="rondPP" style={{ backgroundImage: `url(${this.state.pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}>
             {/* <img className="rondPPimg" src={this.getImagePath(this.state.pp)} alt='pp' /> */}
-            <img className="rondPPimg" alt='pp' />
+            {/* <img className="rondPPimg" alt='pp' src={this.state.pp} /> */}
 
           </div>
 

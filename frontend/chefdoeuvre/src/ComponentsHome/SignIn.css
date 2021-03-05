@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap');
 
 .SignIn {
-    height: 200vh;
+    min-height: 100vh;
     font-family: Imbue;
     background-color: #100B09;
+    background-image: url('../imagesHome/goldenfoil.png');
+    background-size: contain;
+background-repeat: no-repeat;
   }
  
 
@@ -13,7 +16,7 @@
   } */
 
   .SignIn h2 {
-    font-family: 'Imbue';
+    font-family: 'voga';
   }
   
   .SignIn p{
@@ -25,7 +28,7 @@ text-align: center;
 
 .SignIn  .login-box {
     position: absolute;
-    top: 80%;
+    top: 60%;
     left: 50%;
     width: 550px;
     padding: 40px;
@@ -74,14 +77,16 @@ text-align: center;
   .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #7fbde0;
+    color: antiquewhite;
+
+    /* color: #36393b; */
     font-size: 20px;
   }
 
 
 
   .SignIn  #btn {
-    background: rgb(85, 85, 83);
+    background: rgb(20, 20, 20);
     height: 40px;
     width: 320px;
     border: none;
@@ -129,7 +134,7 @@ text-align: center;
     width: 320px;
     left: 0;
     border-radius: 0;
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #eee;
   }
   
   @keyframes btn-anim1 {

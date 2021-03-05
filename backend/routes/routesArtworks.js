@@ -18,7 +18,7 @@ router.post('/artwork/add', function (req, res) {
 
 //____Toutes les oeuvres
 router.get('/all-of-artworks', function (req, res) {
-    let allArtworks = `SELECT id_artwork, art_title, art_desc, art_picture FROM artworks`;
+    let allArtworks = `SELECT * FROM artworks`;
     db.query(allArtworks, function (err, results) {
   
       if (err) res.send(err);
@@ -31,7 +31,7 @@ router.get('/all-of-artworks', function (req, res) {
 //_____Infos d'une oeuvre
 router.get('/artwork/:id_artwork', function (req, res) {
     try {
-        db.query(`SELECT art_title, art_desc, art_picture FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, (err, result) => {
+        db.query(`SELECT * FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, (err, result) => {
             if (err) throw err
             // console.log(result);
             res.json(result)

@@ -4,6 +4,8 @@ import { Link, withRouter } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import wglogo from '../imagesHome/wglogo.png'
+import iconheart from '../imagesHome/iconheart.png'
+
 import './Header.css';
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -77,6 +79,7 @@ class Header extends React.Component {
         axios.get('http://localhost:8000/users')
             .then(res => {
                 this.props.usersList(res.data)
+                console.log(res.data);
             })
             .catch(error => {
                 console.log("catch error");
@@ -92,30 +95,25 @@ class Header extends React.Component {
                     <Navbar variant="dark">
                         <Nav className="mr-auto">
                             <Nav.Link as={Link} to="/admin/add-category">Ajouter une catégorie</Nav.Link>
-                            <Nav.Link as={Link} to="/admin/category-list">Toutes les categories</Nav.Link>
-                            <Nav.Link as={Link} to="/admin/users-list">Utilisateurs</Nav.Link>
-                            <Nav.Link as={Link} to="/admin/all-artwork-list">Toutes les oeuvres</Nav.Link>
+                            <Nav.Link as={Link} to="/admin/category-list">Les categories</Nav.Link>
+                            <Nav.Link as={Link} to="/admin/users-list"> Les utilisateurs</Nav.Link>
+                            <Nav.Link as={Link} to="/admin/all-artwork-list">Les oeuvres</Nav.Link>
+                            <Nav.Link as={Link} to="/admin/all-comments">Les commentaires</Nav.Link>
                             <Nav.Link as={Link} to="/admin/dashboard">Mon espace</Nav.Link>
                         </Nav>
 
-                        <Navbar.Brand href="/" onClick={this.logOutSubmitAdmin} >Deconnexion</Navbar.Brand>
+                        <Navbar.Brand href="/admin" onClick={this.logOutSubmitAdmin} >Deconnexion</Navbar.Brand>
 
                     </Navbar>
                 );
             } else {
                 return (
-                    <Nav variant="pills">
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/admin/signup">
-                                Inscription
-                </Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                            <Nav.Link as={Link} to="/admin/signin">
-                                Me connecter
-                </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
+                    <Navbar variant="dark">
+                        <Nav className="mr-auto">
+                            <Nav.Link as={Link} to="/admin/signup">Inscription</Nav.Link>
+                            <Nav.Link as={Link} to="/admin/signin">Me connecter</Nav.Link>
+                        </Nav>
+                    </Navbar>
 
                 )
             }
@@ -127,6 +125,7 @@ class Header extends React.Component {
                         <Nav.Link as={Link} to="/add-artwork">Ajouter une oeuvre</Nav.Link>
                         <Nav.Link as={Link} to="/artworks-list">Mes oeuvres</Nav.Link>
                         <Nav.Link as={Link} to="/my-comments">Mes commentaires</Nav.Link>
+                        <Nav.Link as={Link} to="/my-favorites"><div className="toto" style={{ backgroundImage: `url(${iconheart})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', }}></div></Nav.Link>
                         <Nav.Link as={Link} to="/dashboard">Mon espace</Nav.Link>
                     </Nav>
 
@@ -164,14 +163,15 @@ const mapStateToProps = (state /*, ownProps*/) => {
     }
 }
 
-const mapDispatchToProps = { 
-    logoutArtist, 
-    loginArtist, 
-    listArtworks, 
-    logoutAdmin, 
-    loginAdmin, 
-    listCate, 
-    personalArtworks, 
-    usersList }
+const mapDispatchToProps = {
+    logoutArtist,
+    loginArtist,
+    listArtworks,
+    logoutAdmin,
+    loginAdmin,
+    listCate,
+    personalArtworks,
+    usersList
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

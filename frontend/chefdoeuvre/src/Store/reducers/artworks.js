@@ -1,6 +1,7 @@
 const initialStates = {
     artworks: [],
     myArtworks: [],
+    myFavs: [],
     id: String
  };
 
@@ -14,7 +15,7 @@ const initialStates = {
         case "GET_MY_ARTWORKS":
         return {
           ...state,
-          myArtworks: action.payload
+          myArtworks: action.myArtworks
 
         };
         case "ADD_PRODUCTS":
@@ -51,6 +52,33 @@ const initialStates = {
                         ),
                       ],
              };
+             case "ADD_FAVORITES":
+        return {
+          ...state,
+          myFavs: [...state.myFavs, 
+            {
+              ...action.payload,
+              id: action.id
+            }]
+        };
+        case "GET_MY_FAVS":
+          return {
+            ...state,
+            myFavs: action.payload
+  
+          };
+          case "DELETE_MY_FAV":
+            let indexOfElemToDeleteFav  = state.myFavs.map(e => e.id_artwork).indexOf(action.payload);
+            return {
+              ...state,
+              myFavs: [
+                      ...state.myFavs.slice(0, indexOfElemToDeleteFav),
+                      ...state.myFavs.slice(
+                        indexOfElemToDeleteFav + 1,
+                        state.myFavs.length
+                      ),
+                    ],
+                  };
       default:
         return {
           ...state,

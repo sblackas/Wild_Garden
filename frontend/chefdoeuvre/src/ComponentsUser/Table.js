@@ -30,7 +30,7 @@ export class TableTest extends React.Component {
             .then((res) => {
                 if(res.status === 200) {
                     this.props.deleteArtwork(id_artwork)
-                    this.setState({ msgSuccess: 'Produit supprimé avec succès' });
+                    this.setState({ msgSuccess: 'Oeuvre supprimé avec succès' });
 
                 } 
             });

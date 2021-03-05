@@ -5,7 +5,7 @@ html {
 
 }
 
- .AddArtwork {
+ #AddArtwork {
   background: #151514;
   /* background-image: url('../Images/abstract.jpg'); */
   background-repeat: no-repeat;
@@ -41,15 +41,16 @@ textarea {
   margin: 30px auto;
   position: relative;
   box-sizing: border-box;
+  text-align: center;
   /* left: 170px; */
 }
 
-.AddArtwork form {
+#AddArtwork form {
   padding: 37.5px;
   margin: 50px 0;
 }
 
-h1 {
+#AddArtwork h1 {
   color: #474544;
   font-size: 32px;
   font-weight: 700;
@@ -57,11 +58,12 @@ h1 {
   text-align: center;
   text-transform: uppercase;
   margin-top: 15px;
+ 
 }
 
 .underline {
   border-bottom: solid 2px #474544;
-  margin: -0.512em auto;
+  margin: -0.1em auto;
   width: 80px;
 }
 

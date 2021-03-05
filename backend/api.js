@@ -8,6 +8,8 @@ const routesAdmin = require('./routes/routesAdmin')
 const routesArtworks = require('./routes/routesArtworks')
 const routesCategory = require('./routes/routesCategory')
 const routesFeedback = require('./routes/routesFeedback')
+const routesFavorites = require('./routes/routesFavorites')
+
 
 
 // middleware
@@ -19,9 +21,11 @@ const allowCrossDomain = function(req, res, next) {
   next();
 }
 api.use(allowCrossDomain)
-api.use(bodyParser.json());
-api.use(bodyParser.urlencoded({extended: true}));
-api.use("/", routes, routesCategory, routesAdmin, routesArtworks, routesFeedback); 
+// api.use(bodyParser.json());
+// api.use(bodyParser.urlencoded({extended: true}));
+api.use(express.urlencoded({extended: true}));
+api.use(express.json());
+api.use("/", routes, routesCategory, routesAdmin, routesArtworks, routesFeedback, routesFavorites); 
 
 
 api.use(express.static('./uploads'));

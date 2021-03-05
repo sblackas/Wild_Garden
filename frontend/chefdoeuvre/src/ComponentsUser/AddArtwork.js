@@ -68,7 +68,7 @@ class AddArtwork extends React.Component {
     })
 }
     return (
-      <div className="AddArtwork">
+      <div id="AddArtwork">
 
 
 

@@ -15,7 +15,7 @@ router.post('/feedback/add', function (req, res) {
 })
 
 //____Supprimer un commentaire
-router.use('/feedback/:id_feedback', middlewares.isArtist)
+// router.use('/feedback/:id_feedback', middlewares.isArtist)
 router.delete('/feedback/:id_feedback', function (req, res) {
    console.log(req.body);
    db.query(`DELETE FROM feedbacks WHERE id_feedback = '${req.params.id_feedback}'`, function (error, results) {
@@ -26,14 +26,15 @@ router.delete('/feedback/:id_feedback', function (req, res) {
 
 //____Modifier un commentaire
 router.put('/feedback/:edit', function (req, res) {
-   db.query(`UPDATE feedbacks SET commentary = '${req.body.comment}' WHERE id_feedback = '${req.params.edit}'`, function (error, results) {
+   console.log(req.body);
+   db.query(`UPDATE feedbacks SET commentary = '${req.body.commentary}' WHERE id_feedback = '${req.params.edit}'`, function (error, results) {
       if (error) throw error;
       res.json('THE COMMENT HAS BEEN MODIFIED');
    });
 });
 
 //_____Liste des tous les commentaires
-router.use('/feedbacks/', middlewares.isAdmin)
+// router.use('/feedbacks/', middlewares.isAdmin)
 router.get('/feedbacks', function (req, res) {
    let allFeedbacks = `SELECT id_feedback,commentary FROM feedbacks`;
    db.query(allFeedbacks, function (err, result) {
@@ -49,7 +50,7 @@ router.get('/feedbacks', function (req, res) {
 // router.use('/get-feedback/:id', middlewares.isAdmin)
 router.get('/get-feedback-user/:id', function (req, res) {
    let userId = req.params.id
-   let getFeedback = `SELECT  users.u_name, users.u_lastname, users.u_pp, feedbacks.commentary FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE users.id_user = '${userId}'`
+   let getFeedback = `SELECT  users.u_name, users.u_lastname, users.u_pp, feedbacks.commentary, feedbacks.id_feedback FROM users INNER JOIN feedbacks on users.id_user = feedbacks.id_user WHERE users.id_user = '${userId}'`
    db.query(getFeedback, function (err, results) {
       if (err) throw err
       res.send(results)

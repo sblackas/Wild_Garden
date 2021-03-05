@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@300&display=swap');
+@import url(//db.onlinewebfonts.com/c/25c11c218cf324a1acdde59654eeae7e?family=SparrowOutlineW00-Regular);
+@import url(//db.onlinewebfonts.com/c/131b759212043244e9cfd8ab0f67d0de?family=SparrowSolidW00-Regular);
 
 
 .OurArtists {
@@ -6,18 +8,50 @@
     background: #100B09;
     font-family: 'Encode Sans Condensed';
     color: white;
-    border-top: solid black 2px
+    border-top: solid black 2px;
+    border-bottom: solid black 2px
+}
 
+.popo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6%;
+  line-height: 0;
+}
+
+.titleOurartists {
+  /* font-family: 'voga'; */
+  font-family: "SparrowSolidW00-Regular"; 
+  font-size: 60PX;
+  z-index: 3;
+}
+
+.bg-text {
+  font-family: "SparrowOutlineW00-Regular";
+  font-size: 120px;
+  color: black;
+  margin-left: 18%;
+  margin-top: 2%;
+}
+
+.o-text {
+  color: cornsilk;
+/* border-top: blanchedalmond solid 1px; */
+margin-top: 3%;
+padding-right: 9%;
+padding-left: 9%;
 
 }
 
 .line {
-    border-bottom: solid 2px #ffffff;
+    border-bottom: solid 1px #ffffff;
     width: 20vw;
     height: 2px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20%;
+    margin-top: 4%;
     margin-bottom: 12px;
 }
 
@@ -177,8 +211,15 @@
   .artistContainer {
       border: solid 2px red;
       margin-top: 100px;
-      columns: 3;
+      /* columns: 3; */
       padding: 35px;
+      display: flex;
+      min-width: 50vw;
+      min-height: auto;
+      padding: 3%;
+      flex-flow: row wrap;
+
+      
   }
 
   .fir-clickcircle {
@@ -186,6 +227,10 @@
     width: 150px;
     border-radius: 50%;
     cursor: pointer;
+    background: blue;
+    background-size: cover;
+    background-position: center;
+    border: red solid;
   }
   
   .fir-image-figure {
