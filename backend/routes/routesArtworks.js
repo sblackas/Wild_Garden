@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 const middlewares = require('../middlewares/middlewares.js');
+const cors = require('cors');
+
 
 
 //____Ajouter une oeuvre
@@ -35,7 +37,6 @@ router.get('/artwork/:id_artwork', function (req, res) {
             if (err) throw err
             // console.log(result);
             res.json(result)
-
         })
     } catch (error) {
         console.log(error);
@@ -43,15 +44,6 @@ router.get('/artwork/:id_artwork', function (req, res) {
 })
 
 //_____Supprimer son oeuvre
-// router.use('/delete-artwork/:id_artwork', middlewares.isArtist)
-// router.delete('/delete-artwork/:id_artwork', function (req, res) {
-//     console.log(req.body);
-//     db.query(`DELETE FROM artworks WHERE id_artwork = '${req.params.id_artwork}'`, function (error, results) {
-//        if (error) throw error;
-//            res.send('Artwork has been deleted!');
-//          });
-//    });
-
    router.delete('/delete-artwork/:id_artwork', middlewares.isArtist, function(req,res){
     try {
        let idArtworks = req.params.id_artwork
@@ -83,7 +75,6 @@ router.put('/update-artwork/:edit', function (req, res) {
   });
 
 //_____Recuperer toutes les oeuvres posté par un user
- 
 router.get('/get-artwork/:id', function (req,res) {
   try {
     let artId = req.params.id
@@ -99,15 +90,6 @@ router.get('/get-artwork/:id', function (req,res) {
  })
 
 //____Recuperer les oeuvres d'une categorie
-// router.get('/get-cate-artworks/filter/:id', function (req,res) {
-//     let artCateId = req.params.id
-//     let getCateArt = `SELECT  artworks.art_title, artworks.art_desc, artworks.art_picture, categories.cate_name FROM artworks INNER JOIN categories on artworks.id_artwork = categories.id_artwork WHERE id_artwork = '${artCateId}'`
-//     db.query(getCateArt, function (err, results) {
-//        if (err) throw err
-//        res.send(results)
-//     })
-//  })
-
  router.get("/artworks/filter/:id_cate", (req, res) => {
   try {
       db.query(`SELECT * FROM artworks WHERE id_cate = ${req.params.id_cate}`, function (err, resultss) {

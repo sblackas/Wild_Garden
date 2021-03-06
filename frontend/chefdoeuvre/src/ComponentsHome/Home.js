@@ -35,8 +35,10 @@ render() {
     Peut-être n’avez-vous jamais osé pousser la porte d’une galerie alors  n’hésitez pas à pousser la nôtre, virtuelle, pour découvrir différents univers artistiques et  visiter à votre guise un catalogue d’œuvres soigneusement sélectionnées.
     </p>
     <div className="scroll-down">
-                        <a href="#navbar" ><img src={arrowdown} className="arrowdown" alt=""/></a>
+    <div onClick={() => window.scrollTo({ bottom: 0, behavior: 'smooth' })}>
+                        <a href="#Footer" ><img src={arrowdown} className="arrowdown" alt=""/></a>
                     </div>
+</div>
     <p className="copyright"><img src={copyicon} className="cicon"alt="vc"/>2021 WILDGARDEN </p>
     <div className="rules"></div>
     </div>

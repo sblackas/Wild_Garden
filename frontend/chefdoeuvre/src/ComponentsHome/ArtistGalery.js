@@ -17,11 +17,9 @@ export class ArtistGalery extends React.Component {
   }
 
   componentDidMount() {
-    // let token= jwt.decode(localStorage.getItem('tokenUser'))
     
     axios.get(`http://localhost:8000/users/${this.props.match.params.id_user}`)
       .then(res => {
-        console.log(this.props.location.query);
         console.log(res.data);
         this.setState({userData: res.data})
       })
@@ -30,7 +28,6 @@ export class ArtistGalery extends React.Component {
         console.log(error);
       });
 
-      // let token= jwt.decode(localStorage.getItem('tokenUser'))
     axios.get(`http://localhost:8000/get-artwork/${this.props.match.params.id_user}`)
       .then(res => {
         console.log(res.data);

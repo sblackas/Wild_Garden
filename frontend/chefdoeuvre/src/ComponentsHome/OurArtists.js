@@ -15,8 +15,16 @@ export class OurArtists extends React.Component {
     }
   }
 
-    render() {
+countArtwork(id_user){
+ const count = this.props.artworks.filter(elem => elem.id_user === id_user).length
+ return count
+}
 
+
+
+
+    render() {
+      // console.log(this.countArtwork(3));
         return (
             <div className="OurArtists">
               <div className="popo">
@@ -33,16 +41,16 @@ export class OurArtists extends React.Component {
                        return (
 
      <div className="news-card">
-          <Link to="/" className="news-card__card-link" />
+          <Link to={`/oeuvres-of/${elem.id_cate}`} className="news-card__card-link" >
           <img src={elem.cate_picture} alt={elem.cate_name} className="news-card__image" />
           <div className="news-card__text-wrapper">
             <h2 className="news-card__title">{elem.cate_name}</h2>
             {/* <div className="news-card__post-date">Jan 29, 2018</div> */}
             <div className="news-card__details-wrapper">
-              <a href="/" className="news-card__read-more">Voir les oeuvres <i className="fas fa-long-arrow-alt-right" /></a>
+ <div className="news-card__read-more">Voir les oeuvres <i className="fas fa-long-arrow-alt-right" /></div>
             </div>
           </div>
-         
+         </Link>
         </div>
              )
             })}
@@ -61,7 +69,7 @@ export class OurArtists extends React.Component {
           <div className="fig-author-figure-title">{elem.u_name}</div> 
           <div className="fig-author-figure-title">{elem.u_lastname}</div>
           <div className="fig-author-figure-title">Pays</div>
-          <div className="fig-author-figure-title"> {this.props.myArtworks.length} Nombre d'oeuvres</div>
+          <div className="fig-author-figure-title"> {this.countArtwork(elem.id_user)} oeuvres</div>
         </figcaption>
       </div>
       )
@@ -81,8 +89,9 @@ export class OurArtists extends React.Component {
         return {
             categories: state.cateReducer.categories,
             users: state.artistReducer.users,
-            // id: state.artistReducer.id,
-            myArtworks: state.artworksReducer.myArtworks
+            myArtworks: state.artworksReducer.myArtworks,
+            id: state.cateReducer.id,
+            artworks: state.artworksReducer.artworks
 
     
         }

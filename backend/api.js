@@ -28,7 +28,8 @@ api.use(express.json());
 api.use("/", routes, routesCategory, routesAdmin, routesArtworks, routesFeedback, routesFavorites); 
 
 
-api.use(express.static('./uploads'));
+// api.use(express.static('./uploads'));
+api.use('/uploads', express.static('uploads'))
 
 api.listen(8000, function () {
     console.log('Server listening on port 8000');

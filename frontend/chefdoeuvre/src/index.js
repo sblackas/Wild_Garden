@@ -38,13 +38,7 @@ import MyComments from './ComponentsUser/MyComments'
 import EditCategory from './ComponentsAdmin/EditCategory'
 import MyFavs from './ComponentsUser/MyFavs'
 import AllComments from './ComponentsAdmin/AllComments'
-
-
-
-
-
-
-
+import FilteredArtworks  from './ComponentsHome/FilteredArtworks';
 
 
 
@@ -81,6 +75,8 @@ const myRouter = (
               <Route exact path="/my-comments" component={MyComments} />
               <Route exact path="/admin/edit-category/:id_cate" component={EditCategory} />
               <Route exact path="/my-favorites" component={MyFavs} />
+              <Route exact path="/oeuvres-of/:id_cate" component={FilteredArtworks} />
+
 
 
 

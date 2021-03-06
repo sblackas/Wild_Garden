@@ -30,8 +30,10 @@ export class Footer extends React.Component {
                 </div>
                 <div className="f-wrap-right">
                     <h2>Top</h2>
+                    <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                     <div className="scroll-top">
                         <a href="#Header" ><img src={arrowup} className="arrowup" alt=""/></a>
+                    </div>
                     </div>
                 </div>
                 </div>

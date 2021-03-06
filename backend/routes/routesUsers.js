@@ -107,6 +107,9 @@ router.get('/users/:id_user', function (req, res) {
     db.query(`SELECT * FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
       if (err) throw err
       // console.log(result);
+    //  const photo = fs.readFileSync(`./uploads/${result[0].u_pp}`)
+    //  console.log(photo);
+    //  result[0].photo = photo
       res.json(result)
 
     })
