@@ -3,32 +3,86 @@
     border-top: solid black 2px;
     border-bottom: solid black 1px;
 
-    min-height: 230vh;
+    height: auto;
 
+}
+
+.Oeuvre h2 {
+    font-size: 4rem;
+    text-align: center;
+    font-family: 'voga';
+    color: antiquewhite;
+    margin-top: 13%;
+}
+
+.Oeuvre h3 {
+    color: honeydew;
+    font-family: 'Imbue';
+    
 }
 
 .Oeuvre .ll-container {
     margin-left: auto;
     margin-right: auto;
     margin-top: 7%;
-    border: aquamarine solid 2px;
+    /* border: aquamarine solid 2px; */
     display: flex;
+    flex-direction: column;
    justify-content: center;
+   align-items: center;
+   position: relative;
 }
 
 .Oeuvre .b-game-card__cover img {
     height: 90vh;
     /* border: red solid 2px; */
-    
-   
+}
+
+.Oeuvre .b-game-card h2 {
+    font-family: 'Neue World Regular';
+    font-size: 50px;
+    text-align: left;
+    color: grey;
+    /* border: red solid 2px; */
+}
+
+.Oeuvre .b-game-card p {
+    font-family: 'Roboto';
+    font-size: 17px;
+    color: whitesmoke;
+    /* border: red solid 2px; */
 }
 
 #buttonheart .iconheart {
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
 }
 
 #buttonheart {
-background-color: #100B09;
+background-color: #000000;
+border-radius: 10px;
+border: none;
 }
 
+#buttonheart #circle-table {
+    width: 5px;
+    height: 5px;
+    background: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    transition: 500ms;
+  }
+
+  #buttonheart:hover {
+    background: transparent;
+  }
+  
+  #buttonheart:hover #circle-button {
+    height: 50px;
+    width: 50px;
+    left: 0;
+    border-radius: 0;
+    border-bottom: 2px solid #eee;
+  }

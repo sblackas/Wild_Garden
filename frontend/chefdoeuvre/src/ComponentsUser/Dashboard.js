@@ -135,7 +135,7 @@ class Dashboard extends React.Component {
             <p>{this.state.successMsg}</p>
           </div>
 
-          <div className="rondPP" style={{ backgroundImage: `url("http://localhost:8000/uploads/${this.state.pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}/>
+          <div className="rondPP" style={{ backgroundImage: `url("http://localhost:8000/uploads/${this.state.pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}/>
 
           {/* <div className="rondPP"> */}
             {/* <img className="rondPPimg" src={this.state.pp} alt='pp' /> */}

@@ -109,7 +109,7 @@ export class MyComments extends Component {
                     {this.props.myComments.map(elem =>{
                         return (
                             <div className="comment-container">
-                            <div className="com-profile-img" alt="mypic" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}  />
+                            <div className="com-profile-img" alt="mypic" style={{ backgroundImage: `url("http://localhost:8000/uploads/${elem.u_pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}  />
                             <div className="good">
                                 <h1>{elem.u_name}</h1>
                                 <h1>{elem.u_lastname}</h1>

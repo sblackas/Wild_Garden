@@ -4,15 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 @import url(//db.onlinewebfonts.com/c/5647e03bdb9d622f23ff2bf2cd52c8ff?family=RoslindaleText);
 
-/* @font-face {
-    font-family: 'neue_worldcondensed_regular';
-    src: local('neue_worldcondensed_regular'),
-            url('neueworld-condensedregular-webfont.woff2') format('woff2'),
-            url('neueworld-condensedregular-webfont.woff') format('woff');
+@font-face {
+    font-family: 'Neue World Regular';
+    src: url('../fonts/neueworld-condensedregular-webfont.woff') format('woff'),
+            url('../fonts/neueworld-condensedregular-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 
-} */
+}
 
 
 
@@ -27,22 +26,23 @@ html {
 #Home .section1 {
     width: 100%;
     height: 100vh;
-    background-image: url('../imagesHome/bghome.png');
+    background-image: url('../imagesHome/bghome2.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: 0 0;
     border: solid 1px black;
     position: relative;
+    text-align: center;
 }
 
 #Home .section1 h1 {
     font-family: 'voga';
-    font-size: 300PX;
+    /* font-family: 'neue_worldcondensed_regular'; */
+    font-size: 22.2vw;
     color: white;
-    font-weight: 400;
-    text-align: center;
-    padding-top: 4%;
+    font-weight: 200;
     /* border: #8e7c49 solid; */
-    margin-left: 2%;
+    margin: 50PX auto 0px;
     
 }
 
@@ -127,6 +127,8 @@ flex-direction: row;
     font-family: 'voga', sans-serif;
     /* font-family: 'RoslindaleText'; */
     font-size: 40px;
+    /* font-size: 3.3vw; */
+
     /* border: yellowgreen solid 1px; */
     width: 50%;
     padding: 9%;
@@ -142,13 +144,10 @@ flex-direction: row;
 }
 
 #Home .textpurpose .describeteam {
-    /* font-size: 30px; */
-    /* margin-left: 35px; */
     /* border: red solid; */
     width: 50%;
     padding: 6%;
     color: #1d1d1d;
-    /* letter-spacing: -.01em; */
     font-size: 1.4vw;
     line-height: 2vw;
     font-family: 'Roboto', sans-serif;
@@ -191,13 +190,6 @@ svg {
     margin-top: -21%;
 }
 
-.categories-list-holder {
-    visibility: visible;
-    position: relative;
-    user-select: none;
-    /* border: springgreen solid 2px; */
-    padding-top: 200PX;
-}
 
 #Home .onus {
     display: flex;
@@ -489,6 +481,232 @@ font-size: 25px;
     /* border: blue solid; */
 }
   
+@media screen and (max-width:1050px) {
+
+  #Home .section1 {
+display: flex;
+flex-direction: column;
+flex-wrap: nowrap;
+height: auto;
+  }
+
+  #Home .section1 .textgroup {
+display: flex;
+flex-direction: column;
+align-items: center;
+  }
+  .maybe {
+    width: 75%;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+ 
+
+#Home .scroll-down {
+  height: 60px;
+  width: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+}
+
+#Home .copyright {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0%;
+
+
+}
+
+/*section 2*/
+
+#Home .section2 {
+  height: auto;
+  display: flex;
+  align-items: center;
+  padding-bottom: 15vh;
+}
+
+#Home .textpurpose {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  line-height: 1.3;
+  margin-top: 8%;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+#Home .textpurpose .weexistfor {
+  width: 95%;
+  padding: 2%;
+  text-align: center;
+  /* font-size: 30px; */
+
+
+}
+
+#Home .textpurpose .describeteam {
+  width: 80%;
+  padding: 3%;
+  /* font-size: 2.4vw; */
+  /* line-height: 2.3vw; */
+text-align: center;
+}
+
+.ligne {
+  width: 100%;
+  margin-bottom: 7%;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+  #Home .describeteam .view {
+    color: black;
+    width: 22%;
+    /* border: brown solid; */
+    font-weight: 800;
+    margin-left: auto;
+  margin-right: auto;
+}
+#Home .section3 {
+  /* border: solid black 2px; */
+  height: auto;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+#Home .section3 .goldenbrush {
+  height: auto;
+  position: RELATIVE;
+}
+
+#Home .goldimg {
+  height: 50%;
+  width: 50%;
+  margin-top: -20%;
+}
+#Home .onus {
+  display: flex;
+  align-items: center;
+  padding: 0px 3%;
+  /* border: white solid 2px; */
+}
+#Home .onus p {
+  text-align: center;
+}
+#Home .onus span {
+  text-align: center;
+}
+#Home .onus-text {
+padding: 10% 7%;
+columns: 2;
+font-size: 20px;
+
+
+}
+
+/*section 4*/
+#Home .section4 {
+  height: auto;
+  padding: 10% 4%;
+}
+
+#Home .blog-card {
+  max-width: 35%;
+  width:100%;
+  height: 95VH;
+  position: relative;
+  font-family: 'Droid Serif', serif;
+  color:#fff;
+  top: 10%;
+  right: 0;  
+  left: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 0px;
+  box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition:all 0.4s;
+  background: url('../imagesHome/new-one-1.gif') center no-repeat;
+  background-size: 160% 95VH;
+  margin-top: 6%;
+}
+
+#Home .section5 {
+  height: 114vh;
+  padding-bottom: 10%;
+}
+#Home .section5 .talkus {
+  /* border: springgreen solid; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: auto;
+}
+#Home .section5 .talkus p {
+  /* border: red solid; */
+  font-family: 'Imbue';
+  font-size: 25px;
+  text-align: center;
+  margin-top: -19%;
+  /* max-width: 30%; */
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+  height: 60VH;
+ 
+
+}
+}
+
+@media screen and (max-width:700px){
+  #Home .section3 .goldenbrush {
+    /* border: red solid; */
+    height: auto;
+    position: RELATIVE;
+    /* top: -37%; */
+  }
+  
+  #Home .goldimg {
+    height: 100%;
+    width: 100%;
+    margin-top: -40%;
+  }
+  #Home .blog-card {
+    max-width: 95%;
+    width:100%;
+    height: 95VH;
+    position: relative;
+    font-family: 'Droid Serif', serif;
+    color:#fff;
+    top: 10%;
+    right: 0;  
+    left: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0px;
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition:all 0.4s;
+    background: url('../imagesHome/new-one-1.gif') center no-repeat;
+    background-size: 160% 95VH;
+    margin-top: 6%;
+  }
+  #Home .fever-container {
+    display: flex;
+    flex-direction: column;
+   
+  }
+}
 
   
   @media (max-width:500px){
@@ -502,7 +720,7 @@ font-size: 25px;
     margin-top:40px
   }
   #Home .blog-card{
-    height:300px
+    height:500px
   }
   #Home .blog-card h3{
     font-size:1.3em
@@ -510,6 +728,7 @@ font-size: 25px;
   .intro{
     font-size:0.8em
   }
+  
   }
  
   

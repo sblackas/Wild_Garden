@@ -16,6 +16,7 @@
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    flex-direction: row;
 }
 
 .mr-auto {
@@ -54,4 +55,25 @@ margin-top: 9px;
 } */
 .userNavbar {
 background-color: black;
+}
+
+@media screen and (max-width:780px){
+    .userNavbar {
+        display: flex;
+        flex-direction: column;
+        }
+    .userNavbar .mr-auto {
+        display: flex;
+        flex-direction: column;
+        margin-right: 0px!important;
+        text-align: center;
+        }
+        .userNavbar .mr-auto .toto{
+            margin-left: auto;
+        margin-right: auto;
+            }
+        .userNavbar .mr-auto .navbar-brand{
+            background-color: black;
+            align-self: flex-end;
+            }
 }

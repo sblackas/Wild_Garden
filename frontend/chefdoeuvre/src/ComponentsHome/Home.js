@@ -24,11 +24,6 @@ render() {
       {/* < classNameeo autoPlay loop muted className="bg className">
       <source src={ Ink58 } type=" classNameeo/mp4"/>
     </ classNameeo> */}
-    	<link rel="stylesheet" href="stylesheet.css" type="text/css" charSet="utf-8" />
-<style type="text/css">
-      font-family: 'neue_worldcondensed_regular';
-  </style>
-  
     <h1 className="titlehome">WILD GARDEN</h1>
     <div className="textgroup">
     <p className="maybe">

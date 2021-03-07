@@ -14,19 +14,25 @@
     /* max-width: 900px; */
     float: none;
     margin: auto; 
+    text-align: center;
+
 }
 
-/* .titlepage h1 {
-  font-family: 'Anton', sans-serif;
+.titlepage {
+  margin: 5% 0px;
+}
+
+.titlepage h1 {
+  font-family: 'voga', sans-serif;
   font-size: 40px;
-  font-weight: normal;
-  color: white;
+  font-weight: 200;
+  color: rgb(255, 255, 255);
   letter-spacing: 0px;
 }
 
 h1 span {
   font-style: italic;
-} */
+}
 
 
 #portfolio {  
@@ -71,10 +77,44 @@ h1 span {
   
 }
 
+.ListOfArtworks select {
+  width: 20%;
+}
+
 
 ::-moz-focus-inner {
   border: 0;
   padding: 0;
+}
+
+@media screen and (max-width:865px){
+  #portfolio {  
+    margin: 1rem 0 0 1rem;
+    -webkit-column-count: 3; 
+    -moz-column-count: 3;
+    column-count: 3;
+
+  }
+}
+
+@media screen and (max-width:650px){
+  #portfolio {  
+    margin: 1rem ;
+    -webkit-column-count: 2; 
+    -moz-column-count: 2;
+    column-count: 2;
+
+  }
+}
+
+@media screen and (max-width:500px){
+  #portfolio {  
+    margin: 1rem;
+    -webkit-column-count: 1; 
+    -moz-column-count: 1;
+    column-count: 1;
+
+  }
 }
 
 /* test */

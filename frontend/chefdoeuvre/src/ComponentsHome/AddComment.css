@@ -36,7 +36,7 @@
 	transition: all 0.3s;
 }
 
-nput[type='text']:focus, [type='name']:focus, textarea:focus {
+input[type='text']:focus, [type='name']:focus, textarea:focus {
 	outline: none;
   padding: 0 0 0.875em 0;
 

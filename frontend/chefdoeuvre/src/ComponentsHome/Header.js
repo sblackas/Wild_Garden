@@ -120,6 +120,7 @@ class Header extends React.Component {
 
         } else if (localStorage.getItem("tokenUser")) {
             return (
+
                 <Navbar className="userNavbar" variant="dark">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/add-artwork">Ajouter une oeuvre</Nav.Link>
@@ -132,6 +133,8 @@ class Header extends React.Component {
                     <Navbar.Brand href="/" onClick={this.logOutSubmitUser} >Deconnexion</Navbar.Brand>
 
                 </Navbar>
+
+
             )
         } else {
             return (

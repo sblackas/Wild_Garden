@@ -14,6 +14,7 @@ export class Oeuvre extends Component {
         title: "",
         description: "",
         picture: "",
+        msgSuccess: "",
         id_artwork: this.props.match.params.id_artwork,
     };
 
@@ -50,7 +51,7 @@ export class Oeuvre extends Component {
                 console.log(res);
                 if (res.status === 200) {
                     console.log(res.data);
-                    this.setState({ msgSuccess: 'ajouté avec succès au favoris' });
+                    this.setState({ msgSuccess: 'Bien ajouté à vos favoris' });
                     this.props.addToFav(fav);
                 }
                 console.log(fav);
@@ -61,28 +62,7 @@ export class Oeuvre extends Component {
             });
     };
 
-//   onClick = event => {
-//     event.preventDefault();
 
-//     const fav = {
-//       title: this.state.title,
-//       description: this.state.description,
-//       picture: this.state.picture,
-//       id_user: this.props.id,
-//       id_artwork: this.state.id_artwork
-//     };
-//     axios.post('http://localhost:8000/artwork/add-to-fav', fav, { headers: {authorization: `Bearer ${this.props.token}` }})
-//       .then(res => {
-//         if (res.status === 200) {
-//           console.log(res);
-//           console.log(res.data);
-//         this.setState({ msgSuccess: "Bien ajouté aux favoris" })
-//         }
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//     });
-//   }
 
 
     render() {
@@ -93,12 +73,17 @@ export class Oeuvre extends Component {
                     <div className="b-game-card">
                         <div className="b-game-card__cover" >
                             <img src={this.props.myArtworks.art_picture} alt="" />
-                            <h2>{this.props.myArtworks.art_title}</h2>
-                            <p>{this.props.myArtworks.art_desc}</p>
-                            <button onClick={() => this.handleSubmit(this.props.myArtworks.id_artwork)} id="buttonheart"><img src={iconheart} className="iconheart" alt=""/></button>
                         </div>
+                            <h2>{this.props.myArtworks.art_title}</h2>
+                            <h3>Description</h3>
+                            <p>{this.props.myArtworks.art_desc}</p>
+                            <div className="favsucess">
+                            <button onClick={() => this.handleSubmit(this.props.myArtworks.id_artwork)} id="buttonheart"><img src={iconheart} className="iconheart" alt=""/><div id="circle-table"></div></button>
+                            <p>{this.state.msgSuccess}</p>
+                            </div>
                     </div>
                 </div>
+                    <h2>Les avis sur cette oeuvre</h2>
                 <DisplayComments idArtwork={this.props.match.params.id_artwork} />
                 <AddComment id_artwork={this.state.id_artwork} />
             </div>

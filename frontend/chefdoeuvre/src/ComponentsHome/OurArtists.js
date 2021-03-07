@@ -62,7 +62,7 @@ countArtwork(id_user){
       <div className="fir-image-figure">
         {/* <a className="fir-imageover" rel="noopener" target="_blank" href="#"> */}
         <Link to={`/galerie-of/${elem.id_user}`}>
-          <div className="fir-author-image fir-clickcircle" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
+          <div className="fir-author-image fir-clickcircle" style={{ backgroundImage: `url("http://localhost:8000/uploads/${elem.u_pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} />
           </Link>
         {/* </a> */}
         <figcaption>

@@ -1,15 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
-html {
+/* html {
   font-family: 'Montserrat', Arial, sans-serif;
 
-}
+} */
 
  #AddArtwork {
   background: #151514;
   /* background-image: url('../Images/abstract.jpg'); */
   background-repeat: no-repeat;
-  height: 150vh;
+  height: 120vh;
   border-top: solid 2px black;
 }
 

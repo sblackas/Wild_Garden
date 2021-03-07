@@ -9,10 +9,11 @@
     border: solid green 2px;
     position: relative;
     MARGIN-TOP: 6REM;
+    padding-bottom: 4rem;
 }
 
 .MyComments .comment-container {
-    border: yellow solid 2px;
+    border: #151514 solid 2px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +29,9 @@
     padding: 20px;
     border-radius: 5px;
     position: relative;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 15px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: rgba(34, 32, 32, 0.6);
+
 }
 .MyComments .comment-container .com-profile-img {
     height: 100px;
@@ -80,7 +83,7 @@
     width: 80%;
     height: 80px;
     font-size: 2rem;
-    margin: 30px 10% 0 10%;
+    margin: 30px 0% 0 85%;
     border: none;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 5px;

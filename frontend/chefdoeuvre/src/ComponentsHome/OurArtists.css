@@ -209,7 +209,7 @@ padding-left: 9%;
   } */
 
   .artistContainer {
-      border: solid 2px red;
+      /* border: solid 2px red; */
       margin-top: 100px;
       /* columns: 3; */
       padding: 35px;
@@ -218,6 +218,10 @@ padding-left: 9%;
       min-height: auto;
       padding: 3%;
       flex-flow: row wrap;
+      width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-around;
 
       
   }
@@ -227,10 +231,10 @@ padding-left: 9%;
     width: 150px;
     border-radius: 50%;
     cursor: pointer;
-    background: blue;
+    background: rgb(125, 125, 128);
     background-size: cover;
     background-position: center;
-    border: red solid;
+    /* border: red solid; */
   }
   
   .fir-image-figure {
@@ -240,6 +244,8 @@ padding-left: 9%;
     margin-bottom: 40px;
     position: relative;
     text-decoration: none;
+    margin-right: 20px;
+   
   }
   
   .fir-image-figure .caption, .fir-image-figure figcaption {

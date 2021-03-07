@@ -44,9 +44,9 @@ export class ListOfArtworks extends Component {
         return (
             <div className="ListOfArtworks">
 
-{/* <div className="titlepage">
+<div className="titlepage">
     <h1>All of the <br></br><span>Artworks</span></h1>
-</div> */}
+</div>
 
                 <Filter count={artworksLo.length}
                     categorie={this.state.categorie}

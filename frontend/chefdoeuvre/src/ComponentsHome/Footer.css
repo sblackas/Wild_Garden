@@ -27,8 +27,10 @@
 .f-wrap {
     top: 20px;
     display: flex;
-padding: 30px;
-    justify-content: space-around;
+/* padding: 30px;
+    justify-content: space-evenly; */
+    padding: 30px 50px;
+    justify-content: space-between;
 }
 
 .f-wrap h2{
