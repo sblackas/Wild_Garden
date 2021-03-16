@@ -4,3 +4,16 @@
     color: white;
     border-top: black 1px solid;
 }
+
+#AllComments .comment-section .good{
+    color: antiquewhite;
+}
+
+#AllComments .succ {
+    color: antiquewhite;
+    text-align: center;
+}
+
+.com-description {
+    color: white
+}

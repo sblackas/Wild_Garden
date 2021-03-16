@@ -30,12 +30,13 @@ export class AddComment extends Component {
         event.preventDefault();
 
         const comment = {
-            comment: this.state.comment,
+            commentary: this.state.comment,
             id_user: this.props.id, 
             id_artwork: this.props.id_artwork
         };
+        // axios.post('http://localhost:8000/feedback/add', comment, { headers: { authorization: `Bearer ${this.props.token}` } })
 
-        axios.post('http://localhost:8000/feedback/add', comment, { headers: { authorization: `Bearer ${this.props.token}` } })
+        axios.post('http://localhost:8000/feedback/add', comment, { headers: { authorization: `Bearer ${localStorage.getItem('tokenUser')}` } })
             .then(res => {
                 if (res.status === 200) {
                     console.log(res);

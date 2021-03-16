@@ -5,6 +5,8 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
+const middlewares = require('../middlewares/middlewares.js');
+
 
 //___ Inscription admin
 router.post('/admin/sign-up', function (req, res) {
@@ -46,13 +48,13 @@ router.post('/admin/sign-in', function (req, res) {
 
 
 //____Infos admin
+router.use('/feedback/:id_feedback', middlewares.isAdmin)
 router.get('/admin/:id_admin', function (req, res) {
   try {
     db.query(`SELECT a_name, a_lastname, a_email, a_password FROM admin WHERE id_admin = '${req.params.id_admin}'`, (err, result) => {
       if (err) throw err
       console.log(result);
       res.json(result)
-
     })
   } catch (error) {
     console.log(error);
@@ -60,6 +62,7 @@ router.get('/admin/:id_admin', function (req, res) {
 })
 
 //____Suppression admin
+router.use('/feedback/:id_feedback', middlewares.isAdmin)
 router.delete('/admin/:id_admin', function (req, res) {
   console.log(req.body);
   db.query(`DELETE FROM admin WHERE id_admin = '${req.params.id_admin}'`, function (error, results) {
@@ -70,10 +73,10 @@ router.delete('/admin/:id_admin', function (req, res) {
 
 
 //_____Modifier admin
+router.use('/feedback/:id_feedback', middlewares.isAdmin)
 router.put('/admin/:edit', function (req, res) {
   db.query(`UPDATE admin SET a_name = '${req.body.name}', a_lastname = '${req.body.lastname}', a_email = '${req.body.email}' WHERE id_admin = '${req.params.edit}'`, function (error, results) {
     if (error) throw error;
-    //  res.send(JSON.stringify(results + "PROFILE HAS BEEN UPDATED"));
     res.send('PROFILE HAS BEEN UPDATED');
 
   });

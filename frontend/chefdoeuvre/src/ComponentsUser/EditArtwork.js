@@ -35,18 +35,18 @@ export class EditArtwork extends React.Component {
     // let theartworktoedit = this.props.myArtworks.filter(elem => elem.id_artwork == this.props.match.params.id_artwork)
     // console.log(theartworktoedit);
     // au départ, filter dans componentDidMount mais marchait pas alors componentDidUpdate qui changera en fonction de ce qui a été modifier
-    let testtom = this.props.myArtworks.filter(elem => elem.id_artwork == this.props.match.params.id_artwork)
+    let toedit = this.props.myArtworks.filter(elem => elem.id_artwork == this.props.match.params.id_artwork)
     console.log("-------------------------")
-    console.log(testtom)
-    if (!this.state.title.length && testtom.length) {
-      //si la longueur du tableau et le tableau testtom tu change mes states. 
+    console.log(toedit)
+    if (!this.state.title.length && toedit.length) {
+      //si la longueur du tableau et le tableau toedit tu change mes states. 
       // pourquoi this.state.title ? pcq title ou description ou peu importe sont des des chaines de caractère de leur propre tab 
-      // dans le front il y a un 0 qui apparait avant le testtom c'est title.lenght comme il est vide
+      // dans le front il y a un 0 qui apparait avant le toedit c'est title.lenght comme il est vide
       this.setState({
-        title: testtom[0].art_title,
-        description: testtom[0].art_desc,
-        picture: testtom[0].art_picture,
-        id_cate: testtom[0].id_cate
+        title: toedit[0].art_title,
+        description: toedit[0].art_desc,
+        picture: toedit[0].art_picture,
+        id_cate: toedit[0].id_cate
       });
     }
   }

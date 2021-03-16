@@ -49,7 +49,7 @@ render() {
   <div className="describeteam">  <div className="ligne"></div>
 <p>
    Notre ambition ? Permettre une accessibilité aux differents arts visuels à toute personne intéressée par l’art.
-  Nous permettons à nombre d'artistes établis et nouveaux talents prometteurs d'exposer leurs oeuvres dans un portfolio sur notre site. We store ideas for typography, colors, shapes, and photography in one place, revise them from time to time, and track how quickly our design approach and design in general evolves.<br></br></p>
+   Grâce à ce site qui se veut un lieu d’expression artistique contemporaine où se côtoient avec bonheur : peintres, dessinateur, photographes… on peut retrouver et élargir le plaisir de ces moments de découvertes artistiques, de partage et d’échange avec les amoureux de l’art..<br></br></p>
   <Nav.Link as={Link} to="/les-oeuvres" className="view" >
     view all artworks
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 28"> <defs></defs> <path fill="#1d1d1d" d="M49.1,15.7l-11-11c0,0-0.1,0-0.1,0L35.7,7c-0.1,0.1-0.1,0.1,0,0.2l7.1,7.1c0.1,0.1,0,0.2-0.1,0.2H6.2c-1.1,0-2-0.9-2-2V1c0-0.1-0.1-0.3-0.3-0.3H1C0.9,0.7,0.8,0.8,0.8,1v12.5c0,2.5,2,4.5,4.5,4.5h37.1c0.1,0,0.2,0.1,0.1,0.2l-6.7,6.7c-0.1,0.1-0.1,0.2,0,0.3l2.1,2.1c0.1,0.1,0.2,0.1,0.3,0l10.9-10.9C49.2,16.2,49.2,15.9,49.1,15.7z"></path></svg>
@@ -66,7 +66,7 @@ render() {
     <p>A propos de nous</p><span>et de notre travail</span>
   </div>
   <div className="onus-text">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>[New York, East Village, 1996]. Nous rencontrons John sur une brocante. Il vend des photographies anciennes. De prime abord, il semble plutôt farouche ; puis très vite, il nous dévoile ses trésors avec passion : des photos de presse datant des années 1920. Nous tombons sous le charme. De John autant que de ses images. Emportés par l’occasion et fiers de cette découverte, nous lui achetons cinq tirages originaux. L’aventure avait commencé. Depuis, nous n’avons jamais cessé de nous consacrer à l'art. Nous collectionnons, visitons des expositions, des galeries, des salons, allons à la rencontre de nombreux artistes dans leurs ateliers. Nous avons créé WILD GARDEN pour partager cet enthousiasme. Ce site web et ses nombreuses publications livrent un aperçu complet et passionnant sur le monde de l'art. <br></br> <br></br>Gojou Satoru & Eren Yaeger vous souhaitent beaucoup de plaisir avec WILD GARDEN</p>
   </div>
   </div>
 <section className="section4">
@@ -115,7 +115,7 @@ render() {
     <p>
     Vous avez un projet à discuter? [Ne soyez pas timide]<br></br>
 
-Collaborons et créons ensemble des trucs merveilleux. Nous sommes là pour vous aider à trouver des réponses à tous vos doutes et à résoudre les défis qui pourraient vous déranger. Nous pensons que les défis mènent à la réalisation de quelque chose de nouveau. Quelque chose de nouveau élargit nos horizons et nous apprenons ensemble. Envoyez-nous un message en écrivant à notre adresse e-mail . <br></br> <br></br><span>projects@wildgarden.co</span><br></br><br></br>Nous reviendrons vers vous avant notre café du matin. 
+Collaborons et créons ensemble des choses merveilleux. Nous sommes là pour vous aider à trouver des réponses à tous vos doutes et à résoudre les défis qui pourraient vous déranger. Nous pensons que les défis mènent à la réalisation de quelque chose de nouveau. Quelque chose de nouveau élargit nos horizons et nous apprenons ensemble. Envoyez-nous un message en écrivant à notre adresse e-mail . <br></br> <br></br><span>projects@wildgarden.co</span><br></br><br></br>Nous reviendrons vers vous avant notre café du matin. 
     </p>
   </div>
 </section>

@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken")
 
 //____Ajouter une oeuvre aux favoris
 
-router.post('/artwork/add-to-fav', middlewares.isArtist, function(req, res) {
+router.post('/artwork/add-to-fav', middlewares.isAuthentified, function(req, res) {
     try {
         const token = req.headers.authorization.split(' ')[1]
         let decoded = jwt.decode(token);
@@ -27,8 +27,7 @@ router.post('/artwork/add-to-fav', middlewares.isArtist, function(req, res) {
 });
 
 //_______Récuperer les favoris
-
-router.get('/get-favs/', middlewares.isArtist, function(req, res) {
+router.get('/get-favs/', middlewares.isAuthentified, function(req, res) {
   try {
     const token = req.headers.authorization.split(' ')[1]
     let decoded = jwt.decode(token);
@@ -43,8 +42,7 @@ router.get('/get-favs/', middlewares.isArtist, function(req, res) {
 });
 
 //______Supprimer une oeuvre de ses favoris
-
-router.delete('/my-favs/:id_artwork', middlewares.isArtist, function(req, res) {
+router.delete('/my-favs/:id_artwork', middlewares.isAuthentified, function(req, res) {
   try {
       let idArtwork = req.params.id_artwork;
       db.query(`DELETE from favorites WHERE id_artwork = ${idArtwork}`);

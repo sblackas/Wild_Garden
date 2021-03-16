@@ -72,7 +72,6 @@ render() {
       <div className="SignIn">
 
 
-  {/* { this.state.message ?  <Alert variant="danger" > {this.state.message} </Alert> : null } */}
   { this.state.message && <p> {this.state.message} </p> }
 
  
@@ -94,12 +93,8 @@ render() {
 
   </form>
 </div>
-
-{/* <Footer/> */}
  
 </div>
-
-
        
   );
 }

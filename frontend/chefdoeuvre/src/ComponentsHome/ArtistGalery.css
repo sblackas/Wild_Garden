@@ -29,10 +29,10 @@
     -moz-column-width: 33.33333333333333%;
     column-width: 33.33333333333333%;
     width: 75%;
-    /* max-width: 990px; */
-    /* border: blue solid 2px; */
+   
     margin-right:auto;
     margin-left: auto;
+    /* overflow: scroll; */
     
 
   }

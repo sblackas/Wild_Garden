@@ -3,46 +3,24 @@ const config = require('../modules/config');
 const db = require('../database/db');
 
 //____Check if token is valid
-const authJWT = (req, res, next) => {
-    let accessToken = req.headers.authorization
-       if (accessToken) {
-           const token = accessToken.split(' ')[1];
-           console.log(token);
+// const authJWT = (req, res, next) => {
+//     let accessToken = req.headers.authorization
+//        if (accessToken) {
+//            const token = accessToken.split(' ')[1];
+//            console.log(token);
 
-           jwt.verify(accessToken, config.secret, (err, decoded) => {
-               console.log(err);
-               if (err) {
-                  return res.status(403).send("Invalid token")
-               }
-           next()
-           });
-       } else {
-           res.status(403)
-       }
-   };
+//            jwt.verify(accessToken, config.secret, (err, decoded) => {
+//                console.log(err);
+//                if (err) {
+//                   return res.status(403).send("Invalid token")
+//                }
+//            next()
+//            });
+//        } else {
+//            res.status(403)
+//        }
+//    };
 
-//____Check if logged one is admin 
-// const isAdmin = (req, res, next) => {
-//      let tokenAdmin = req.headers.authorization
-//         if (tokenAdmin) {
-//             const token = tokenAdmin.split(' ')[1];
-//             console.log(token);
-
-//             jwt.verify(tokenAdmin, config.secret, (err, decoded) => {
-//                 console.log(err);
-//                 if (err) {
-//                    return res.status(203).send("Unauthorized you are not the admin")
-//                 } else {
-//                     next();
-//                 }
-//             });
-//         } else {
-//             res.status(203).json({error: 'Unauthorized you are not an artist'});
-    
-//         }
-//     };
-
-    //Test
 
     const isAdmin = (req,res,next) => {
         let tokenAdmin = req.headers.authorization
@@ -69,23 +47,24 @@ const authJWT = (req, res, next) => {
         }
     }
 
+    //______Check if token is valid
     //fonctionne pour les deux token
-const isArtist = (req, res, next) => {
-    const artistToken = req.headers.authorization;
+const isAuthentified = (req, res, next) => {
+    const authJWT = req.headers.authorization;
 
-    if (artistToken) {
-        const token = artistToken.split(' ')[1];
+    if (authJWT) {
+        const token = authJWT.split(' ')[1];
         console.log(token);
 
         jwt.verify(token, config.secret, (err, decoded) => {
             if (err) {
-                res.status(403).json({error: 'Unauthorized you are not an artist'});
+                res.status(403).json({error: 'Unauthorized you dont have a valid token'});
             } else {
                 next();
             }
         });
     } else {
-        res.status(403).json({error: 'Unauthorized you are not an artist'});
+        res.status(403).json({error: 'Unauthorized you dont have a valid token'});
 
     }
 };
@@ -104,5 +83,5 @@ const emailMiddleware = (req, res, next) => {
     })
 }
 
-module.exports = { authJWT, emailMiddleware, isAdmin, isArtist }
+module.exports = { emailMiddleware, isAdmin, isAuthentified }
 

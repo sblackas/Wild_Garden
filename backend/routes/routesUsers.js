@@ -7,33 +7,12 @@ const jwt = require('jsonwebtoken');
 const config = require('../modules/config');
 const middlewares = require('../middlewares/middlewares.js');
 var multer = require('multer');
-// const path = require("path");
 var upload = multer({ dest: './uploads/' });
 const fs = require('fs')
 
-// const storage = multer.diskStorage({
-//   destination: "./uploads/",
-//   filename: function(req, file, cb){
-//      cb(null,"IMAGE-" + Date.now() + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({
-//   storage: storage,
-//   limits:{fileSize: 1000000},
-// }).single("myImage");
-// router.post("/upload", upload(req, res, err)){
-//      console.log("Request ---", req.body);
-//      console.log("Request file ---", req.file);//Here you get file.
-//      /*Now do where ever you want to do*/
-//      if(!err)
-//         return res.send(200).end();
-
-//   }
-
-// ;
 
 //____Inscription
+router.use('/users/sign-up', middlewares.emailMiddleware)
 router.post('/users/sign-up', function (req, res) {
   try {
     if (req.body.name.length < 1) throw 'No name'
@@ -56,9 +35,7 @@ router.post('/users/sign-up', function (req, res) {
       if (err) throw err;
       console.log("one user inserted");
       res.send(result)
-
     });
-
   } catch (err) {
     res.status(203).send(err)
   }
@@ -67,7 +44,6 @@ router.post('/users/sign-up', function (req, res) {
 
 
 //_____Connexion
-// router.use('/users/sign-in', middlewares.authJWT)
 router.post('/users/sign-in', function (req, res) {
   console.log(req.body.email);
   db.query(`SELECT * FROM users WHERE u_email = '${req.body.email}'`, function (err, result) {
@@ -76,7 +52,7 @@ router.post('/users/sign-in', function (req, res) {
       bcrypt.compare(req.body.password, result[0].u_password, function (err, theuser) {
         console.log(theuser);
         if (theuser) {
-          let token = jwt.sign({ id: result[0].id_user, email: result[0].u_email }, config.secret, { expiresIn: 86400 });
+          let token = jwt.sign({ id: result[0].id_user, email: result[0].u_email, user: true }, config.secret, { expiresIn: 86400 });
           console.log(token);
           res.send({ auth: true, token: token, user: result[0] });
         } else {
@@ -91,14 +67,16 @@ router.post('/users/sign-in', function (req, res) {
 
 //_____Liste des users
 router.get('/users', function (req, res) {
+  try {
   let allUsers = `SELECT * FROM users`;
   db.query(allUsers, function (err, todoUser) {
-
     if (err) res.send(err);
     // console.log(todoUser);
     res.send(todoUser)
   })
-
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 //_____Infos d'un user
@@ -107,9 +85,9 @@ router.get('/users/:id_user', function (req, res) {
     db.query(`SELECT * FROM users WHERE id_user = '${req.params.id_user}'`, (err, result) => {
       if (err) throw err
       // console.log(result);
-    //  const photo = fs.readFileSync(`./uploads/${result[0].u_pp}`)
-    //  console.log(photo);
-    //  result[0].photo = photo
+      //  const photo = fs.readFileSync(`./uploads/${result[0].u_pp}`)
+      //  console.log(photo);
+      //  result[0].photo = photo
       res.json(result)
 
     })
@@ -119,7 +97,7 @@ router.get('/users/:id_user', function (req, res) {
 })
 
 //_____Supprimer d'un user
-router.use('/users/:id_user', middlewares.isArtist)
+router.use('/users/:id_user', middlewares.isAuthentified)
 router.delete('/users/:id_user', function (req, res) {
   // console.log(req.body);
   db.query(`DELETE FROM users WHERE id_user = '${req.params.id_user}'`, function (error, results) {
@@ -129,7 +107,7 @@ router.delete('/users/:id_user', function (req, res) {
 });
 
 //_____Modifier infos user
-router.use('/users/:edit', middlewares.isArtist)
+router.use('/users/:edit', middlewares.isAuthentified)
 router.put('/users/:edit', function (req, res) {
   // console.log('-------------------------------------------------------------------');
   // console.log(req.body);
@@ -140,7 +118,7 @@ router.put('/users/:edit', function (req, res) {
   });
 });
 
-//Uploader un fichier 
+//Uploader et mettre à jour sa photo de profil
 router.post('/single/:id_user', upload.single('profile'), function (req, res, next) {
   try {
     console.log(req.body);
@@ -159,13 +137,6 @@ router.post('/single/:id_user', upload.single('profile'), function (req, res, ne
   }
 })
 
-// var storage = multer.diskStorage({
-//   destination: function(req, file, cb) {
-//       cb(null, '../uploads');
-//    },
-//   filename: function (req, file, cb) {
-//       cb(null , file.originalname);
-//   }
-// });
+
 
 module.exports = router;

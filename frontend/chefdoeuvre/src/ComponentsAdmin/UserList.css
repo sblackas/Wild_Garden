@@ -1,21 +1,23 @@
 #UserList {
-    min-height: 130vh;
+height: auto;
  background-color: #151514;
  border-top: black;
  position: relative;
+ color: antiquewhite;
 
 }
 
 #UserList .artistContainerr {
-    border: solid 2px red;
+    /* border: solid 2px red; */
     /* columns: 3; */
     padding-right: 35px;
     padding-left: 35px;
     padding-top: 5%;
-    min-height: 130vh;
+    min-height: 70vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    flex-flow: row wrap;
 }
 
 .details-modall {

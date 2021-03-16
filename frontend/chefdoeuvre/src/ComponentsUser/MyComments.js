@@ -105,6 +105,7 @@ export class MyComments extends Component {
     render() {
         return (
             <div className="MyComments">
+              <p>{this.state.msgSuccess}</p>
                 <section className="section-com">
                     {this.props.myComments.map(elem =>{
                         return (

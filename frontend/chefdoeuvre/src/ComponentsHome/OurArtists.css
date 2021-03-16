@@ -22,8 +22,8 @@
 }
 
 .titleOurartists {
-  /* font-family: 'voga'; */
-  font-family: "SparrowSolidW00-Regular"; 
+  font-family: 'voga';
+  /* font-family: "SparrowSolidW00-Regular";  */
   font-size: 60PX;
   z-index: 3;
 }
@@ -42,6 +42,7 @@
 margin-top: 3%;
 padding-right: 9%;
 padding-left: 9%;
+text-align: center;
 
 }
 

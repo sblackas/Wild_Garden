@@ -20,6 +20,7 @@ import AddArtwork from './ComponentsUser/AddArtwork'
 import ArtworksList from './ComponentsUser/ArtworksList'
 import AddCategory from './ComponentsAdmin/AddCategory'
 import PrivateRoute from './privateroutes'
+import PrivateRouteUser from './pivateroutesUser'
 import DashboardAdmin from './ComponentsAdmin/DashboardAdmin';
 import CateList from './ComponentsAdmin/CateList'
 import UserList from './ComponentsAdmin/UserList'
@@ -58,23 +59,23 @@ const myRouter = (
               <Route exact path="/signin" component={SignIn} />
               <Route exact path="/admin/signin" component={SignInAdmin} />
               <Route exact path="/admin/signup" component={SignUpAdmin} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/add-artwork" component={AddArtwork} />
-              <Route exact path="/artworks-list" component={ArtworksList} />
-              <Route exact path="/admin/category-list" component={CateList} />
-              <Route exact path="/admin/users-list" component={UserList} />
-              <Route exact path="/admin/add-category" component={AddCategory} />
+              <PrivateRouteUser exact path="/dashboard" component={Dashboard} />
+              <PrivateRouteUser exact path="/add-artwork" component={AddArtwork} />
+              <PrivateRouteUser exact path="/artworks-list" component={ArtworksList} />
+              <PrivateRoute exact path="/admin/category-list" component={CateList} />
+              <PrivateRoute exact path="/admin/users-list" component={UserList} />
+              <PrivateRoute exact path="/admin/add-category" component={AddCategory} />
               <PrivateRoute exact path="/admin/dashboard" component={DashboardAdmin} />
-              <Route exact path="/admin/all-artwork-list" component={AllArtworkList} />
-              <Route exact path="/admin/all-comments" component={AllComments} />
-              <Route exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
+              <PrivateRoute exact path="/admin/all-artwork-list" component={AllArtworkList} />
+              <PrivateRoute exact path="/admin/all-comments" component={AllComments} />
+              <PrivateRouteUser exact path="/user/edition-artwork/:id_artwork" component={EditArtwork} />
               <Route exact path="/nos-artistes" component={OurArtists} />
               <Route exact path="/les-oeuvres" component={ListOfArtworks} />
               <Route exact path="/galerie-of/:id_user" component={ArtistGalery} />
               <Route exact path="/the-artwork/:id_artwork" component={Oeuvre} />
-              <Route exact path="/my-comments" component={MyComments} />
-              <Route exact path="/admin/edit-category/:id_cate" component={EditCategory} />
-              <Route exact path="/my-favorites" component={MyFavs} />
+              <PrivateRouteUser exact path="/my-comments" component={MyComments} />
+              <PrivateRoute exact path="/admin/edit-category/:id_cate" component={EditCategory} />
+              <PrivateRouteUser exact path="/my-favorites" component={MyFavs} />
               <Route exact path="/oeuvres-of/:id_cate" component={FilteredArtworks} />
 
 

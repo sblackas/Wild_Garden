@@ -79,16 +79,22 @@ export class UserList extends Component {
       });
   }
 
+
+  countArtwork(id_user){
+    const count = this.props.artworks.filter(elem => elem.id_user === id_user).length
+    return count
+   }
+
   render() {
     return (
       <div id="UserList">
         <div className="artistContainerr">
-        <p>{this.state.successMsg}</p>
+        <p className="suc">{this.state.successMsg}</p>
           {this.props.users.map(elem => {
             return (
               <figure className="fir-image-figure">
                 {/* <Link to={`/galerie-of/${elem.id_user}`}> */}
-                <div className="fir-author-image fir-clickcircle" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }}/>
+                <div className="fir-author-image fir-clickcircle" style={{ backgroundImage: `url("http://localhost:8000/uploads/${elem.u_pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}/>
                 {/* <img className="fir-author-image fir-clickcircle" src={elem.u_pp} alt="t" /> */}
 
                 {/* </Link> */}
@@ -97,7 +103,7 @@ export class UserList extends Component {
                   <div className="fig-author-figure-title">{elem.u_name}</div>
                   <div className="fig-author-figure-title">{elem.u_lastname}</div>
                   <div className="fig-author-figure-title">Pays</div>
-                  <div className="fig-author-figure-title"> {this.props.count} Nombre d'oeuvres</div>
+                  <div className="fig-author-figure-title"> {this.countArtwork(elem.id_user)} oeuvres</div>
                 </figcaption>
 
                 <details>
@@ -164,6 +170,8 @@ export class UserList extends Component {
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
     users: state.artistReducer.users,
+    artworks: state.artworksReducer.artworks
+
 
 
   }

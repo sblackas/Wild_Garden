@@ -12,6 +12,10 @@
   height: 150vh;
 }
 
+.AddCategory p {
+  color: antiquewhite;
+}
+
 button {
   overflow: visible;
   

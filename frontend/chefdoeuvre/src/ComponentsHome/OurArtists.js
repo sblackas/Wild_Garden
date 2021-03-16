@@ -32,7 +32,8 @@ countArtwork(id_user){
               <p className="bg-text">ARTWORKS</p>
               </div>
                 <div className="o-text">
-    <p>Lorem ipsum dolor sit amet,  ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Les artistes que vous allez découvrir sont avant tout des "coups de cœur" humain avec l’artiste. Ils ont été choisi pour leur travail mais aussi pour ce qu’il sont. Des artistes au talent reconnu ou méconnu représentant la diversité de la création contemporaine à travers la peinture, le dessin, l'edition, ...
+.</p>
   </div>
                 <div className="line">
                 </div>
@@ -75,9 +76,6 @@ countArtwork(id_user){
       )
     })}
       </div>
-
-
-
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { personalArtworks } from '../Store/actions/artworks'
 import AddComment from './AddComment'
@@ -82,10 +83,13 @@ export class Oeuvre extends Component {
                             <p>{this.state.msgSuccess}</p>
                             </div>
                     </div>
+                    <Link to={`/galerie-of/${this.props.myArtworks.id_user}`}><p>Retour à la galerie</p></Link>
                 </div>
                     <h2>Les avis sur cette oeuvre</h2>
                 <DisplayComments idArtwork={this.props.match.params.id_artwork} />
                 <AddComment id_artwork={this.state.id_artwork} />
+                {/* <AddComment id_artwork={this.props.match.params.id_artwork} /> */}
+
             </div>
         ) : (
             <div className="attente">Loading product...</div>

@@ -107,7 +107,7 @@ class CateList extends React.Component {
                 <div className="CateListPage">
 
                     <div className="title"><h1>&bull; Category List &bull;</h1></div>
-                    <p>{this.state.msgSuccess}</p>
+                    <p className="suc">{this.state.msgSuccess}</p>
 
                     {/* {console.log(this.state.categories)} */}
                     <div className="cards-container">

@@ -4,10 +4,10 @@ const db = require('../database/db');
 const middlewares = require('../middlewares/middlewares.js');
 
 //____Poster un commentaire
-router.use('/feedback/add', middlewares.isArtist)
+// router.use('/feedback/add', middlewares.isAuthentified)
 router.post('/feedback/add', function (req, res) {
    console.log(req.body)
-   let newFeedback = `INSERT INTO feedbacks (commentary, id_user, id_artwork) VALUES ('${req.body.comment}', ${req.body.id_user}, ${req.body.id_artwork})`;
+   let newFeedback = `INSERT INTO feedbacks (commentary, id_user, id_artwork) VALUES ('${req.body.commentary}', ${req.body.id_user}, ${req.body.id_artwork})`;
    db.query(newFeedback, function (err, result) {
       if (err) throw err;
       res.send(result);
@@ -15,7 +15,7 @@ router.post('/feedback/add', function (req, res) {
 })
 
 //____Supprimer un commentaire
-// router.use('/feedback/:id_feedback', middlewares.isArtist)
+// router.use('/feedback/:id_feedback', middlewares.isAuthentified)
 router.delete('/feedback/:id_feedback', function (req, res) {
    console.log(req.body);
    db.query(`DELETE FROM feedbacks WHERE id_feedback = '${req.params.id_feedback}'`, function (error, results) {
@@ -25,6 +25,7 @@ router.delete('/feedback/:id_feedback', function (req, res) {
 });
 
 //____Modifier un commentaire
+// router.use('/feedback/:id_feedback', middlewares.isAuthentified)
 router.put('/feedback/:edit', function (req, res) {
    console.log(req.body);
    db.query(`UPDATE feedbacks SET commentary = '${req.body.commentary}' WHERE id_feedback = '${req.params.edit}'`, function (error, results) {
@@ -34,7 +35,6 @@ router.put('/feedback/:edit', function (req, res) {
 });
 
 //_____Liste des tous les commentaires
-// router.use('/feedbacks/', middlewares.isAdmin)
 router.get('/feedbacks', function (req, res) {
    let allFeedbacks = `SELECT id_feedback,commentary FROM feedbacks`;
    db.query(allFeedbacks, function (err, result) {
@@ -66,9 +66,6 @@ router.get('/get-feedback-artwork/:id_artwork', function (req, res) {
       res.send(results)
    })
 })
-
-
-
 
 
 module.exports = router;

@@ -8,17 +8,22 @@ import { newArtwork } from '../Store/actions/artworks';
 
 
 class AddArtwork extends React.Component {
-  state = {
+  constructor(props) {
+    super(props);
+  this.state = {
     title: "",
     description: "",
     picture: "",
     id_user: "",
     msgSuccess: "",
     selectedOption:"",
-    categories : []
+    categories : [],
+    file: ""
   };
+  // this.fileUploader = this.fileUploader.bind(this);
+  // this.onChange = this.onChange.bind(this);
+}
 
-  // /!\ Bien écrire les elements exactement comme dans la db
   inputTitle = event => {
     this.setState({ title: event.target.value })
   };
@@ -59,6 +64,43 @@ class AddArtwork extends React.Component {
     });
   }
 
+  // fileUploader = event => {
+  //   event.preventDefault();
+
+  //   const formData = new FormData();
+  //   formData.append("oeuvre", this.state.file);
+  //   const config = {
+  //     headers: {
+  //       'content-type': 'multipart/form-data'
+  //     }
+  //   };
+  //       const artwork = {
+  //     title: this.state.title,
+  //     description: this.state.description,
+  //     picture: this.state.file,
+  //     id_user: this.props.id,
+  //     id_cate: this.state.selectedOption
+  //   };
+  //   axios.post('http://localhost:8000/upload-artwork/', formData, config, artwork, { headers: {authorization: `Bearer ${this.props.token}` }})
+  //     .then(res => {
+  //       console.log('HERE');
+  //       if (res.status === 200) {
+  //         console.log(res);
+  //         console.log(res.data);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log("catch error");
+  //       console.log(error);
+  //     })
+  // }
+
+  // onChange(e) {
+  //   this.setState({file:e.target.files[0]});
+  //   console.log();
+  // }
+
+
   render() {
       if(this.state.categories.length === 0) {
         axios.get('http://localhost:8000/categories')
@@ -89,16 +131,29 @@ class AddArtwork extends React.Component {
               <option selected >Veuillez selectionnez une categorie</option>
             {this.state.categories.map(({ id_cate, cate_name }) => <option value={id_cate} >{cate_name}</option>)}
             </select>
+
+
+
             <div className="picture">
               <label for="Picture"></label>
               <input type="text" id="picture_input" placeholder="Image" onChange={this.inputPicture} />
             </div>
+
+{/* <div className="multer">
+          <form >
+            <input type="file"  onChange= {this.onChange} />
+            <button onClick={this.fileUploader}>Upload</button>
+          </form>
+        </div> */}
+
+
+
             <div className="message">
               <label for="Description"></label>
               <textarea placeholder="Décrivez votre oeuvre" id="message_input" cols="30" rows="7" onChange={this.inputDesc}></textarea>
             </div>
             <div className="submit">
-              <button type="submit" value="Submit" id="form_button" ><span>Submit</span><div id="circle"></div></button>
+              <button type="submit" value="Submit" id="form_button"><span>Submit</span><div id="circle"></div></button>
             </div>
           </form>
         </div>

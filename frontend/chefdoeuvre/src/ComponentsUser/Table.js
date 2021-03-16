@@ -84,7 +84,7 @@ export class TableTest extends React.Component {
 <p>{this.state.msgSuccess}</p>
 </div>
 				<div className="containerTable">
-
+<div className="for-resp-table">
 					<table>
 
 						<thead>
@@ -122,6 +122,7 @@ export class TableTest extends React.Component {
 
 						</tbody>
 					</table>
+					</div>
 				</div>
 			</div>
 		)

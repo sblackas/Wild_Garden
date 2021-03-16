@@ -88,12 +88,12 @@ export class AllComments extends Component {
         return (
             <div id="AllComments">
                 <section className="section-com">
-                    <p>{this.state.msgSuccess}</p>
+                    <p className="succ">{this.state.msgSuccess}</p>
 
                     {this.props.comments.map(elem => {
                         return (
                             <div id="comment-container" key={elem.id_feedback}>
-                                <div className="com-profile-img" alt="mypic" style={{ backgroundImage: `url(${elem.u_pp})`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} />
+                                {/* <div className="com-profile-img" alt="mypic" style={{ backgroundImage: `url("http://localhost:8000/uploads/${elem.u_pp}")`, backgroundPositionY: 'center', backgroundPositionX: 'center', backgroundSize: 'contain', backgroundRepeat: 'no-repeat' }} /> */}
                                 <div className="good">
                                     <h1>{elem.u_name}</h1>
                                     <h1>{elem.u_lastname}</h1>

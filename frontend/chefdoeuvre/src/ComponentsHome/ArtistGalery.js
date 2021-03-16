@@ -17,6 +17,17 @@ export class ArtistGalery extends React.Component {
   }
 
   componentDidMount() {
+
+    axios.get(`http://localhost:8000/get-artwork/${this.props.match.params.id_user}`)
+    .then(res => {
+      console.log(res.data);
+      this.props.personalArtworks(res.data);
+// console.log(this.props.personalArtworks);
+    })
+    .catch(error => {
+      console.log("catch error");
+      console.log(error);
+    })
     
     axios.get(`http://localhost:8000/users/${this.props.match.params.id_user}`)
       .then(res => {
@@ -28,16 +39,7 @@ export class ArtistGalery extends React.Component {
         console.log(error);
       });
 
-    axios.get(`http://localhost:8000/get-artwork/${this.props.match.params.id_user}`)
-      .then(res => {
-        console.log(res.data);
-        this.props.personalArtworks(res.data);
-  // console.log(this.props.personalArtworks);
-      })
-      .catch(error => {
-        console.log("catch error");
-        console.log(error);
-      })
+
 
   }
 
@@ -64,6 +66,7 @@ export class ArtistGalery extends React.Component {
 
         <div id="h-portfolio" >
           {this.props.myArtworks && this.props.myArtworks.map(elem => {
+            console.log(this.props.myArtworks);
             return (
               <div className="tilee scale-anm web all" key={elem.id}>
                <Link to={`/the-artwork/${elem.id_artwork}`} > <img src={elem.art_picture} alt="" /></Link>

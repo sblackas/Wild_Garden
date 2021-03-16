@@ -160,3 +160,7 @@ tbody td:hover:before {
   .thumbnail-table {
       height: 45px;
   }
+
+  .for-resp-table {
+    overflow-x:auto;
+  }

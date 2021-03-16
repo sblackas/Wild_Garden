@@ -116,6 +116,7 @@ export class AllArtworkList extends React.Component {
           <div className="title"><h1>&bull; All of Artworks List &bull;</h1></div>
 
           {/* {console.log(this.props.artworks)} */}
+          <p className="succ">{this.state.msgSuccess}</p>
           <div className="cards-container">
             {this.props.artworks.map(elem => {
               return (

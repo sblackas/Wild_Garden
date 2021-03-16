@@ -6,7 +6,7 @@
 }
 
 .MyComments .section-com {
-    border: solid green 2px;
+    /* border: solid green 2px; */
     position: relative;
     MARGIN-TOP: 6REM;
     padding-bottom: 4rem;
